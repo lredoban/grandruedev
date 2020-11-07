@@ -8,7 +8,8 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint": "yarn lint:js"
+    "lint": "yarn lint:js",
+    "storybook": "yarn nuxt storybook"
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.2",
@@ -18,12 +19,18 @@
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/html-validator": "^0.1.2",
+    "@nuxtjs/localtunnel": "^1.1.3",
+    "@nuxtjs/storybook": "^3.1.0",
     "@nuxtjs/tailwindcss": "^3.1.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.1.2"
+    "fibers": "^5.0.0",
+    "prettier": "^2.1.2",
+    "sass": "^1.28.0",
+    "sass-loader": "^10.0.5"
   }
 }
