@@ -6,10 +6,17 @@
       <h1 class="font-bold">Clermont-Ferrand</h1>
       <AppButton class="mt-12 uppercase">Accéder à la boutique</AppButton>
     </section>
-    <section id="products" class="mt-12 bg-white">
-      <h1 class="pl-12 text-2xl text-secondary text-bold">
-        Nos Derniers produits...
-      </h1>
+    <section id="products" class="divider-top pt-12 bg-white">
+      <h1 class="pl-12 text-2xl text-secondary text-bold">Nos nouveautés...</h1>
+
+      <AppHorizontalList :items="recentProducts">
+        <template v-slot="{ item }">
+          <n-link :to="{ name: 'products-slug', params: { slug: item.slug } }">
+            <ProductExerpt :product="item" />
+          </n-link>
+        </template>
+      </AppHorizontalList>
+
       <div class="pl-12">Les produits</div>
       <div class="mt-12 w-full text-center">
         <AppButton class="mx-auto">Voir tous les produits</AppButton>
@@ -78,9 +85,24 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'Accueil',
+  async asyncData({ $http, $functions }) {
+    const recentProducts = await $functions.$get('recentProducts')
+    return {
+      recentProducts
+    }
+  }
+}
+</script>
+
 <style scoped>
 #welcome {
-  height: 88vh;
+  height: 80vh;
+  background-image: url('/img/Accueil.jpg');
+  background-size: cover;
+  background-position: 50%;
 }
 #categories .grid a::before {
   content: '';

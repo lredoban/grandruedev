@@ -1,13 +1,20 @@
 <template>
-  <div
-    class="w-screen px-6 py-4 bg-white text-primary flex align-items justify-between"
+  <header
+    class="divider-bottom w-screen px-3 bg-white text-primary flex align-items justify-between"
   >
-    <h1>Grand'Rue</h1>
-    <div class="flex align-items justify-between">
-      <button>Coeur</button>
-      <button>Panier</button>
-      <button>Compte</button>
-      <button class="text-secondary">Toggle</button>
+    <div class="flex items-center">
+      <ICommercantsLocaux class="h-12" />
+      <n-link to="/">
+        <ILogo class="h-16 ml-2" />
+      </n-link>
     </div>
-  </div>
+    <div class="flex align-items justify-between gap-x-3">
+      <button type="button"><IHeart class="h-4" /></button>
+      <button type="button"><ICart class="h-4" /></button>
+      <button type="button"><IAccount class="h-4" /></button>
+      <button type="button" class="text-secondary">
+        <IMenu class="h-4" />
+      </button>
+    </div>
+  </header>
 </template>

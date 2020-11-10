@@ -1,4 +1,7 @@
 export default {
+  privateRuntimeConfig: {
+    airtableApiKey: process.env.AIRTABLE_API_KEY
+  },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
@@ -17,7 +20,7 @@ export default {
   css: ['~/assets/css/main.sass'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: ['~/plugins/functions.js'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: [
@@ -40,7 +43,9 @@ export default {
     // https://www.npmjs.com/package/@nuxtjs/localtunnel
     ['@nuxtjs/localtunnel', { subdomain: 'grandrue' }],
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    // https://http.nuxtjs.org/
+    '@nuxt/http'
   ],
   // https://storybook.nuxtjs.org/
   storybook: {
@@ -48,5 +53,11 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {}
+  build: {
+    extend(config, { isDev, isClient }) {
+      config.node = {
+        fs: 'empty'
+      }
+    }
+  }
 }

@@ -2,8 +2,11 @@
   "name": "grandrue",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "12.13.0"
+  },
   "scripts": {
-    "dev": "nuxt",
+    "dev": "yarn netlify dev -c nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -12,8 +15,13 @@
     "storybook": "yarn nuxt storybook"
   },
   "dependencies": {
+    "@nuxt/http": "^0.6.0",
     "@nuxtjs/pwa": "^3.0.2",
+    "airtable": "^0.10.1",
+    "consola": "^2.15.0",
     "core-js": "^3.6.5",
+    "global": "^4.4.0",
+    "netlify-cli": "^2.68.0",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {

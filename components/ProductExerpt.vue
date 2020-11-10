@@ -1,0 +1,43 @@
+<script>
+export default {
+  name: 'ProductExerpt',
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+
+<template>
+  <article>
+    <div class="-mb-3 flex gap-x-2 items-center">
+      <ILocalize class="h-12 text-gray-400" />
+      <div class="overflow-hidden">
+        <h3 class="text-xs text-gray-400 italic">{{ product.vendorName }}</h3>
+        <h3 class="text-xs text-gray-400 italic whitespace-no-wrap">
+          {{ product.vendorAddress }}
+        </h3>
+      </div>
+    </div>
+    <div class="image-container">
+      <img
+        :src="product.imgUrl"
+        :alt="product.name"
+        class="absolute w-full h-full object-cover"
+      />
+    </div>
+    <h1 class="mt-2 text-primary">{{ product.name }}</h1>
+    <h2 class="text-secondary font-normal text-xs">
+      {{ product.price }}/ {{ product.unit }}
+    </h2>
+  </article>
+</template>
+
+<style lang="sass" scoped>
+.image-container
+  @apply mt-2 rounded
+  position: relative
+  padding-bottom: 100%
+</style>

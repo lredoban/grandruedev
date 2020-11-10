@@ -1,6 +1,8 @@
 <template>
   <footer>
-    <section class="py-8 px-2 bg-primary grid grid-cols-3 gap-x-2 gap-y-4">
+    <section
+      class="divider-top divider-bottom divider--green py-8 px-2 bg-primary grid grid-cols-3 gap-x-2 gap-y-4"
+    >
       <IBike class="mx-auto text-white h-8" />
       <ISecure class="mx-auto text-white h-8" />
       <IEar class="mx-auto text-white h-8" />
