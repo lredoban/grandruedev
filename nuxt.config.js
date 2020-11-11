@@ -20,7 +20,7 @@ export default {
   css: ['~/assets/css/main.sass'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/functions.js'],
+  plugins: [],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: [
