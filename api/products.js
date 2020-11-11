@@ -2,11 +2,11 @@ require('dotenv').config()
 const logger = require('consola').withScope('api')
 
 const Airtable = require('airtable')
-const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-  'appRq445lj2z1F2Zw'
-)
+const base = new Airtable({
+  apiKey: process.env.AIRTABLE_API_KEY
+}).base('appRq445lj2z1F2Zw')
 
-exports.getRecentProducts = () => {
+export const getRecentProducts = () => {
   return base('Produits')
     .select({
       maxRecords: 5,

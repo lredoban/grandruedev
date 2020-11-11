@@ -88,10 +88,11 @@
 <script>
 export default {
   name: 'Accueil',
-  async asyncData({ $http, $functions }) {
-    const recentProducts = await $functions.$get('recentProducts')
+  async asyncData({ $http, $functions, $config }) {
+    const { getRecentProducts } = await import('~/api/products')
+
     return {
-      recentProducts
+      recentProducts: await getRecentProducts()
     }
   }
 }

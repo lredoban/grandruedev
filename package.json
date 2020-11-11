@@ -6,7 +6,7 @@
     "node": "12.18.0"
   },
   "scripts": {
-    "dev": "yarn netlify dev -c nuxt",
+    "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -21,7 +21,6 @@
     "consola": "^2.15.0",
     "core-js": "^3.6.5",
     "global": "^4.4.0",
-    "netlify-cli": "^2.68.0",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {
