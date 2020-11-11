@@ -20,7 +20,7 @@ export default {
   css: ['~/assets/css/main.sass'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/functions.js'],
+  plugins: [],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: [
@@ -35,7 +35,17 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     // https://html-validator.nuxtjs.org/
-    '@nuxtjs/html-validator'
+    '@nuxtjs/html-validator',
+    [
+      // https://github.com/nuxt-community/google-fonts-module
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          'Open Sans': [100, 200, 300, 400, 500, 600, 700, 900],
+          Caveat: true
+        }
+      }
+    ]
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)

@@ -1,118 +1,75 @@
-<template>
-  <div>
-    <section id="welcome" class="bg-pink-500 text-white text-center">
-      <h3>Bienvenue</h3>
-      <h2 class="italic">Dans la zone commerciale de</h2>
-      <h1 class="font-bold">Clermont-Ferrand</h1>
-      <AppButton class="mt-12 uppercase">Accéder à la boutique</AppButton>
-    </section>
-    <section id="products" class="divider-top pt-12 bg-white">
-      <h1 class="pl-12 text-2xl text-secondary text-bold">Nos nouveautés...</h1>
-
-      <AppHorizontalList :items="recentProducts">
-        <template v-slot="{ item }">
-          <n-link :to="{ name: 'products-slug', params: { slug: item.slug } }">
-            <ProductExerpt :product="item" />
-          </n-link>
-        </template>
-      </AppHorizontalList>
-
-      <div class="pl-12">Les produits</div>
-      <div class="mt-12 w-full text-center">
-        <AppButton class="mx-auto">Voir tous les produits</AppButton>
-      </div>
-    </section>
-    <section id="categories" class="mt-12 bg-white">
-      <h1 class="pl-12 text-2xl text-secondary text-bold">
-        J'achete local avec Grand'Rue
-      </h1>
-      <p class="italic">
-        <strong>’Rue séléctionne</strong> pour vous les boutiques les plus Lorem
-        ipsum dolor sit <strong>amet, consetetur</strong> sadipscing elitr, sed
-        diam <strong>nonumy</strong> eirmod tempor invidunt ut labo…
-      </p>
-      <div class="mt-12 grid grid-cols-2">
-        <a
-          v-for="c in [
-            'Alimentaire',
-            'Maison',
-            'Sport & Loisir',
-            'Boissons & Spiritueux',
-            'Culture',
-            'Hygiène & Beauté',
-            'Mode',
-            'Jardin & Bricolage'
-          ]"
-          :key="c"
-          href="#"
-          class="flex justify-center items-center border border-pink-400"
-          >{{ c }}</a
-        >
-      </div>
-    </section>
-    <section class="bg-white">
-      <img src="" alt="Sac Grand'Rue" />
-      <h1 class="text-secondary text-2xl">Pourquoi consommer Local?</h1>
-      <p class="mt-4 italic">
-        <strong class="not-italic">Grand Rue</strong> Lorem ipsum dolor sit
-        amet, consetetur sadipscing sed diam,Lorem consetetur sadipscing elitr,
-        sadipscing elitr, diam ed diam nonumy eirmod tempor invidunt ut labo …
-      </p>
-      <div class="mt-12 w-full text-center">
-        <AppButton class="mx-auto">En savoir+</AppButton>
-      </div>
-    </section>
-    <section id="numbers">
-      <div class="py-12 flex flex-col items-center space-y-12 text-center">
-        <div>
-          <span>15000</span>
-          <h2>Produits</h2>
-        </div>
-        <div>
-          <span>28</span>
-          <h2>Commerçants</h2>
-        </div>
-        <div>
-          <span>19</span>
-          <h2>Producteurs</h2>
-        </div>
-        <AppButton class="block">Devenez partenaire</AppButton>
-      </div>
-    </section>
-    <section>
-      <h1 class="h1">Le magazine grand’rue..</h1>
-    </section>
-  </div>
-</template>
-
 <script>
 export default {
-  name: 'Accueil',
-  async asyncData({ $http, $functions, $config }) {
-    const { getRecentProducts } = await import('~/api/products')
-
-    return {
-      recentProducts: await getRecentProducts()
-    }
-  }
+  name: 'LandingPage',
+  layout: 'landing'
 }
 </script>
 
+<template>
+  <main>
+    <section
+      class="h-screen pt-8 pb-6 bg-primary text-white text-center flex flex-col justify-between"
+    >
+      <h1 class="visual-hide">Grand'Rue</h1>
+      <div>
+        <span class="text-3xl font-caveat">Pssst !</span>
+        <h2 class="uppercase text-lg italic font-semibold">
+          Un peu de patience...
+        </h2>
+      </div>
+      <div>
+        <ILoginLogo class="mx-auto h-24" />
+        <h3 class="mt-1 uppercase italic font-hairline opacity-50">
+          Arrive très prochainement !
+        </h3>
+      </div>
+      <div>
+        <h3 class="italic font-hairline opacity-50 text-sm">En attendant...</h3>
+        <IDoubleArrowDown class="mt-2 mx-auto h-8 opacity-25" />
+      </div>
+    </section>
+    <section>
+      LOGO grand rue
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+        voluptatibus eligendi voluptas, inventore distinctio, quam error sed
+        repudiandae adipisci ut autem velit unde reprehenderit aliquid veniam
+        nihil dolorem ullam nemo?
+      </p>
+    </section>
+    <section>
+      <h1>Des nouvelles de SVG dans votre svg :</h1>
+      <form action="">
+        <input type="email" placeholder="saisissez votre adresse..." required />
+        <label for="condition">
+          <input id="condition" type="checkbox" />
+          En m’inscrivant à la newsletter de Grand’Rue, je reconnais avoir pris
+          connaissance de la charte relative aux données à caractère personnel.
+        </label>
+        <label for="commercant">
+          <input id="commercant" type="checkbox" />
+          Je suis commerçant
+        </label>
+        <AppButton type="submit" class="uppercase" invert>
+          Je m’inscris
+        </AppButton>
+      </form>
+      <img src="" alt="" />
+      <img src="" alt="" />
+    </section>
+  </main>
+</template>
+
 <style lang="sass" scoped>
-#welcome
-  height: 80vh
-  background-image: url('/img/Accueil.jpg')
-  background-size: cover
-  background-position: 50%
-#categories .grid a::before
-  content: ''
-  padding-bottom: 100%
+.visual-hide
+  font-size: 0
+  width: 1px
+  height: 1px
   display: inline-block
-  vertical-align: top
-#numbers
-  background-color: #faf5f2
-  span
-    @apply text-3xl font-bold text-secondary
-  h2
-    @apply text-2xl font-bold text-primary
+  overflow: hidden
+  position: absolute!important
+  border: 0!important
+  padding: 0!important
+  margin: 0!important
+  clip: rect(1px,1px,1px,1px)
 </style>
