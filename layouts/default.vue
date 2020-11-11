@@ -8,8 +8,7 @@
   </div>
 </template>
 
-<style>
-body {
-  @apply min-h-screen bg-white;
-}
+<style lang="sass">
+body
+  @apply min-h-screen bg-white
 </style>

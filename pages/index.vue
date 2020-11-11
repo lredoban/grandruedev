@@ -98,26 +98,21 @@ export default {
 }
 </script>
 
-<style scoped>
-#welcome {
-  height: 80vh;
-  background-image: url('/img/Accueil.jpg');
-  background-size: cover;
-  background-position: 50%;
-}
-#categories .grid a::before {
-  content: '';
-  padding-bottom: 100%;
-  display: inline-block;
-  vertical-align: top;
-}
-#numbers {
-  background-color: #faf5f2;
-}
-#numbers span {
-  @apply text-3xl font-bold text-secondary;
-}
-#numbers h2 {
-  @apply text-2xl font-bold text-primary;
-}
+<style lang="sass" scoped>
+#welcome
+  height: 80vh
+  background-image: url('/img/Accueil.jpg')
+  background-size: cover
+  background-position: 50%
+#categories .grid a::before
+  content: ''
+  padding-bottom: 100%
+  display: inline-block
+  vertical-align: top
+#numbers
+  background-color: #faf5f2
+  span
+    @apply text-3xl font-bold text-secondary
+  h2
+    @apply text-2xl font-bold text-primary
 </style>
