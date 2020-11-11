@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" preserveAspectRatio="xMidYMin slice" style="padding-bottom: 100%; height: 1px; overflow: visible">
+  <defs>
+    <filter x="0%" y="0%" width="100%" height="100%" id="PEPPER" filterUnits="objectBoundingBox">
+      <feTurbulence type="fractalNoise" result="f1" stitchTiles="noStitch" baseFrequency="0.27" numOctaves="1" seed="2"></feTurbulence>
+      <feColorMatrix type="matrix" values="-21 0 0 0 5.5      -21 0 0 0 5.5     -21 0 0 0 5.5      0 0 0 0 1" in="f1" result="f2"></feColorMatrix>
+      <feColorMatrix type="luminanceToAlpha" in="f2" result="f3"></feColorMatrix>
+      <feComposite in="f3" in2="SourceGraphic" result="f4" operator="in"></feComposite>
+      <feMerge>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+        <feMergeNode in="f4"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" filter="url(#PEPPER)" fill="#faf5f2"/>
+</svg>

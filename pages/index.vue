@@ -28,31 +28,57 @@ export default {
         <IDoubleArrowDown class="mt-2 mx-auto h-8 opacity-25" />
       </div>
     </section>
-    <section>
-      LOGO grand rue
-      <p>
+    <section class="pt-16 pb-48 bg-kraft text-center">
+      <h1 class="text-4xl">Grand Rue</h1>
+      <p class="mx-8 max-w-sm text-xs text-primary italic font-thin">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
         voluptatibus eligendi voluptas, inventore distinctio, quam error sed
         repudiandae adipisci ut autem velit unde reprehenderit aliquid veniam
         nihil dolorem ullam nemo?
       </p>
     </section>
-    <section>
-      <h1>Des nouvelles de SVG dans votre svg :</h1>
-      <form action="">
-        <input type="email" placeholder="saisissez votre adresse..." required />
-        <label for="condition">
+    <section
+      class="divider-top divider--green pt-32 pb-24 bg-primary text-center"
+    >
+      <h1 class="text-secondary italic font-semibold">
+        Des nouvelles de <span class="text-white">SVG</span> dans votre
+        <span class="text-white">svg</span> :
+      </h1>
+      <form action="" class="mt-8 px-10 text-left">
+        <label for="email" class="block">
+          <input
+            id="email"
+            type="email"
+            placeholder="saisissez votre adresse..."
+            required
+            class="px-1 w-full bg-transparent border-b-2 border-white"
+          />
+        </label>
+        <div class="mt-4 flex">
           <input id="condition" type="checkbox" />
-          En m’inscrivant à la newsletter de Grand’Rue, je reconnais avoir pris
-          connaissance de la charte relative aux données à caractère personnel.
-        </label>
-        <label for="commercant">
+          <label
+            for="condition"
+            class="-mt-1 ml-2 text-xs text-white text-justify text-opacity-75"
+          >
+            En m’inscrivant à la newsletter de Grand’Rue, je reconnais avoir
+            pris connaissance de la charte relative aux données à caractère
+            personnel.
+          </label>
+        </div>
+        <!-- <div class="mt-2 flex">
           <input id="commercant" type="checkbox" />
-          Je suis commerçant
-        </label>
-        <AppButton type="submit" class="uppercase" invert>
-          Je m’inscris
-        </AppButton>
+          <label
+            for="commercant"
+            class="-mt-1 ml-2 text-xs text-white text-justify text-opacity-75"
+          >
+            Je suis commerçant
+          </label>
+        </div> -->
+        <div class="mt-8 text-center">
+          <AppButton type="submit" class="uppercase" invert>
+            Je m’inscris
+          </AppButton>
+        </div>
       </form>
       <img src="" alt="" />
       <img src="" alt="" />
@@ -72,4 +98,6 @@ export default {
   padding: 0!important
   margin: 0!important
   clip: rect(1px,1px,1px,1px)
+input[type="email"]::placeholder
+  @apply text-sm text-white text-opacity-50 uppercase italic
 </style>
