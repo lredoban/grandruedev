@@ -161,7 +161,7 @@ export default {
             style="padding-bottom: 70%"
           >
             <img
-              data-twic-src="image:grand-rue/commercants.jpg"
+              data-twic-src="image:grand-rue/commercantes.jpg"
               alt="Deux commerçante regardant un ordinateur en souriant"
               class="absolute h-full w-full object-cover object-bottom"
             />
