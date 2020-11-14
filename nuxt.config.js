@@ -64,10 +64,10 @@ export default {
         download: true
       }
     ],
-    // https://pwa.nuxtjs.org
-    '@nuxtjs/pwa',
     // https://google-analytics.nuxtjs.org
-    '@nuxtjs/google-analytics'
+    ['@nuxtjs/google-analytics', { id: 'G-ZKVSQ9RH12' }],
+    // https://pwa.nuxtjs.org
+    '@nuxtjs/pwa'
   ],
   pwa: {
     manifest: {
@@ -78,9 +78,6 @@ export default {
       background_color: '#5F8B7A',
       lang: 'fr'
     }
-  },
-  googleAnalytics: {
-    id: 'G-ZKVSQ9RH12'
   },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
