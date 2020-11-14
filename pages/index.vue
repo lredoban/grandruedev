@@ -175,7 +175,10 @@ export default {
           </div>
         </div>
         <ILikeInsta class="mt-32 h-10 text-secondary" />
-        <AppButton tag="a" href="#infos" class="mt-4 z-10"
+        <AppButton
+          tag="a"
+          href="https://airtable.com/shr4EwCt38y1pHVmT"
+          class="mt-4 z-10"
           >DEMANDEZ DES INFOS</AppButton
         >
         <AppImage

@@ -2,6 +2,10 @@
 export default {
   name: 'AppButton',
   props: {
+    tag: {
+      type: String,
+      default: 'button'
+    },
     invert: {
       type: Boolean,
       default: false
@@ -11,13 +15,14 @@ export default {
 </script>
 
 <template>
-  <button
+  <component
+    :is="tag"
     class="px-6 py-1 rounded-full font-bold focus:outline-none focus:shadow-outline hover:shadow-lg"
     :class="invert ? 'bg-white text-primary' : 'bg-primary text-white'"
     type="button"
   >
     <slot />
-  </button>
+  </component>
 </template>
 
 <style lang="sass" scoped>
