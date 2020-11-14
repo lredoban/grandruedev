@@ -115,8 +115,8 @@ export default {
         alt="une branche verte"
       />
       <img
-        class="absolute top-0 right-0 h-40 -mr-6 -mt-32"
-        data-twic-src="image:grand-rue/Sac-Boutique.png"
+        class="absolute top-0 right-0 h-40 -mt-32"
+        data-twic-src="image:grand-rue/sacboutique.png"
         alt="un sac Grand'Rue"
       />
     </section>
