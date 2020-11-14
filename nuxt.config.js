@@ -14,7 +14,12 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Grand’Rue a l’ambition de simplifier et d’augmenter le commerce local en connectant tous les acteurs d’un territoire au moyen d’une porte d’entrée unique'
+      }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [{ src: 'https://dz11y8g2.twic.pics/?v1', type: 'text/javascript' }]
@@ -47,7 +52,8 @@ export default {
         families: {
           'Open Sans': [100, 200, 300, 400, 500, 600, 700, 900],
           Caveat: true
-        }
+        },
+        download: true
       }
     ],
     // https://pwa.nuxtjs.org
