@@ -31,10 +31,10 @@ export default {
         <h2 class="uppercase text-lg font-semibold">Un peu de patience...</h2>
       </div>
       <div class="flex flex-col items-center">
-        <ILikeInsta class="h-12 text-secondary" />
-        <ILogo class="bi-gout h-20 mt-4 -mr-2" />
-        <ILogoWordFlat class="h-6 mt-2" />
-        <h3 class="mt-1 uppercase font-hairline opacity-50">
+        <ILikeInsta class="h-12 text-secondary md:h-16" />
+        <ILogo class="bi-gout h-20 mt-4 -mr-2 md:h-24" />
+        <ILogoWordFlat class="h-6 mt-2 md:h-8" />
+        <h3 class="mt-1 uppercase font-hairline opacity-50 md:text-lg">
           Arrive très prochainement !
         </h3>
       </div>
@@ -53,7 +53,7 @@ export default {
         <span class="q-mark ml-4 -mt-1 text-secondary leading-none">?</span>
       </div>
       <p
-        class="mt-8 mx-auto px-8 max-w-sm text-sm text-primary italic font-thin"
+        class="mt-8 mx-auto px-8 max-w-lg text-sm text-primary italic font-thin"
       >
         Grand’Rue a l’ambition de
         <strong> simplifier et d’augmenter le commerce local</strong> en
@@ -61,7 +61,7 @@ export default {
         d’entrée unique
       </p>
       <p
-        class="mt-4 mx-auto px-8 max-w-sm text-sm text-primary italic font-thin"
+        class="mt-4 mx-auto px-8 max-w-lg text-sm text-primary italic font-thin"
       >
         <strong>Notre vision n’est pas née de la crise actuelle.</strong><br />
         Nous pensons qu’il est urgent de changer nos habitudes de consommation
@@ -70,7 +70,7 @@ export default {
         <strong>transition écologique.</strong>
       </p>
       <p
-        class="mt-4 mx-auto px-8 max-w-sm text-sm text-primary italic font-thin"
+        class="mt-4 mx-auto px-8 max-w-lg text-sm text-primary italic font-thin"
       >
         <strong
           >Grand’Rue est bien plus qu’une plateforme de e-commerce,</strong
@@ -86,7 +86,10 @@ export default {
         <ILogo class="-mr-1 inline h-10 text-white align-baseline" /> dans votre
         <IMail class="-mb-2 inline h-8 text-white align-baseline" /> :
       </h1>
-      <form class="mt-8 px-10 text-left" @submit.prevent="saveEmail">
+      <form
+        class="mx-auto max-w-md mt-8 px-10 text-left"
+        @submit.prevent="saveEmail"
+      >
         <label for="email" class="block">
           <input
             id="email"
@@ -140,19 +143,22 @@ export default {
         </div>
       </form>
       <AppImage
+        id="branche"
         class="absolute top-0 left-0 w-40 -mt-32"
         src="img/LANDING-PAGE.png"
         alt="une branche verte"
       />
       <AppImage
+        id="sac"
         class="absolute top-0 right-0 h-40 -mt-32"
         src="img/sacboutique.png"
         alt="un sac Grand'Rue"
       />
     </section>
-    <section>
+    <section class="w-full sm:grid grid-cols-3">
       <div
-        class="relative bg-kraft divider-bottom divider--kraft pb-56 text-center flex flex-col items-center"
+        id="infos"
+        class="relative bg-kraft divider-bottom divider--kraft pb-56 text-center flex flex-col items-center col-span-2 md:pb-32"
       >
         <h2 class="mt-24 text-gray-500 text-xl font-medium opacity-75">
           Commerçants, DEVENEZ...
@@ -173,14 +179,14 @@ export default {
           >DEMANDEZ DES INFOS</AppButton
         >
         <AppImage
-          class="absolute bottom-0 left-0 -ml-2 w-56"
+          class="absolute bottom-0 left-0 -ml-2 w-56 md:w-64"
           src="img/commercant.png"
           alt="Une commerçante tout sourire"
         />
       </div>
       <div
         id="shop"
-        class="h-screen bg-cover"
+        class="h-screen bg-cover max-w-lg md:h-full md:flex md:justify-center md:items-center"
         data-twic-background="url('image:grand-rue/interieur-boutique.jpg')"
       >
         <div
@@ -225,6 +231,23 @@ input[type="email"]::placeholder
   @apply text-sm text-white text-opacity-50 uppercase italic
 .q-mark
   font-size: 42px
+#branche
+  @screen lg
+    @apply bottom-0 top-auto w-auto -mb-12 max-w-lg -ml-16
+  @screen xl
+    @apply max-w-2xl
+#sac
+  @screen lg
+    @apply h-auto max-w-sm mt-0 transform -translate-y-1/2 -mt-12
+  @screen xl
+    @apply max-w-lg
+
+#infos::after
+  @screen md
+    content: none
+#shop > div
+  @screen md
+    @apply mt-0 -ml-48
 </style>
 
 <style lang="sass">
