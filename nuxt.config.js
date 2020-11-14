@@ -2,6 +2,9 @@ export default {
   privateRuntimeConfig: {
     airtableApiKey: process.env.AIRTABLE_API_KEY
   },
+  publicRuntimeConfig: {
+    dev: process.env.NODE_ENV !== 'production'
+  },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 

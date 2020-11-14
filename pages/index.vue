@@ -109,14 +109,14 @@ export default {
           </AppButton>
         </div>
       </form>
-      <img
+      <AppImage
         class="absolute top-0 left-0 w-40 -mt-32"
-        data-twic-src="image:grand-rue/LANDING-PAGE.png"
+        src="img/LANDING-PAGE.png"
         alt="une branche verte"
       />
-      <img
+      <AppImage
         class="absolute top-0 right-0 h-40 -mt-32"
-        data-twic-src="image:grand-rue/sacboutique.png"
+        src="img/sacboutique.png"
         alt="un sac Grand'Rue"
       />
     </section>
@@ -142,9 +142,9 @@ export default {
         <AppButton tag="a" href="#infos" class="mt-4 z-10"
           >DEMANDEZ DES INFOS</AppButton
         >
-        <img
+        <AppImage
           class="absolute bottom-0 left-0 -ml-2 w-56"
-          data-twic-src="image:grand-rue/commercant.png"
+          src="img/commercant.png"
           alt="Une commerçante tout sourire"
         />
       </div>
@@ -160,8 +160,8 @@ export default {
             class="relative rounded-xl overflow-hidden"
             style="padding-bottom: 70%"
           >
-            <img
-              data-twic-src="image:grand-rue/commercantes.jpg"
+            <AppImage
+              src="img/commercantes.jpg"
               alt="Deux commerçante regardant un ordinateur en souriant"
               class="absolute h-full w-full object-cover object-bottom"
             />
