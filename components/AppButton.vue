@@ -19,3 +19,8 @@ export default {
     <slot />
   </button>
 </template>
+
+<style lang="sass" scoped>
+button:disabled
+  @apply opacity-25 cursor-not-allowed
+</style>

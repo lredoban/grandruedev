@@ -1,7 +1,22 @@
 <script>
 export default {
   name: 'LandingPage',
-  layout: 'landing'
+  layout: 'landing',
+  data: () => ({
+    email: '',
+    emailSent: false,
+    charte: false,
+    isRetailer: false
+  }),
+  methods: {
+    saveEmail() {
+      if (!this.charte) return
+      this.$http.get(
+        `https://envgynhb7r0zvww.m.pipedream.net?email=${this.email}&isRetailer=${this.isRetailer}`
+      )
+      this.emailSent = true
+    }
+  }
 }
 </script>
 
@@ -71,31 +86,41 @@ export default {
         <ILogo class="-mr-1 inline h-10 text-white align-baseline" /> dans votre
         <IMail class="-mb-2 inline h-8 text-white align-baseline" /> :
       </h1>
-      <form action="" class="mt-8 px-10 text-left">
+      <form class="mt-8 px-10 text-left" @submit.prevent="saveEmail">
         <label for="email" class="block">
           <input
             id="email"
+            v-model="email"
             type="email"
             placeholder="saisissez votre adresse..."
             required
-            class="px-1 w-full bg-transparent border-b-2 border-white"
+            :disabled="emailSent"
+            class="px-1 w-full bg-transparent border-b-2 border-white text-white disabled:opacity-50"
           />
         </label>
         <div class="mt-4 flex">
-          <input id="condition" type="checkbox" class="-mt-1" />
+          <input
+            id="condition"
+            v-model="charte"
+            type="checkbox"
+            class="-mt-1"
+          />
           <label
             for="condition"
             class="-mt-1 ml-2 text-xs text-white text-justify text-opacity-75"
           >
             En m’inscrivant à la newsletter de Grand’Rue, je reconnais avoir
-            pris connaissance de la
-            <a href="#charte" class="underline"
-              >charte relative aux données à caractère personnel.</a
-            >
+            pris connaissance de la charte relative aux données à caractère
+            personnel.
           </label>
         </div>
         <div class="mt-2 flex">
-          <input id="commercant" type="checkbox" class="-mt-1" />
+          <input
+            id="commercant"
+            v-model="isRetailer"
+            type="checkbox"
+            class="-mt-1"
+          />
           <label
             for="commercant"
             class="-mt-1 ml-2 text-xs text-white text-justify text-opacity-75"
@@ -104,7 +129,12 @@ export default {
           </label>
         </div>
         <div class="mt-8 text-center">
-          <AppButton type="submit" class="uppercase" invert>
+          <AppButton
+            type="submit"
+            class="uppercase"
+            invert
+            :disabled="emailSent"
+          >
             Je m’inscris
           </AppButton>
         </div>
