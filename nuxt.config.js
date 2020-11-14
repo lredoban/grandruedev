@@ -80,7 +80,7 @@ export default {
     }
   },
   googleAnalytics: {
-    id: process.env.NODE_ENV === 'production' ? 'G-ZKVSQ9RH12' : ''
+    id: 'G-ZKVSQ9RH12'
   },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
