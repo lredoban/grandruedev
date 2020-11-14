@@ -12,7 +12,7 @@ export default {
 
 <template>
   <button
-    class="px-4 py-2 rounded-full font-bold focus:outline-none focus:shadow-outline hover:shadow-lg"
+    class="px-6 py-1 rounded-full font-bold focus:outline-none focus:shadow-outline hover:shadow-lg"
     :class="invert ? 'bg-white text-primary' : 'bg-primary text-white'"
     type="button"
   >

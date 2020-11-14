@@ -4,7 +4,7 @@ module.exports = {
       colors: {
         primary: '#5F8B7A',
         secondary: '#F9BB8E',
-        tertiary: '#faf5f2'
+        tertiary: '#FAF5F2'
       },
       fontFamily: {
         sans:
