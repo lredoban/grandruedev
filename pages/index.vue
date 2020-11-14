@@ -8,7 +8,7 @@ export default {
 <template>
   <main>
     <section
-      class="h-screen pt-8 pb-6 bg-primary text-white text-center flex flex-col justify-between"
+      class="h-screen pt-8 pb-6 px-4 bg-primary text-white text-center flex flex-col justify-between"
     >
       <h1 class="visual-hide">Grand'Rue</h1>
       <div>
@@ -37,20 +37,26 @@ export default {
         <ILogoWordFlat class="h-8 text-primary" />
         <span class="q-mark ml-4 -mt-1 text-secondary leading-none">?</span>
       </div>
-      <p class="mt-8 mx-8 max-w-sm text-sm text-primary italic font-thin">
+      <p
+        class="mt-8 mx-auto px-8 max-w-sm text-sm text-primary italic font-thin"
+      >
         Grand’Rue a l’ambition de
         <strong> simplifier et d’augmenter le commerce local</strong> en
         connectant tous les acteurs d’un territoire au moyen d’une porte
         d’entrée unique
       </p>
-      <p class="mt-4 mx-8 max-w-sm text-sm text-primary italic font-thin">
+      <p
+        class="mt-4 mx-auto px-8 max-w-sm text-sm text-primary italic font-thin"
+      >
         <strong>Notre vision n’est pas née de la crise actuelle.</strong><br />
         Nous pensons qu’il est urgent de changer nos habitudes de consommation
         et de <strong>privilégier une économie de proximité,</strong> quasiment
         circulaire, pour apporter des solutions efficaces à la
         <strong>transition écologique.</strong>
       </p>
-      <p class="mt-4 mx-8 max-w-sm text-sm text-primary italic font-thin">
+      <p
+        class="mt-4 mx-auto px-8 max-w-sm text-sm text-primary italic font-thin"
+      >
         <strong
           >Grand’Rue est bien plus qu’une plateforme de e-commerce,</strong
         >
@@ -130,16 +136,20 @@ export default {
         >
         <img src="" alt="" />
       </div>
-      <div id="shop" class="h-screen">
+      <div
+        id="shop"
+        class="h-screen bg-cover"
+        data-twic-background="url('image:grand-rue/interieur-boutique.jpg')"
+      >
         <div
-          class="relative -mt-20 w-10/12 max-w-xs mx-auto p-4 pb-8 bg-white shadow-xl z-10"
+          class="relative -mt-20 w-10/12 max-w-sm mx-auto p-4 pb-8 bg-white shadow-xl z-10"
         >
           <div
             class="relative rounded-xl overflow-hidden"
             style="padding-bottom: 70%"
           >
             <img
-              src="/img/COMMERÇANTS.jpg"
+              data-twic-src="image:grand-rue/commercants.jpg"
               alt="Deux commerçante regardant un ordinateur en souriant"
               class="absolute h-full w-full object-cover object-bottom"
             />
@@ -173,9 +183,6 @@ input[type="email"]::placeholder
   @apply text-sm text-white text-opacity-50 uppercase italic
 .q-mark
   font-size: 42px
-#shop
-  background-image: url('/img/interieur-boutique.jpg')
-  background-size: cover
 </style>
 
 <style lang="sass">
