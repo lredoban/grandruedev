@@ -17,8 +17,10 @@ export default {
           Un peu de patience...
         </h2>
       </div>
-      <div>
-        <ILoginLogo class="mx-auto h-24" />
+      <div class="flex flex-col items-center">
+        <ILikeInsta class="h-12 text-secondary" />
+        <ILogo class="h-20 mt-4 -mr-2" />
+        <ILogoWordFlat class="h-6 mt-2" />
         <h3 class="mt-1 uppercase italic font-hairline opacity-50">
           Arrive très prochainement !
         </h3>
