@@ -32,7 +32,7 @@ export default {
         <IDoubleArrowDown class="mt-2 mx-auto h-8 opacity-25" />
       </div>
     </section>
-    <section class="pt-16 pb-48 bg-kraft text-center">
+    <section class="pt-16 pb-40 bg-kraft text-center">
       <div class="flex items-center justify-center">
         <ILogoWordFlat class="h-8 text-primary" />
         <span class="q-mark ml-4 -mt-1 text-secondary leading-none">?</span>
@@ -64,7 +64,7 @@ export default {
       </p>
     </section>
     <section
-      class="divider-top divider--green pt-32 pb-24 bg-primary text-center"
+      class="relative divider-top divider--green pt-32 pb-24 bg-primary text-center"
     >
       <h1 class="text-secondary font-semibold">
         Des nouvelles de
@@ -109,12 +109,20 @@ export default {
           </AppButton>
         </div>
       </form>
-      <img src="" alt="" />
-      <img src="" alt="" />
+      <img
+        class="absolute top-0 left-0 w-40 -mt-32"
+        data-twic-src="image:grand-rue/LANDING-PAGE.png"
+        alt="une branche verte"
+      />
+      <img
+        class="absolute top-0 right-0 h-40 -mr-6 -mt-32"
+        data-twic-src="image:grand-rue/Sac-Boutique.png"
+        alt="un sac Grand'Rue"
+      />
     </section>
     <section>
       <div
-        class="bg-kraft divider-bottom divider--kraft pb-56 text-center flex flex-col items-center"
+        class="relative bg-kraft divider-bottom divider--kraft pb-56 text-center flex flex-col items-center"
       >
         <h2 class="mt-24 text-gray-500 text-xl font-medium opacity-75">
           Commerçants, DEVENEZ...
@@ -131,10 +139,14 @@ export default {
           </div>
         </div>
         <ILikeInsta class="mt-32 h-10 text-secondary" />
-        <AppButton tag="a" href="#infos" class="mt-4"
+        <AppButton tag="a" href="#infos" class="mt-4 z-10"
           >DEMANDEZ DES INFOS</AppButton
         >
-        <img src="" alt="" />
+        <img
+          class="absolute bottom-0 left-0 -ml-2 w-56"
+          data-twic-src="image:grand-rue/commercant.png"
+          alt="Une commerçante tout sourire"
+        />
       </div>
       <div
         id="shop"
