@@ -87,7 +87,7 @@ export default {
         <IMail class="-mb-2 inline h-8 text-white align-baseline" /> :
       </h1>
       <form
-        class="mx-auto max-w-md mt-8 px-10 text-left"
+        class="relative mx-auto max-w-md mt-8 px-10 z-10 text-left"
         @submit.prevent="saveEmail"
       >
         <label for="email" class="block">
