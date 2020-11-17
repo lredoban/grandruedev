@@ -112,9 +112,8 @@ export default {
             for="condition"
             class="-mt-1 ml-2 text-xs text-white text-justify text-opacity-75"
           >
-            En m’inscrivant à la newsletter de Grand’Rue, je reconnais avoir
-            pris connaissance de la charte relative aux données à caractère
-            personnel.
+            En m'incrivant à la newsletter j'accepte de recevoir des
+            informations de la part de Grand'Rue.
           </label>
         </div>
         <div class="mt-2 flex">
