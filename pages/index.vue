@@ -212,33 +212,50 @@ export default {
       </div>
     </section>
     <footer
-      class="bg-primary divider-top divider--green h-16 flex items-center justify-center"
+      class="bg-primary divider-top divider--green flex items-center justify-center sm:h-32yar"
     >
-      <div class="flex space-x-8 text-white">
-        <a
-          href="https://www.facebook.com/GrandRue-106918634568672"
-          target="_blank"
-          rel="noreferrer noopener"
+      <div
+        class="max-w-3xl w-full py-6 flex flex-col justify-around items-center sm:py-12 sm:flex-row"
+      >
+        <ILogoRound class="h-16 text-white sm:h-20" />
+        <div class="mt-6 flex space-x-6 text-white sm:mt-0 sm:space-x-8">
+          <a
+            href="https://www.facebook.com/GrandRue-106918634568672"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <IFacebook class="h-6 sm:h-10" />
+            <span class="visual-hide">facebook page of Grand'Rue</span>
+          </a>
+          <a
+            href="https://www.instagram.com/grand_rue/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <IInstagram class="h-6 sm:h-10" />
+            <span class="visual-hide">instagram page of Grand'Rue</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/company/grandrue/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <ILinkedIn class="h-6 sm:h-10" />
+            <span class="visual-hide">linkedin page of Grand'Rue</span>
+          </a>
+          <a
+            href="https://twitter.com/GrandRue_local"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <ITwitter class="h-6 sm:h-10" />
+            <span class="visual-hide">twitter account of Grand'Rue</span>
+          </a>
+        </div>
+        <span
+          class="mt-2 text-sm text-white italic text-opacity-75 tracking-wider sm:mt-0 sm:text-base"
+          >Contact<code>@</code>grand-rue.com</span
         >
-          <IFacebook class="h-6" />
-          <span class="visual-hide">facebook page of Grand'Rue</span>
-        </a>
-        <a
-          href="https://www.instagram.com/grand_rue/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <IInstagram class="h-6" />
-          <span class="visual-hide">instagram page of Grand'Rue</span>
-        </a>
-        <a
-          href="https://www.linkedin.com/company/grandrue/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <ILinkedIn class="h-6" />
-          <span class="visual-hide">linkedin page of Grand'Rue</span>
-        </a>
       </div>
     </footer>
   </main>
