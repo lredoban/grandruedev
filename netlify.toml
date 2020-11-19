@@ -1,3 +1,6 @@
+[dev]
+   command = "nuxt"
 [build]
-  command = "yarn netlify dev -c \"yarn generate\" --debug"
+  command = "yarn generate"
   publish = "dist"
+  functions = "functions"

@@ -88,8 +88,8 @@
 <script>
 export default {
   name: 'Accueil',
-  asyncData: async ({ $functions }) => ({
-    recentProducts: await $functions.$get('recentProducts')
+  asyncData: async ({ $db }) => ({
+    recentProducts: await $db.$get('recentProducts')
   })
 }
 </script>

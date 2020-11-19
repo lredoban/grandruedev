@@ -6,12 +6,10 @@
     "node": ">=12.8.0"
   },
   "scripts": {
-    "dev": "netlify dev -f functions -c nuxt",
+    "dev": "netlify dev",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate:nuxt": "nuxt generate && exit 1",
-    "generate:fakeServer": "micro micro.js",
-    "generate": "run-p generate:*",
+    "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "storybook": "yarn nuxt storybook"
@@ -41,7 +39,6 @@
     "fibers": "^5.0.0",
     "micro": "^9.3.4",
     "netlify-cli": "^2.68.6",
-    "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2",
     "sass": "^1.28.0",
     "sass-loader": "^10.0.5"

@@ -1,12 +1,12 @@
-const { getRecentProducts } = require('../../api/products')
+const { recentProducts } = require('../../api/recentProducts')
 
 const handler = async (event) => {
   try {
-    const recentProducts = await getRecentProducts()
+    const products = await recentProducts()
 
     return {
       statusCode: 200,
-      body: JSON.stringify(recentProducts)
+      body: JSON.stringify(products)
     }
   } catch (error) {
     return { statusCode: 500, body: error.toString() }
