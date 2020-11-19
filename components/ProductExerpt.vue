@@ -15,9 +15,9 @@ export default {
     <div class="-mb-3 flex gap-x-2 items-center">
       <ILocalize class="h-12 text-gray-400" />
       <div class="overflow-hidden">
-        <h3 class="text-xs text-gray-400 italic">{{ product.vendorName }}</h3>
+        <h3 class="text-xs text-gray-400 italic">{{ product.storeName }}</h3>
         <h3 class="text-xs text-gray-400 italic whitespace-no-wrap">
-          {{ product.vendorAddress }}
+          {{ product.storeAddress }}
         </h3>
       </div>
     </div>
