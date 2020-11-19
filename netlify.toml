@@ -1,3 +1,3 @@
 [build]
-  command = "yarn netlify dev -c "yarn generate" --debug"
+  command = "yarn netlify dev -c 'yarn generate' --debug"
   publish = "dist"
