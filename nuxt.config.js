@@ -82,10 +82,6 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://www.npmjs.com/package/@nuxtjs/localtunnel
-    ['@nuxtjs/localtunnel', { subdomain: 'grandrue' }],
-    // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
     // https://http.nuxtjs.org/
     '@nuxt/http'
   ],
