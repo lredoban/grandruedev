@@ -6,7 +6,7 @@
     "node": ">=12.8.0"
   },
   "scripts": {
-    "dev": "nuxt",
+    "dev": "netlify dev",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -37,6 +37,7 @@
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "fibers": "^5.0.0",
+    "netlify-cli": "^2.68.6",
     "prettier": "^2.1.2",
     "sass": "^1.28.0",
     "sass-loader": "^10.0.5"

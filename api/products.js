@@ -6,7 +6,7 @@ const base = new Airtable({
   apiKey: process.env.AIRTABLE_API_KEY
 }).base('appRq445lj2z1F2Zw')
 
-export const getRecentProducts = () => {
+exports.getRecentProducts = () => {
   return base('Produits')
     .select({
       maxRecords: 5,
