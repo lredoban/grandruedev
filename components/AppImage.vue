@@ -1,4 +1,6 @@
 <script>
+import { twicify, twicPreview } from '~/helpers/twicpics'
+
 export default {
   name: 'AppImage',
   props: {
@@ -10,14 +12,11 @@ export default {
   computed: {
     twicSrc() {
       if (this.$config.dev) return ''
-      return this.src.replace('img/', 'image:grand-rue/')
+      return twicify(this.src)
     },
     preview() {
       if (this.$config.dev) return this.src
-      const url = this.src
-        .split('img/')
-        .join('https://dz11y8g2.twic.pics/grand-rue/')
-      return url + '?twic=v1/output=preview'
+      return twicPreview(this.src)
     }
   }
 }

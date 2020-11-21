@@ -9,7 +9,11 @@ export default {
 
 <template>
   <div>
-    <section id="welcome" class="bg-pink-500 text-white text-center">
+    <section
+      id="welcome"
+      class="bg-pink-500 text-white text-center"
+      data-twic-background="url('image:grand-rue/Accueil.jpg')"
+    >
       <h3>{{ $t('welcome') }}</h3>
       <h2 class="italic">Dans la zone commerciale de</h2>
       <h1 class="font-bold">Clermont-Ferrand</h1>

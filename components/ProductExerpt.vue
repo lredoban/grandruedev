@@ -1,10 +1,24 @@
 <script>
+import { twicifyAirtable, twicPreview } from '~/helpers/twicpics'
+
 export default {
   name: 'ProductExerpt',
   props: {
     product: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    twicPreview() {
+      return twicPreview(
+        this.product.imgUrl,
+        'airtable',
+        'https://dl.airtable.com/.attachments/'
+      )
+    },
+    twicSrc() {
+      return twicifyAirtable(this.product.imgUrl)
     }
   }
 }
@@ -23,7 +37,8 @@ export default {
     </div>
     <div class="image-container">
       <img
-        :src="product.imgUrl"
+        :src="twicPreview"
+        :data-twic-src="twicSrc"
         :alt="product.name"
         class="absolute w-full h-full object-cover"
       />

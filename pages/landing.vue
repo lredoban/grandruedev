@@ -144,13 +144,13 @@ export default {
       <AppImage
         id="branche"
         class="absolute top-0 left-0 w-40 -mt-32"
-        src="img/LANDING-PAGE.png"
+        src="/img/LANDING-PAGE.png"
         alt="une branche verte"
       />
       <AppImage
         id="sac"
         class="absolute top-0 right-0 h-40 -mt-32"
-        src="img/sacboutique.png"
+        src="/img/sacboutique.png"
         alt="un sac Grand'Rue"
       />
     </section>
@@ -182,7 +182,7 @@ export default {
         >
         <AppImage
           class="absolute bottom-0 left-0 -ml-2 w-56 md:w-64"
-          src="img/commercant.png"
+          src="/img/commercant.png"
           alt="Une commerçante tout sourire"
         />
       </div>
@@ -196,7 +196,7 @@ export default {
         >
           <div class="pb-70 relative rounded-xl overflow-hidden">
             <AppImage
-              src="img/commercantes.jpg"
+              src="/img/commercantes.jpg"
               alt="Deux commerçante regardant un ordinateur en souriant"
               class="absolute h-full w-full object-cover object-bottom"
             />
