@@ -3,13 +3,13 @@ import { twicifyAirtable } from '~/helpers/twicpics'
 export default {
   name: 'Accueil',
   asyncData: async ({ $db }) => {
-    const rawCategories = await $db.$get('categories')
+    const rawCategories = await $db.fetch('categories')
     const categories = rawCategories.map((c) => ({
       ...c,
-      imagePreview: twicifyAirtable(c.imagePreview)
+      imageThumbnail: twicifyAirtable(c.imageThumbnail)
     }))
     return {
-      recentProducts: await $db.$get('recentProducts'),
+      recentProducts: await $db.fetch('recentProducts'),
       categories
     }
   }
@@ -74,7 +74,7 @@ export default {
             })
           "
           class="p-3 flex justify-center items-center bg-cover bg-black bg-opacity-50 text-center text-white font-bold text-lg uppercase"
-          :data-twic-background="`url('${category.imagePreview}')`"
+          :data-twic-background="`url('${category.imageThumbnail}')`"
         >
           {{ category.name }}
         </n-link>

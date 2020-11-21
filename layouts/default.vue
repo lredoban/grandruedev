@@ -10,8 +10,8 @@ export default {
 <template>
   <div class="relative">
     <TheHeader />
-    <div class="mt-20">
-      <Nuxt />
+    <div class="mt-24">
+      <Nuxt class="-mt-2" />
     </div>
     <TheFooter />
   </div>
