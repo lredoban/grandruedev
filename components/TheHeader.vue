@@ -4,7 +4,7 @@
   >
     <div class="flex items-center">
       <ICommercantsLocaux class="h-12" />
-      <n-link to="/">
+      <n-link :to="localePath('/')">
         <ILogo class="h-16 ml-2" />
       </n-link>
     </div>

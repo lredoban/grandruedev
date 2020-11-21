@@ -1,7 +1,16 @@
+<script>
+export default {
+  name: 'Accueil',
+  asyncData: async ({ $db }) => ({
+    recentProducts: await $db.$get('recentProducts')
+  })
+}
+</script>
+
 <template>
   <div>
     <section id="welcome" class="bg-pink-500 text-white text-center">
-      <h3>Bienvenue</h3>
+      <h3>{{ $t('welcome') }}</h3>
       <h2 class="italic">Dans la zone commerciale de</h2>
       <h1 class="font-bold">Clermont-Ferrand</h1>
       <AppButton class="mt-12 uppercase">Accéder à la boutique</AppButton>
@@ -11,7 +20,11 @@
 
       <AppHorizontalList :items="recentProducts">
         <template v-slot="{ item }">
-          <n-link :to="{ name: 'products-slug', params: { slug: item.slug } }">
+          <n-link
+            :to="
+              localePath({ name: 'products-slug', params: { slug: item.slug } })
+            "
+          >
             <ProductExerpt :product="item" />
           </n-link>
         </template>
@@ -85,15 +98,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Accueil',
-  asyncData: async ({ $db }) => ({
-    recentProducts: await $db.$get('recentProducts')
-  })
-}
-</script>
-
 <style lang="sass" scoped>
 #welcome
   height: 80vh
@@ -112,3 +116,14 @@ export default {
   h2
     @apply text-2xl font-bold text-primary
 </style>
+
+<i18n>
+{
+  "fr": {
+    "welcome": "Bienvenue"
+  },
+  "en": {
+    "welcome": "Welcome"
+  }
+}
+</i18n>
