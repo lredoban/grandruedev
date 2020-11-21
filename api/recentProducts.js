@@ -14,7 +14,7 @@ exports.recentProducts = () => {
         name: record.fields.name,
         price: record.fields.price,
         unit: record.fields.unit,
-        storeAddress: record.fields.storeAddress[0],
+        storeAddress: `${record.fields.storeCity[0]} (${record.fields.storeZipCode[0]})`,
         storeName: record.fields.storeName[0],
         imgUrl: record.fields.images[0].url
       }))
