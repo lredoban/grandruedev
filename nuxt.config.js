@@ -3,6 +3,7 @@ import gtm from './config/gtm'
 import i18n from './config/i18n'
 import meta from './config/meta'
 import pwa from './config/pwa'
+import sitemap from './config/sitemap'
 import storybook from './config/storybook'
 
 export default {
@@ -61,6 +62,7 @@ export default {
   ],
   i18n,
   gtm,
+  sitemap,
   storybook,
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
