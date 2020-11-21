@@ -52,7 +52,6 @@ export default {
 
 <style lang="sass" scoped>
 .image-container
-  @apply mt-2 rounded
-  position: relative
+  @apply relative mt-2 rounded
   padding-bottom: 100%
 </style>

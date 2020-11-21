@@ -10,7 +10,7 @@ export default {
 <template>
   <div class="relative">
     <TheHeader />
-    <div>
+    <div class="mt-20">
       <Nuxt />
     </div>
     <TheFooter />

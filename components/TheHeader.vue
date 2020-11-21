@@ -1,20 +1,50 @@
+<script>
+export default {
+  name: 'TheHeader',
+  data: () => ({
+    imageUrl: ''
+  }),
+  methods: {
+    goBack() {
+      if (window.history.length > 2) this.$router.go(-1)
+      else this.$router.push(this.localePath('/'))
+    }
+  }
+}
+</script>
+
 <template>
   <header
-    class="divider-bottom w-screen px-3 bg-white text-primary flex align-items justify-between"
+    class="divider-bottom z-20 top-0 w-screen p-3 bg-white text-primary flex items-center justify-between"
   >
-    <div class="flex items-center">
-      <ICommercantsLocaux class="h-12" />
+    <button v-if="imageUrl" class="p-2 text-gray-400" @click="goBack">
+      <IArrowLeft class="h-5" />
+    </button>
+    <div v-else class="flex items-center">
+      <ICommercantsLocaux class="h-16" />
       <n-link :to="localePath('/')">
-        <ILogo class="h-16 ml-2" />
+        <ILogoWord class="h-20 ml-2 -my-2" />
       </n-link>
     </div>
-    <div class="flex align-items justify-between gap-x-3">
-      <button type="button"><IHeart class="h-4" /></button>
-      <button type="button"><ICart class="h-4" /></button>
-      <button type="button"><IAccount class="h-4" /></button>
-      <button type="button" class="text-secondary">
-        <IMenu class="h-4" />
-      </button>
+    <div v-if="imageUrl" class="image-container">
+      <AppImage :src="imageUrl" class="absolute w-full h-full object-contain" />
     </div>
+    <div v-else class="flex-1 flex justify-end">
+      <button type="button"><IHeart class="h-10 p-2" /></button>
+      <button type="button"><ICart class="h-10 p-2" /></button>
+      <button type="button"><IAccount class="h-10 p-2" /></button>
+    </div>
+    <button type="button" class="text-secondary">
+      <IMenu class="h-10 p-2" />
+    </button>
   </header>
 </template>
+
+<style lang="sass" scoped>
+header
+  position: fixed
+.image-container
+  @apply relative w-64
+  position: relative
+  padding-bottom: 15%
+</style>

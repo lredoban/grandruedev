@@ -14,10 +14,16 @@ export default {
       class="bg-pink-500 text-white text-center"
       data-twic-background="url('image:grand-rue/Accueil.jpg')"
     >
-      <h3>{{ $t('welcome') }}</h3>
-      <h2 class="italic">Dans la zone commerciale de</h2>
-      <h1 class="font-bold">Clermont-Ferrand</h1>
-      <AppButton class="mt-12 uppercase">Accéder à la boutique</AppButton>
+      <h3 class="text-5xl font-thin tracking-wide font-caveat leading-none">
+        {{ $t('welcome') }}
+      </h3>
+      <h2 class="italic font-normal uppercase text-lg">
+        Dans la zone commerciale de
+      </h2>
+      <h1 class="text-xl uppercase not-italic tracking-wider">
+        Clermont-Ferrand !
+      </h1>
+      <AppButton class="mt-8 uppercase">Accéder à la boutique</AppButton>
     </section>
     <section id="products" class="divider-top pt-12 bg-white">
       <h1 class="pl-12 text-2xl text-secondary text-bold">Nos nouveautés...</h1>
@@ -104,7 +110,8 @@ export default {
 
 <style lang="sass" scoped>
 #welcome
-  height: 80vh
+  @apply pt-16
+  height: 84vh
   background-image: url('/img/Accueil.jpg')
   background-size: cover
   background-position: 50%
