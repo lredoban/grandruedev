@@ -15,7 +15,6 @@ exports.recentProducts = () => {
     .firstPage()
     .then((records) => {
       return records.map((record) => ({
-        id: record.fields.id,
         slug: record.fields.ref.toLowerCase(),
         name: record.fields.name,
         price: record.fields.price,

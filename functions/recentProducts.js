@@ -1,4 +1,4 @@
-const { recentProducts } = require('../../api/recentProducts')
+const { recentProducts } = require('../api/recentProducts')
 
 const handler = async (event) => {
   try {

@@ -1,9 +1,18 @@
 <script>
+import { twicifyAirtable } from '~/helpers/twicpics'
 export default {
   name: 'Accueil',
-  asyncData: async ({ $db }) => ({
-    recentProducts: await $db.$get('recentProducts')
-  })
+  asyncData: async ({ $db }) => {
+    const rawCategories = await $db.$get('categories')
+    const categories = rawCategories.map((c) => ({
+      ...c,
+      imagePreview: twicifyAirtable(c.imagePreview)
+    }))
+    return {
+      recentProducts: await $db.$get('recentProducts'),
+      categories
+    }
+  }
 }
 </script>
 
@@ -55,22 +64,20 @@ export default {
         diam <strong>nonumy</strong> eirmod tempor invidunt ut labo…
       </p>
       <div class="mt-12 grid grid-cols-2">
-        <a
-          v-for="c in [
-            'Alimentaire',
-            'Maison',
-            'Sport & Loisir',
-            'Boissons & Spiritueux',
-            'Culture',
-            'Hygiène & Beauté',
-            'Mode',
-            'Jardin & Bricolage'
-          ]"
-          :key="c"
-          href="#"
-          class="flex justify-center items-center border border-pink-400"
-          >{{ c }}</a
+        <n-link
+          v-for="category in categories"
+          :key="category.slug"
+          :to="
+            localePath({
+              name: 'categories-slug',
+              params: { slug: category.slug }
+            })
+          "
+          class="p-3 flex justify-center items-center bg-cover bg-black bg-opacity-50 text-center text-white font-bold text-lg uppercase"
+          :data-twic-background="`url('${category.imagePreview}')`"
         >
+          {{ category.name }}
+        </n-link>
       </div>
     </section>
     <section class="bg-white">
