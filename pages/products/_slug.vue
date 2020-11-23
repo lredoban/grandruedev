@@ -12,6 +12,9 @@ export default {
       relatedProducts: await $db.fetch('recentProducts'),
       displayDescription: false
     }
+  },
+  beforeDestroy() {
+    this.$store.commit('menu/clear')
   }
 }
 </script>

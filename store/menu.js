@@ -5,5 +5,8 @@ export const state = () => ({
 export const mutations = {
   setImage(state, imageUrl) {
     state.imageUrl = imageUrl
+  },
+  clear(state) {
+    state.imageUrl = ''
   }
 }
