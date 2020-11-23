@@ -1,9 +1,13 @@
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'TheHeader',
-  data: () => ({
-    imageUrl: ''
-  }),
+  computed: {
+    ...mapState({
+      imageUrl: (state) => state.menu.imageUrl
+    })
+  },
   methods: {
     goBack() {
       if (window.history.length > 2) this.$router.go(-1)
@@ -27,7 +31,10 @@ export default {
       </n-link>
     </div>
     <div v-if="imageUrl" class="image-container">
-      <AppImage :src="imageUrl" class="absolute w-full h-full object-contain" />
+      <AirtableImage
+        :src="imageUrl"
+        class="absolute w-full h-full object-contain"
+      />
     </div>
     <div v-else class="flex-1 flex justify-end">
       <button type="button"><IHeart class="h-10 p-2" /></button>

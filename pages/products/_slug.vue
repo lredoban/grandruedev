@@ -4,9 +4,11 @@ import { CollapseTransition } from 'vue2-transitions'
 export default {
   name: 'ProductPage',
   components: { CollapseTransition },
-  async asyncData({ $db, params }) {
+  async asyncData({ $db, params, store }) {
+    const product = await $db.fetch('productBySlug', { slug: params.slug })
+    store.commit('menu/setImage', product.storeLogo)
     return {
-      product: await $db.fetch('productBySlug', { slug: params.slug }),
+      product,
       relatedProducts: await $db.fetch('recentProducts'),
       displayDescription: false
     }

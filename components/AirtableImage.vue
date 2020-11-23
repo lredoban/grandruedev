@@ -11,11 +11,9 @@ export default {
   },
   computed: {
     twicSrc() {
-      if (this.$config.dev) return ''
       return twicifyAirtable(this.src)
     },
     preview() {
-      if (this.$config.dev) return this.src
       return twicPreview(
         this.src,
         'airtable',

@@ -8,6 +8,7 @@ exports.productBySlug = ({ slug }) => {
     .then((records) => {
       return records.map((record) => ({
         ...record.fields,
+        storeLogo: record.fields.storeLogo[0].url,
         storeAddress: `${record.fields.storeCity[0]} (${record.fields.storeZipCode[0]})`
       }))[0]
     })
