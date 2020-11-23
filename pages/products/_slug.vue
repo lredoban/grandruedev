@@ -7,6 +7,7 @@ export default {
   async asyncData({ $db, params }) {
     return {
       product: await $db.fetch('productBySlug', { slug: params.slug }),
+      relatedProducts: await $db.fetch('recentProducts'),
       displayDescription: false
     }
   }
@@ -14,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <main>
+  <main class="pb-20">
     <section>
       <div class="carousel">
         <div v-for="img in product.images" :key="img.id" class="carousel-item">
@@ -29,7 +30,14 @@ export default {
         <h1 class="not-italic text-3xl text-gray-600 font-bold tracking-wide">
           {{ product.name }}
         </h1>
-        <div>{{ product.price }} / {{ product.unit }}</div>
+        <div class="mt-4 flex items-baseline">
+          <h2 class="text-2xl text-gray-600 font-normal">
+            {{ $n(product.price, 'currency', 'fr-FR') }}
+          </h2>
+          <span class="text-gray-400 text-sm lowercase ml-2">
+            /{{ product.unit }}</span
+          >
+        </div>
         <div class="mt-4 border-t border-b border-gray-600 text-gray-600">
           <button
             class="py-2 w-full uppercase tracking-wide text-left"
@@ -48,15 +56,23 @@ export default {
           <n-link to="/">{{ product.storeName[0] }}</n-link>
           , {{ product.storeAddress }}
         </div>
-        <div class="mt-16 flex justify-between items-center">
-          <div class="flex items-center">
-            <button>-</button>
-            <span>0</span>
-            <button>+</button>
+        <div class="mt-10 flex justify-between items-center">
+          <div class="flex items-center space-x-4">
+            <button>
+              <IMinusSign class="text-gray-500 h-10" />
+            </button>
+            <span class="text-4xl text-gray-600 font-black">0</span>
+            <button><ICartAdd class="h-10 text-primary" /></button>
           </div>
           <IHeart class="h-8 text-red-500" />
         </div>
       </div>
+    </section>
+    <section class="mt-12 px-8">
+      <h1 class="text-2xl text-secondary uppercase not-italic">
+        Et avec ceci ?
+      </h1>
+      <ProductExerptList :products="relatedProducts" class="mt-6 -ml-8" />
     </section>
   </main>
 </template>

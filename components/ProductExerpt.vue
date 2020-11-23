@@ -26,16 +26,20 @@ export default {
 
 <template>
   <article>
-    <div class="-mb-3 flex gap-x-2 items-center">
-      <ILocalize class="h-12 text-gray-400" />
-      <div class="overflow-hidden">
-        <h3 class="text-xs text-gray-400 italic">{{ product.storeName }}</h3>
-        <h3 class="text-xs text-gray-400 italic whitespace-no-wrap">
+    <div class="-ml-1 flex gap-x-1 items-center">
+      <ILocalize class="h-8 text-gray-500" />
+      <div>
+        <h3 class="text-xs text-gray-500 italic font-thin leading-none">
+          {{ product.storeName }}
+        </h3>
+        <h3
+          class="mt-1 text-xs text-gray-500 italic font-thin leading-none whitespace-no-wrap"
+        >
           {{ product.storeAddress }}
         </h3>
       </div>
     </div>
-    <div class="image-container">
+    <div class="image-container mt-2">
       <img
         :src="twicPreview"
         :data-twic-src="twicSrc"
@@ -43,9 +47,9 @@ export default {
         class="absolute w-full h-full object-cover"
       />
     </div>
-    <h1 class="mt-2 text-primary">{{ product.name }}</h1>
-    <h2 class="text-secondary font-normal text-xs">
-      {{ product.price }}/ {{ product.unit }}
+    <h1 class="mt-2 text-primary not-italic text-2xl">{{ product.name }}</h1>
+    <h2 class="text-secondary not-italic tracking-wider">
+      {{ $n(product.price, 'currency', 'fr-FR') }}
     </h2>
   </article>
 </template>

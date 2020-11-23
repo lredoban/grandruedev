@@ -17,7 +17,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <main>
     <section
       id="welcome"
       class="bg-pink-500 text-white text-center"
@@ -34,26 +34,17 @@ export default {
       </h1>
       <AppButton class="mt-8 uppercase">Accéder à la boutique</AppButton>
     </section>
+
     <section id="products" class="divider-top pt-12 bg-white">
-      <h1 class="pl-12 text-2xl text-secondary text-bold">Nos nouveautés...</h1>
-
-      <AppHorizontalList :items="recentProducts">
-        <template v-slot="{ item }">
-          <n-link
-            :to="
-              localePath({ name: 'products-slug', params: { slug: item.slug } })
-            "
-          >
-            <ProductExerpt :product="item" />
-          </n-link>
-        </template>
-      </AppHorizontalList>
-
-      <div class="pl-12">Les produits</div>
+      <h1 class="text-3xl text-secondary font-extrabold not-italic text-center">
+        Les nouveautés...
+      </h1>
+      <ProductExerptList :products="recentProducts" class="mt-8" />
       <div class="mt-12 w-full text-center">
         <AppButton class="mx-auto">Voir tous les produits</AppButton>
       </div>
     </section>
+
     <section id="categories" class="mt-12 bg-white">
       <h1 class="pl-12 text-2xl text-secondary text-bold">
         J'achete local avec Grand'Rue
@@ -80,6 +71,7 @@ export default {
         </n-link>
       </div>
     </section>
+
     <section class="bg-white">
       <img src="" alt="Sac Grand'Rue" />
       <h1 class="text-secondary text-2xl">Pourquoi consommer Local?</h1>
@@ -92,7 +84,8 @@ export default {
         <AppButton class="mx-auto">En savoir+</AppButton>
       </div>
     </section>
-    <section id="numbers">
+
+    <section id="numbers" class="bg-kraft">
       <div class="py-12 flex flex-col items-center space-y-12 text-center">
         <div>
           <span>15000</span>
@@ -109,10 +102,7 @@ export default {
         <AppButton class="block">Devenez partenaire</AppButton>
       </div>
     </section>
-    <section>
-      <h1 class="h1">Le magazine grand’rue..</h1>
-    </section>
-  </div>
+  </main>
 </template>
 
 <style lang="sass" scoped>
@@ -128,7 +118,6 @@ export default {
   display: inline-block
   vertical-align: top
 #numbers
-  background-color: #faf5f2
   span
     @apply text-3xl font-bold text-secondary
   h2

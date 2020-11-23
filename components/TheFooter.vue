@@ -14,7 +14,7 @@
       </div>
       <div class="text-white font-bold text-xs text-center">SERVICE CLIENT</div>
     </section>
-    <section class="bg-tertiary py-6 px-12">
+    <section class="bg-kraft py-6 px-12">
       <ul class="flex justify-between">
         <li class="p-2 bg-primary text-white rounded-full">
           <IFacebook class="h-6" />
