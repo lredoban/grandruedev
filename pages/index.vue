@@ -20,7 +20,7 @@ export default {
   <main>
     <section
       id="welcome"
-      class="bg-pink-500 text-white text-center"
+      class="text-white text-center"
       data-twic-background="url('image:grand-rue/Accueil.jpg')"
     >
       <h3 class="text-5xl font-thin tracking-wide font-caveat leading-none">
