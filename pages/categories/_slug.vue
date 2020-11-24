@@ -3,8 +3,7 @@ export default {
   name: 'CategoryPage',
   async asyncData({ $db, params }) {
     return {
-      category: await $db.fetch('categoryBySlug', { slug: params.slug }),
-      categories: await $db.fetch('categories')
+      category: await $db.fetch('categoryBySlug', { slug: params.slug })
     }
   }
 }

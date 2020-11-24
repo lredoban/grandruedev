@@ -3,7 +3,7 @@ const base = require('./base')
 
 exports.categories = () => {
   return base('Categories')
-    .select()
+    .select({ view: 'Catégories Parentes' })
     .firstPage()
     .then((records) => {
       return records.map((record) => ({
