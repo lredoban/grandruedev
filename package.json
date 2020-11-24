@@ -26,6 +26,7 @@
     "nuxt": "^2.14.6",
     "nuxt-i18n": "^6.15.4",
     "nuxt-logrocket": "^1.2.10",
+    "vue-click-outside": "^1.1.0",
     "vue2-transitions": "^0.3.0"
   },
   "devDependencies": {
