@@ -33,7 +33,7 @@ export default {
   grid-template-columns: 10px
   grid-template-rows: minmax(150px, 1fr)
   grid-auto-flow: column
-  grid-auto-columns: calc(70% - var(--gutter))
+  grid-auto-columns: calc(60% - var(--gutter))
 
   overflow-x: scroll
   scroll-snap-type: x proximity

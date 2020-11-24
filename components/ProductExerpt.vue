@@ -26,8 +26,8 @@ export default {
 
 <template>
   <article>
-    <div class="-ml-1 flex gap-x-1 items-center">
-      <ILocalize class="h-8 text-gray-500" />
+    <div class="-ml-1 flex gap-x-1 items-center overflow-x-hidden">
+      <ILocalize class="w-6 flex-shrink-0 text-gray-500" />
       <div>
         <h3 class="text-xs text-gray-500 italic font-thin leading-none">
           {{ product.storeName }}
@@ -47,7 +47,7 @@ export default {
         class="absolute w-full h-full object-cover"
       />
     </div>
-    <h1 class="mt-2 text-primary not-italic text-2xl">{{ product.name }}</h1>
+    <h1 class="mt-2 text-primary not-italic text-xl">{{ product.name }}</h1>
     <h2 class="text-secondary not-italic tracking-wider">
       {{ $n(product.price, 'currency', 'fr-FR') }}
     </h2>
