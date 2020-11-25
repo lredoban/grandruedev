@@ -45,6 +45,25 @@ export default {
       </div>
     </section>
 
+    <section class="overflow-hidden">
+      <div class="mt-6 w-full h-16 bg-white"></div>
+      <div class="relative bg-kraft pt-32 pb-12 px-8 grid grid-cols-2 gap-y-20">
+        <div>
+          <h1 class="text-xl text-secondary uppercase">
+            Retrouvez vos commerçants préférés sur Grand'Rue !
+          </h1>
+          <IHeart class="mt-2 mx-auto h-6 text-red-600" />
+        </div>
+        <AppImage
+          src="/img/Tablier.png"
+          class="absolute row-span-3 h-full right-0 bottom-0 transform scale-125 translate-x-8"
+        />
+        <div class="row-start-2 col-span-2 z-10 text-center">
+          <AppButton>Vos commerçants</AppButton>
+        </div>
+      </div>
+    </section>
+
     <section id="categories" class="mt-12 bg-white">
       <h1 class="pl-12 text-2xl text-secondary text-bold">
         J'achete local avec Grand'Rue
