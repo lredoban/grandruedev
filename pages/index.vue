@@ -55,7 +55,7 @@ export default {
           <IHeart class="mt-2 mx-auto h-6 text-red-600" />
         </div>
         <AppImage
-          src="/img/Tablier.png"
+          src="https://dl.airtable.com/.attachmentThumbnails/781454ee835d2465999b8ebef8104111/7fa259de"
           class="absolute row-span-3 h-full right-0 bottom-0 transform scale-125 translate-x-8"
         />
         <div class="row-start-2 col-span-2 z-10 text-center">
@@ -131,6 +131,31 @@ export default {
         <AppButton class="block">Devenez partenaire</AppButton>
       </div>
     </section> -->
+    <section class="pt-20 pb-24 px-8">
+      <AirtableImage
+        src="https://dl.airtable.com/.attachmentThumbnails/6246efe226f8d97a05f9f7c850c69382/5067ba94"
+        class="rounded-xl"
+      />
+      <h1 class="mt-4 text-secondary text-xl not-italic uppercase">
+        Une solution idéale pour vous, commerçants
+      </h1>
+      <p class="mt-2 text-gray-500">
+        <strong>Grand'Rue</strong>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, id
+        nulla ipsum ad iusto consequuntur labore? Fuga voluptas mollitia quas
+        dolores praesentium, aliquam eum itaque inventore ullam vel est ut...
+      </p>
+      <div class="text-center">
+        <AppButton
+          tag="a"
+          href="https://airtable.com/shr4EwCt38y1pHVmT"
+          class="mt-12 uppercase"
+          target="_blank"
+          rel="noreferrer noopener"
+          >devenez partenaire</AppButton
+        >
+      </div>
+    </section>
   </main>
 </template>
 
