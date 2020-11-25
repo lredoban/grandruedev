@@ -5,12 +5,13 @@ exports.recentProducts = () => {
   return base('Produits')
     .select({
       maxRecords: 5,
-      view: 'Tous les produits'
+      view: 'Tous les produits',
+      sort: [{ field: 'createdAt', direction: 'desc' }]
     })
     .firstPage()
     .then((records) => {
       return records.map((record) => ({
-        slug: record.fields.ref.toLowerCase(),
+        slug: record.fields.slug,
         name: record.fields.name,
         price: record.fields.price,
         unit: record.fields.unit,

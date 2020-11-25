@@ -8,7 +8,7 @@ exports.productsBy = ({ key, param }) => {
     .then((records) => {
       return records.map((record) => {
         return {
-          slug: record.fields.ref.toLowerCase(),
+          slug: record.fields.slug,
           name: record.fields.name,
           price: record.fields.price,
           unit: record.fields.unit,

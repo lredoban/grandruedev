@@ -6,9 +6,13 @@ export default {
   components: { CollapseTransition },
   async asyncData({ $db, params }) {
     const product = await $db.fetch('productBySlug', { slug: params.slug })
+    const related = await $db.fetch('productsBy', {
+      key: 'storeName',
+      param: product.storeName[0]
+    })
     return {
       product,
-      relatedProducts: await $db.fetch('recentProducts'),
+      relatedProducts: related.filter((r) => r.name !== product.name),
       displayDescription: false
     }
   },
