@@ -77,7 +77,12 @@ export default {
             <n-link
               v-for="cat in categories"
               :key="cat.slug"
-              :to="{ name: 'categories-slug', params: { slug: cat.slug } }"
+              :to="
+                localePath({
+                  name: 'categories-slug',
+                  params: { slug: cat.slug }
+                })
+              "
               class="block p-2 uppercase font-bold tracking-wide text-white text-opacity-75"
               >{{ cat.name }}</n-link
             >
@@ -124,7 +129,9 @@ export default {
       <n-link
         v-for="product in filteredProducts"
         :key="product.slug"
-        :to="{ name: 'products-slug', params: { slug: product.slug } }"
+        :to="
+          localePath({ name: 'products-slug', params: { slug: product.slug } })
+        "
       >
         <ProductExerpt :product="product" />
       </n-link>
