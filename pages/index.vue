@@ -64,16 +64,26 @@ export default {
       </div>
     </section>
 
-    <section id="categories" class="mt-12 bg-white">
-      <h1 class="pl-12 text-2xl text-secondary text-bold">
-        J'achete local avec Grand'Rue
-      </h1>
-      <p class="italic">
-        <strong>’Rue séléctionne</strong> pour vous les boutiques les plus Lorem
-        ipsum dolor sit <strong>amet, consetetur</strong> sadipscing elitr, sed
-        diam <strong>nonumy</strong> eirmod tempor invidunt ut labo…
-      </p>
-      <div class="mt-12 grid grid-cols-2">
+    <section id="categories">
+      <div class="px-12 pt-16 pb-10 divider-top divider-bottom bg-white">
+        <div class="mt-4">
+          <ILikeInsta class="mx-auto h-16 text-secondary" />
+          <div class="buy mt-4">
+            <ILogo class="h-full -ml-2 row-span-2 text-primary" />
+            <h1 class="text-secondary font-light text-2xl not-italic">
+              j'achete local avec<span class="visual-hide">Grand'Rue</span>
+            </h1>
+            <ILogoWordFlat class="text-primary pb-2" />
+          </div>
+        </div>
+        <p class="mt-6 italic text-gray-500">
+          <strong>Grand’Rue séléctionne</strong> pour vous les boutiques les
+          plus Lorem ipsum dolor sit
+          <strong>amet, consetetur</strong> sadipscing elitr, sed diam
+          <strong>nonumy</strong> eirmod tempor invidunt ut labo…
+        </p>
+      </div>
+      <div class="grid grid-cols-2">
         <n-link
           v-for="category in categories"
           :key="category.slug"
@@ -91,7 +101,7 @@ export default {
       </div>
     </section>
 
-    <section class="bg-white">
+    <!-- <section class="bg-white">
       <img src="" alt="Sac Grand'Rue" />
       <h1 class="text-secondary text-2xl">Pourquoi consommer Local?</h1>
       <p class="mt-4 italic">
@@ -102,9 +112,9 @@ export default {
       <div class="mt-12 w-full text-center">
         <AppButton class="mx-auto">En savoir+</AppButton>
       </div>
-    </section>
+    </section> -->
 
-    <section id="numbers" class="bg-kraft">
+    <!-- <section id="numbers" class="bg-kraft">
       <div class="py-12 flex flex-col items-center space-y-12 text-center">
         <div>
           <span>15000</span>
@@ -120,7 +130,7 @@ export default {
         </div>
         <AppButton class="block">Devenez partenaire</AppButton>
       </div>
-    </section>
+    </section> -->
   </main>
 </template>
 
@@ -131,11 +141,15 @@ export default {
   background-image: url('/img/Accueil.jpg')
   background-size: cover
   background-position: 50%
-#categories .grid a::before
-  content: ''
-  padding-bottom: 100%
-  display: inline-block
-  vertical-align: top
+#categories
+  .grid a::before
+    content: ''
+    padding-bottom: 100%
+    display: inline-block
+    vertical-align: top
+  .buy
+    @apply grid mx-auto w-64 gap-y-2
+    grid-template-columns: 1fr max-content
 #numbers
   span
     @apply text-3xl font-bold text-secondary

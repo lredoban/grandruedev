@@ -262,17 +262,6 @@ export default {
 </template>
 
 <style lang="sass" scoped>
-.visual-hide
-  font-size: 0
-  width: 1px
-  height: 1px
-  display: inline-block
-  overflow: hidden
-  position: absolute!important
-  border: 0!important
-  padding: 0!important
-  margin: 0!important
-  clip: rect(1px,1px,1px,1px)
 input[type="email"]::placeholder
   @apply text-sm text-white text-opacity-50 uppercase italic
 .pb-70
