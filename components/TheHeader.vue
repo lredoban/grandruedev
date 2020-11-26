@@ -3,6 +3,9 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'TheHeader',
+  data: () => ({
+    displayMenu: false
+  }),
   computed: {
     ...mapState({
       imageUrl: (state) => state.menu.imageUrl
@@ -41,9 +44,13 @@ export default {
       <button type="button"><ICart class="h-10 p-2" /></button>
       <button type="button"><IAccount class="h-10 p-2" /></button>
     </div>
-    <button type="button" class="text-secondary">
+    <button type="button" class="text-secondary" @click="displayMenu = true">
       <IMenu class="h-10 p-2" />
     </button>
+    <TheHeaderMobileMenu
+      :display-menu="displayMenu"
+      @close="displayMenu = false"
+    />
   </header>
 </template>
 

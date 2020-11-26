@@ -148,8 +148,8 @@ export default {
       <div class="text-center">
         <AppButton
           tag="a"
-          href="https://airtable.com/shr4EwCt38y1pHVmT"
           class="mt-12 uppercase"
+          href="https://airtable.com/shr4EwCt38y1pHVmT"
           target="_blank"
           rel="noreferrer noopener"
           >devenez partenaire</AppButton

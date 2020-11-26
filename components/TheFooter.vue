@@ -21,47 +21,7 @@
       </div>
     </section>
     <section class="bg-kraft pt-12 pb-4">
-      <ul class="px-20 flex justify-between">
-        <li>
-          <a
-            href="https://www.facebook.com/GrandRue-106918634568672"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <IFacebook class="text-primary h-10" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.instagram.com/grand_rue/"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="block p-2 bg-primary text-white rounded-full"
-          >
-            <IInstagram class="h-6" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/company/grandrue/"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="block p-2 bg-primary text-white rounded-full"
-          >
-            <ILinkedIn class="h-6" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://twitter.com/GrandRue_local"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <ITwitter class="text-primary h-10 sm:h-10" />
-            <span class="visual-hide">twitter account of Grand'Rue</span>
-          </a>
-        </li>
-      </ul>
+      <SocialLinks class="px-20" />
       <div class="mt-12 text-xs text-center text-primary font-semibold">
         &copy; {{ new Date().getFullYear() }} Grand'Rue
       </div>

@@ -72,7 +72,7 @@ export default {
           <nav
             v-show="displayCategories"
             v-click-outside="() => (displayCategories = false)"
-            class="absolute top-0 -ml-4 px-4 mt-10 max-w-xs w-screen z-10 bg-black bg-opacity-75"
+            class="absolute top-0 -ml-4 px-4 mt-10 max-w-xs w-screen z-10 bg-blurry"
           >
             <n-link
               v-for="cat in categories"
@@ -100,7 +100,7 @@ export default {
           <ul
             v-show="displaySubs"
             v-click-outside="() => (displaySubs = false)"
-            class="absolute top-0 right-0 -mr-4 px-4 mt-10 max-w-xs w-screen z-10 bg-black bg-opacity-75 text-right"
+            class="absolute top-0 right-0 -mr-4 px-4 mt-10 max-w-xs w-screen z-10 bg-blurry text-right"
           >
             <li>
               <button
