@@ -5,8 +5,7 @@ export default {
   name: 'ProductPage',
   components: { CollapseTransition },
   async asyncData({ $db, params }) {
-    const slug = process.client ? params.slug : encodeURI(params.slug)
-    const product = await $db.fetch('productBySlug', { slug })
+    const product = await $db.fetch('productBySlug', { slug: params.slug })
     const related = await $db.fetch('productsBy', {
       key: 'storeName',
       param: product.storeName[0]
