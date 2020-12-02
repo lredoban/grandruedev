@@ -4,6 +4,7 @@ import i18n from './config/i18n'
 import meta from './config/meta'
 import pwa from './config/pwa'
 import sitemap from './config/sitemap'
+import storyblok from './config/storyblok'
 import storybook from './config/storybook'
 
 export default {
@@ -29,7 +30,11 @@ export default {
   css: ['~/assets/css/main.sass'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/db'],
+  plugins: [
+    '~/plugins/db',
+    '~/plugins/composition-api.js',
+    '~/plugins/rich-text-renderer.js'
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: [
@@ -58,11 +63,13 @@ export default {
     '@nuxtjs/gtm',
     'nuxt-logrocket',
     'nuxt-i18n',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    'storyblok-nuxt'
   ],
   i18n,
   gtm,
   sitemap,
+  storyblok,
   storybook,
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

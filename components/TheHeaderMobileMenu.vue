@@ -40,7 +40,7 @@ export default {
               </n-link>
             </li>
             <li>
-              <n-link :to="localePath('/')" class="block w-full py-1">
+              <n-link :to="localePath('boutiques')" class="block w-full py-1">
                 Nos commerçants
               </n-link>
             </li>

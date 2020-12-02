@@ -1,11 +1,6 @@
 <script>
-import ClickOutside from 'vue-click-outside'
-import { CollapseTransition } from 'vue2-transitions'
-
 export default {
   name: 'CategoryPage',
-  components: { CollapseTransition },
-  directives: { ClickOutside },
   async asyncData({ $db, params }) {
     const category = await $db.fetch('categoryBySlug', { slug: params.slug })
     const rawCategories = await $db.fetch('categories')
@@ -36,9 +31,8 @@ export default {
     }
   },
   methods: {
-    selectFilter(name) {
+    updateFilter(name) {
       this.subFilter = name
-      this.displaySubs = false
     }
   }
 }
@@ -57,85 +51,29 @@ export default {
         {{ category.name }}
       </h1>
     </section>
-    <div class="px-4 bg-red-600 flex justify-between">
-      <div class="relative">
-        <button
-          class="p-2 uppercase font-bold tracking-wide text-white text-opacity-75 flex items-center gap-x-2"
-          @click.stop="displayCategories = !displayCategories"
+    <AppActionBar
+      background-color="red"
+      :left-text="category.name"
+      :right-text="subFilter || 'Filtrer'"
+      :left-list="categories"
+      :right-list="subs.map((s) => s.name)"
+      @filterChange="updateFilter"
+    >
+      <template v-slot:left="{ leftItem: cat }">
+        <n-link
+          :to="
+            localePath({ name: 'categories-slug', params: { slug: cat.slug } })
+          "
+          class="block"
         >
-          {{ category.name }}
-          <div :class="displayCategories && 'transform rotate-180'">
-            <IArrowDown class="h-3" />
-          </div>
-        </button>
-        <CollapseTransition>
-          <nav
-            v-show="displayCategories"
-            v-click-outside="() => (displayCategories = false)"
-            class="absolute top-0 -ml-4 px-4 mt-10 max-w-xs w-screen z-10 bg-blurry"
-          >
-            <n-link
-              v-for="cat in categories"
-              :key="cat.slug"
-              :to="
-                localePath({
-                  name: 'categories-slug',
-                  params: { slug: cat.slug }
-                })
-              "
-              class="block p-2 uppercase font-bold tracking-wide text-white text-opacity-75"
-              >{{ cat.name }}</n-link
-            >
-          </nav>
-        </CollapseTransition>
-      </div>
-      <div class="relative">
-        <button
-          class="p-2 uppercase font-bold tracking-wide text-white text-opacity-75"
-          @click.stop="displaySubs = !displaySubs"
-        >
-          {{ subFilter || 'Filtrer' }}
-        </button>
-        <CollapseTransition>
-          <ul
-            v-show="displaySubs"
-            v-click-outside="() => (displaySubs = false)"
-            class="absolute top-0 right-0 -mr-4 px-4 mt-10 max-w-xs w-screen z-10 bg-blurry text-right"
-          >
-            <li>
-              <button
-                class="block ml-auto p-2 uppercase font-bold tracking-wide text-white text-opacity-75 text-right"
-                @click.stop="selectFilter('')"
-              >
-                Tous les articles
-              </button>
-            </li>
-            <li v-for="{ name } in subs" :key="name">
-              <button
-                class="block ml-auto p-2 uppercase font-bold tracking-wide text-white text-opacity-75 text-right"
-                @click.stop="selectFilter(name)"
-              >
-                {{ name }}
-              </button>
-            </li>
-          </ul>
-        </CollapseTransition>
-      </div>
-    </div>
+          {{ cat.name }}
+        </n-link>
+      </template>
+    </AppActionBar>
     <div class="mt-4 text-center text-sm text-gray-500 text-hairline italic">
       {{ products.length }} Articles trouvés
     </div>
-    <section class="mt-8 px-4 grid grid-cols-2 gap-x-4 gap-y-6">
-      <n-link
-        v-for="product in filteredProducts"
-        :key="product.slug"
-        :to="
-          localePath({ name: 'products-slug', params: { slug: product.slug } })
-        "
-      >
-        <ProductExerpt :product="product" />
-      </n-link>
-    </section>
+    <ProductGrid :products="filteredProducts" class="mt-8 px-4" />
   </main>
 </template>
 

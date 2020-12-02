@@ -59,7 +59,9 @@ export default {
           class="absolute row-span-3 h-full right-0 bottom-0 transform scale-125 translate-x-8"
         />
         <div class="row-start-2 col-span-2 z-10 text-center">
-          <AppButton>Vos commerçants</AppButton>
+          <AppButton tag="a" :href="localePath('boutiques')">
+            Vos commerçants
+          </AppButton>
         </div>
       </div>
     </section>

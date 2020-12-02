@@ -5,7 +5,8 @@ export default {
   name: 'ProductPage',
   components: { CollapseTransition },
   async asyncData({ $db, params }) {
-    const product = await $db.fetch('productBySlug', { slug: params.slug })
+    const slug = process.client ? params.slug : encodeURI(params.slug)
+    const product = await $db.fetch('productBySlug', { slug })
     const related = await $db.fetch('productsBy', {
       key: 'storeName',
       param: product.storeName[0]
@@ -28,15 +29,9 @@ export default {
 <template>
   <main class="pb-20">
     <section>
-      <div class="carousel">
-        <div v-for="img in product.images" :key="img.id" class="carousel-item">
-          <AirtableImage
-            :src="img.url"
-            :alt="img.name"
-            class="carousel-image"
-          />
-        </div>
-      </div>
+      <AppCarousel v-slot="{ img }" :images="product.images">
+        <AirtableImage :src="img.url" :alt="img.name" />
+      </AppCarousel>
       <div class="mt-12 px-8">
         <h1 class="not-italic text-3xl text-gray-600 font-bold tracking-wide">
           {{ product.name }}
@@ -64,7 +59,16 @@ export default {
         </div>
         <div class="mt-2 text-xs text-gray-500">
           Vendu par:&nbsp;
-          <n-link to="/">{{ product.storeName[0] }}</n-link>
+          <n-link
+            :to="
+              localePath({
+                name: 'boutiques-slug',
+                params: { slug: product.storeSlug[0] }
+              })
+            "
+          >
+            {{ product.storeName[0] }}
+          </n-link>
           , {{ product.storeAddress }}
         </div>
         <div class="mt-10 flex justify-between items-center">
@@ -87,17 +91,3 @@ export default {
     </section>
   </main>
 </template>
-
-<style lang="sass" scoped>
-// https://markus.oberlehner.net/blog/super-simple-progressively-enhanced-carousel-with-css-scroll-snap/
-.carousel
-  @apply flex overflow-x-scroll
-  scroll-snap-type: x mandatory
-  scroll-behavior: smooth
-  &-item
-    @apply relative w-full flex-shrink-0
-    padding-bottom: 60vh
-    scroll-snap-align: start
-  &-image
-    @apply absolute w-full h-full object-cover object-center
-</style>
