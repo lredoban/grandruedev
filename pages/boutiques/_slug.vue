@@ -4,7 +4,7 @@ export default {
   async asyncData({ $db, app, error, params }) {
     const { story } = await app.$storyapi
       .get(`cdn/stories/boutiques/${params.slug}`, {
-        version: 'draft'
+        version: 'draft' // published
       })
       .then((res) => {
         return res.data
