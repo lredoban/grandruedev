@@ -1,8 +1,8 @@
 const { recentProducts } = require('../api/recentProducts')
 
-const handler = async (event) => {
+const handler = async ({ queryStringParameters }) => {
   try {
-    const products = await recentProducts()
+    const products = await recentProducts(queryStringParameters)
 
     return {
       statusCode: 200,

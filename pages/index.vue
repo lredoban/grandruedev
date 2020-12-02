@@ -1,5 +1,6 @@
 <script>
 import { twicifyAirtable } from '~/helpers/twicpics'
+
 export default {
   name: 'Accueil',
   asyncData: async ({ $db }) => {
@@ -32,7 +33,9 @@ export default {
       <h1 class="text-xl uppercase not-italic tracking-wider">
         Clermont-Ferrand !
       </h1>
-      <AppButton class="mt-8 uppercase">Accéder à la boutique</AppButton>
+      <AppButton tag="a" :href="localePath('products')" class="mt-8 uppercase">
+        Accéder à la boutique
+      </AppButton>
     </section>
 
     <section id="products" class="divider-top pt-12 bg-white">
@@ -41,7 +44,9 @@ export default {
       </h1>
       <ProductExerptList :products="recentProducts" class="mt-8" />
       <div class="mt-12 w-full text-center">
-        <AppButton class="mx-auto">Voir tous les produits</AppButton>
+        <AppButton tag="a" :href="localePath('products')" class="mx-auto">
+          Voir tous les produits
+        </AppButton>
       </div>
     </section>
 
@@ -85,22 +90,7 @@ export default {
           <strong>nonumy</strong> eirmod tempor invidunt ut labo…
         </p>
       </div>
-      <div class="grid grid-cols-2">
-        <n-link
-          v-for="category in categories"
-          :key="category.slug"
-          :to="
-            localePath({
-              name: 'categories-slug',
-              params: { slug: category.slug }
-            })
-          "
-          class="p-3 flex justify-center items-center bg-cover bg-black bg-opacity-50 text-center text-white font-bold text-lg uppercase"
-          :data-twic-background="`url('${category.imageThumbnail}')`"
-        >
-          {{ category.name }}
-        </n-link>
-      </div>
+      <CategoryGrid :categories="categories" />
     </section>
 
     <!-- <section class="bg-white">
@@ -169,11 +159,6 @@ export default {
   background-size: cover
   background-position: 50%
 #categories
-  .grid a::before
-    content: ''
-    padding-bottom: 100%
-    display: inline-block
-    vertical-align: top
   .buy
     @apply grid mx-auto w-64 gap-y-2
     grid-template-columns: 1fr max-content

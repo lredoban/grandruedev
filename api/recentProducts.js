@@ -1,10 +1,12 @@
 const logger = require('consola').withScope('api')
 const base = require('./base')
 
-exports.recentProducts = () => {
+exports.recentProducts = (options) => {
+  const maxRecords =
+    !!options && !!options.maxRecords ? parseInt(options.maxRecords) : 5
   return base('Produits')
     .select({
-      maxRecords: 5,
+      maxRecords,
       view: 'Tous les produits',
       sort: [{ field: 'createdAt', direction: 'desc' }]
     })
