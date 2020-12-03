@@ -21,7 +21,7 @@ export default {
           params: { slug: category.slug }
         })
       "
-      class="p-3 flex justify-center items-center bg-cover bg-black bg-opacity-50 text-center text-white font-bold text-lg uppercase"
+      class="p-3 flex justify-center items-center bg-cover bg-white text-center text-white font-bold text-lg uppercase"
       :data-twic-background="`url('${category.imageThumbnail}')`"
     >
       {{ category.name }}
