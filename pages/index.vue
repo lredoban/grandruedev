@@ -19,25 +19,7 @@ export default {
 
 <template>
   <main>
-    <section
-      id="welcome"
-      class="text-white text-center"
-      data-twic-background="url('image:grand-rue/Accueil.jpg')"
-    >
-      <h3 class="text-5xl font-thin tracking-wide font-caveat leading-none">
-        {{ $t('welcome') }}
-      </h3>
-      <h2 class="italic font-normal uppercase text-lg">
-        Dans la zone commerciale de
-      </h2>
-      <h1 class="text-xl uppercase not-italic tracking-wider">
-        Clermont-Ferrand !
-      </h1>
-      <AppButton tag="a" :href="localePath('products')" class="mt-8 uppercase">
-        Accéder à la boutique
-      </AppButton>
-    </section>
-
+    <HomepageWelcome />
     <section id="products" class="divider-top pt-12 bg-white">
       <h1 class="text-3xl text-secondary font-extrabold not-italic text-center">
         Les nouveautés...
@@ -51,7 +33,7 @@ export default {
     </section>
 
     <section class="overflow-hidden">
-      <div class="mt-6 w-full h-16 bg-white"></div>
+      <div class="relative w-full h-24 bg-white"></div>
       <div class="relative bg-kraft pt-32 pb-12 px-8 grid grid-cols-2 gap-y-20">
         <div>
           <h1 class="text-xl text-secondary uppercase">
@@ -123,7 +105,7 @@ export default {
         <AppButton class="block">Devenez partenaire</AppButton>
       </div>
     </section> -->
-    <section class="pt-20 pb-24 px-8">
+    <section class="relative bg-white pt-20 pb-24 px-8">
       <AirtableImage
         src="https://dl.airtable.com/.attachmentThumbnails/6246efe226f8d97a05f9f7c850c69382/5067ba94"
         class="rounded-xl"
@@ -152,12 +134,6 @@ export default {
 </template>
 
 <style lang="sass" scoped>
-#welcome
-  @apply pt-16
-  height: 84vh
-  background-image: url('/img/Accueil.jpg')
-  background-size: cover
-  background-position: 50%
 #categories
   .buy
     @apply grid mx-auto w-64 gap-y-2
@@ -168,14 +144,3 @@ export default {
   h2
     @apply text-2xl font-bold text-primary
 </style>
-
-<i18n>
-{
-  "fr": {
-    "welcome": "Bienvenue"
-  },
-  "en": {
-    "welcome": "Welcome"
-  }
-}
-</i18n>

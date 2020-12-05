@@ -20,7 +20,7 @@
         SERVICE<br />CLIENT
       </div>
     </section>
-    <section class="bg-kraft pt-12 pb-4">
+    <section class="relative bg-kraft pt-12 pb-4">
       <SocialLinks class="px-20" />
       <div class="mt-12 text-xs text-center text-primary font-semibold">
         &copy; {{ new Date().getFullYear() }} Grand'Rue
