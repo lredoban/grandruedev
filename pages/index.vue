@@ -41,8 +41,8 @@ export default {
           </h1>
           <IHeart class="mt-2 mx-auto h-6 text-red-600" />
         </div>
-        <AppImage
-          src="https://dl.airtable.com/.attachmentThumbnails/781454ee835d2465999b8ebef8104111/7fa259de"
+        <AirtableImage
+          src="https://dl.airtable.com/.attachments/daaeb7ce4efd7540dd041f7ad22ec027/21f20bc1/Tablier.png"
           class="absolute row-span-3 h-full right-0 bottom-0 transform scale-125 translate-x-8"
         />
         <div class="row-start-2 col-span-2 z-10 text-center">
@@ -107,7 +107,7 @@ export default {
     </section> -->
     <section class="relative bg-white pt-20 pb-24 px-8">
       <AirtableImage
-        src="https://dl.airtable.com/.attachmentThumbnails/6246efe226f8d97a05f9f7c850c69382/5067ba94"
+        src="https://dl.airtable.com/.attachments/b4d278e3364eee3a0412adcc4f15ba05/f4e94a5d/cashier.jpg"
         class="rounded-xl"
       />
       <h1 class="mt-4 text-secondary text-xl not-italic uppercase">
