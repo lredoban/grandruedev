@@ -11,6 +11,11 @@ export default {
       imageUrl: (state) => state.menu.imageUrl
     })
   },
+  watch: {
+    $route() {
+      this.displayMenu = false
+    }
+  },
   methods: {
     goBack() {
       if (window.history.length > 2) this.$router.go(-1)
