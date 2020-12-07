@@ -54,10 +54,16 @@ export default {
         </div>
         <div class="mt-4 border-t border-b border-gray-600 text-gray-600">
           <button
-            class="py-2 w-full uppercase tracking-wide text-left"
+            class="py-2 w-full uppercase tracking-wide text-left flex justify-between items-center"
             @click="displayDescription = !displayDescription"
           >
             Description du produit
+            <div
+              class="mr-2"
+              :class="displayDescription && 'transform rotate-180'"
+            >
+              <IArrowDown class="h-4 opacity-50" />
+            </div>
           </button>
           <CollapseTransition>
             <p v-if="displayDescription" class="py-1">
