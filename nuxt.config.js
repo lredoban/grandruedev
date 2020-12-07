@@ -33,7 +33,8 @@ export default {
   plugins: [
     '~/plugins/db',
     '~/plugins/composition-api.js',
-    '~/plugins/rich-text-renderer.js'
+    '~/plugins/rich-text-renderer.js',
+    '~/plugins/vuex-persist.client.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

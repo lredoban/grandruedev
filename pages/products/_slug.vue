@@ -1,4 +1,5 @@
 <script>
+import { mapActions } from 'vuex'
 import { CollapseTransition } from 'vue2-transitions'
 
 export default {
@@ -16,11 +17,19 @@ export default {
       displayDescription: false
     }
   },
+  computed: {
+    quantity() {
+      return this.$store.getters['cart/itemCount'](this.product.id)
+    }
+  },
   created() {
     this.$store.commit('menu/setImage', this.product.storeLogo)
   },
   beforeDestroy() {
     this.$store.commit('menu/clear')
+  },
+  methods: {
+    ...mapActions('cart', ['addToCart', 'removeFromCart'])
   }
 }
 </script>
@@ -72,11 +81,15 @@ export default {
         </div>
         <div class="mt-10 flex justify-between items-center">
           <div class="flex items-center space-x-4">
-            <button>
+            <button @click="removeFromCart(product)">
               <IMinusSign class="text-gray-500 h-10" />
             </button>
-            <span class="text-4xl text-gray-600 font-black">0</span>
-            <button><ICartAdd class="h-10 text-primary" /></button>
+            <span class="text-4xl text-gray-600 font-black">
+              {{ quantity }}
+            </span>
+            <button @click="addToCart(product)">
+              <ICartAdd class="h-10 text-primary" />
+            </button>
           </div>
           <IHeart class="h-8 text-red-500" />
         </div>

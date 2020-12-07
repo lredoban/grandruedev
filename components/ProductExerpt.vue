@@ -26,7 +26,7 @@ export default {
 
 <template>
   <article>
-    <div class="-ml-1 flex gap-x-1 items-center overflow-x-hidden">
+    <div class="-ml-1 flex gap-x-1 items-center overflow-hidden">
       <ILocalize class="w-6 flex-shrink-0 text-gray-500" />
       <div>
         <h3 class="text-xs text-gray-500 italic font-thin leading-none">

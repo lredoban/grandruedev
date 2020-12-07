@@ -22,10 +22,10 @@ export default {
     >
       <div class="bg-blurry pt-20 pb-12 px-8">
         <button
-          class="absolute top-0 right-0 p-4 mt-3 mr-2 font-bold text-xl text-white text-opacity-25"
+          class="absolute top-0 right-0 p-4 mt-4 mr-2 font-bold text-xl text-white text-opacity-25"
           @click="$emit('close')"
         >
-          X
+          <IClose class="h-4" />
         </button>
         <nav>
           <ul class="font-bold">
