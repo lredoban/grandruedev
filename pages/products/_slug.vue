@@ -46,7 +46,7 @@ export default {
         </h1>
         <div class="mt-4 flex items-baseline">
           <h2 class="text-2xl text-gray-600 font-normal">
-            {{ $n(product.price, 'currency', 'fr-FR') }}
+            {{ $n(product.price / 100, 'currency', 'fr-FR') }}
           </h2>
           <span class="text-gray-400 text-sm lowercase ml-2">
             /{{ product.unit }}</span

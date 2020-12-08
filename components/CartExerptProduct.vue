@@ -33,7 +33,9 @@ export default {
       <span class="text-lg font-bold">{{ product.name }}</span>
       <span class="opacity-75">{{ product.color }}</span>
     </div>
-    <span class="text-lg font-bold">{{ $n(product.price, 'currency') }}</span>
+    <span class="text-lg font-bold">{{
+      $n(product.price / 100, 'currency')
+    }}</span>
   </article>
 </template>
 

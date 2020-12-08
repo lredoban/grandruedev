@@ -49,7 +49,7 @@ export default {
     </div>
     <h1 class="mt-2 text-primary not-italic text-xl">{{ product.name }}</h1>
     <h2 class="text-secondary not-italic tracking-wider">
-      {{ $n(product.price, 'currency', 'fr-FR') }}
+      {{ $n(product.price / 100, 'currency', 'fr-FR') }}
     </h2>
   </article>
 </template>
