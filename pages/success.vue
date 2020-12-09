@@ -1,6 +1,10 @@
 <script>
+// clean cart
 export default {
-  name: 'Success'
+  name: 'Success',
+  mounted() {
+    this.$store.commit('cart/emptyCart')
+  }
 }
 </script>
 
