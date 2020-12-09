@@ -17,6 +17,7 @@ export default {
 <template>
   <component
     :is="tag"
+    :to="tag === 'n-link' && $attrs.to"
     class="px-6 py-1 rounded-full font-bold focus:outline-none focus:shadow-outline hover:shadow-lg"
     :class="invert ? 'bg-white text-primary' : 'bg-primary text-white'"
     type="button"

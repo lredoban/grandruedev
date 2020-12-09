@@ -1,8 +1,16 @@
+import Vue from 'vue'
+
 export const state = () => ({
-  items: []
+  items: [],
+  storeOptions: {}
 })
 
 export const mutations = {
+  setItemQuantity(state, { itemId, cartQuantity }) {
+    const index = state.items.findIndex((item) => item.id === itemId)
+    if (index > -1 && cartQuantity <= state.items[index].quantity)
+      Vue.set(state.items, index, { ...state.items[index], cartQuantity })
+  },
   addItem(state, product) {
     const quantity = product.quantity ? product.quantity : 10000
     if (quantity === 0) return

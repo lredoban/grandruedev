@@ -1,5 +1,4 @@
 <script>
-import { loadStripe } from '@stripe/stripe-js'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
@@ -12,24 +11,9 @@ export default {
     emptyCart() {
       this.$store.commit('cart/emptyCart')
     },
-    async goToCheckout() {
-      // this.loading = true
-      const stripe = await loadStripe(this.$config.stripeApiKey)
-      const { id } = await this.$db.fetch('createCheckoutSession', {
-        items: this.$store.state.cart.items.reduce((acc, item) => {
-          acc[item.id] = item.cartQuantity
-          return acc
-        }, {})
-      })
-      const result = await stripe.redirectToCheckout({
-        sessionId: id
-      })
-      if (result.error) {
-        // If `redirectToCheckout` fails due to a browser or network
-        // error, display the localized error message to your customer
-        // using `result.error.message`.
-        console.warn('result.error ->', result.error)
-      }
+    goToCart() {
+      this.closeCart()
+      this.$router.push(this.localePath('cart'))
     }
   }
 }
@@ -66,7 +50,7 @@ export default {
     <div
       class="bg-blurry fixed bottom-0 left-0 w-full py-4 flex flex-col items-center border-t border-gray-500 border-opacity-25"
     >
-      <AppButton @click.native="goToCheckout">
+      <AppButton @click.native="goToCart">
         Voir mon panier
         <strong>{{ $n(itemsSubtotalPrice / 100, 'currency') }}</strong>
       </AppButton>

@@ -39,7 +39,7 @@ const handler = async ({ headers, queryStringParameters }) => {
       line_items,
       mode: 'payment',
       success_url: baseUrl + '/success',
-      cancel_url: baseUrl + '/cancel' // TODO headers.referer + query for flash messages
+      cancel_url: baseUrl + '/cart' // query for flash messages
     })
     return {
       statusCode: 200,

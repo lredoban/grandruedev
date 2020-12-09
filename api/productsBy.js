@@ -15,7 +15,8 @@ exports.productsBy = ({ key, param }) => {
           storeAddress: `${record.fields.storeCity[0]} (${record.fields.storeZipCode[0]})`,
           storeName: record.fields.storeName[0],
           imgUrl: record.fields.images[0].url,
-          subCategories: record.fields.subNames
+          subCategories: record.fields.subNames,
+          quantity: record.fields.quantity || 1000
         }
       })
     })
