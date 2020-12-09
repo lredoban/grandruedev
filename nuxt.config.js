@@ -13,7 +13,11 @@ export default {
   },
   publicRuntimeConfig: {
     dev: process.env.NODE_ENV !== 'production',
-    baseUrl: process.env.BASE_URL || 'https://www.grand-rue.com'
+    baseUrl: process.env.BASE_URL || 'https://www.grand-rue.com',
+    stripeApiKey: process.env.STRIPE_API_KEY,
+    netlify: process.env.NETLIFY,
+    deployUrl: process.env.DEPLOY_URL,
+    functionsBaseUrl: process.env.FUNCTIONS_BASE_URL
   },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',

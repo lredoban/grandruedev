@@ -1,12 +1,16 @@
 const qs = require('qs')
 
-export default function ({ $http }, inject) {
+export default function ({ $http, $config }, inject) {
   let $db
   if (process.client) {
+    const baseUrl = $config.netlify
+      ? `${$config.deployUrl}/.netlify/functions/`
+      : $config.functionsBaseUrl
+
     $db = $http.create({
       // See https://github.com/sindresorhus/ky#options
     })
-    $db.setBaseURL('http://localhost:8888/.netlify/functions/')
+    $db.setBaseURL(baseUrl)
     $db.fetch = (url, params) => $db.$get(url + '?' + qs.stringify(params))
   } else {
     $db = {

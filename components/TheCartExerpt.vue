@@ -14,7 +14,7 @@ export default {
     },
     async goToCheckout() {
       // this.loading = true
-      const stripe = await loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx')
+      const stripe = await loadStripe(this.$config.stripeApiKey)
       const { id } = await this.$db.fetch('createCheckoutSession', {
         items: this.$store.state.cart.items.reduce((acc, item) => {
           acc[item.id] = item.cartQuantity
