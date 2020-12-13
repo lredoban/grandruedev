@@ -31,7 +31,10 @@ export default {
     class="divider-bottom z-20 top-0 w-screen p-3 bg-white text-primary flex items-center justify-between"
   >
     <button v-if="imageUrl" class="p-2 text-gray-400" @click="goBack">
-      <IArrowLeft class="h-5" />
+      <IArrowLeft class="h-5 sm:hidden" />
+      <n-link :to="localePath('boutiques')" class="hidden sm:block">
+        <ICommercantsLocaux class="h-16" />
+      </n-link>
     </button>
     <div v-else class="flex items-center">
       <n-link :to="localePath('boutiques')">
@@ -49,7 +52,7 @@ export default {
       </n-link>
       <TheHeaderMenu />
     </div>
-    <div v-if="imageUrl" class="image-container">
+    <div v-if="imageUrl" class="image-container sm:hidden">
       <AirtableImage
         :src="imageUrl"
         class="absolute w-full h-full object-contain"
