@@ -34,10 +34,20 @@ export default {
       <IArrowLeft class="h-5" />
     </button>
     <div v-else class="flex items-center">
-      <ICommercantsLocaux class="h-16" />
-      <n-link :to="localePath('/')">
+      <n-link :to="localePath('boutiques')">
+        <ICommercantsLocaux class="h-16" />
+      </n-link>
+      <n-link :to="localePath('/')" class="sm:hidden">
         <ILogoWord class="h-20 ml-2 -my-2" />
       </n-link>
+    </div>
+    <div
+      class="hidden h-24 py-4 flex-1 sm:flex justify-between items-center flex-col"
+    >
+      <n-link :to="localePath('/')">
+        <ILogoWordFlat class="w-48 ml-2 -my-2" />
+      </n-link>
+      <TheHeaderMenu />
     </div>
     <div v-if="imageUrl" class="image-container">
       <AirtableImage
@@ -45,8 +55,8 @@ export default {
         class="absolute w-full h-full object-contain"
       />
     </div>
-    <div v-else class="flex-1 flex justify-end">
-      <button type="button"><IHeart class="h-10 p-2" /></button>
+    <div v-else class="flex-1 flex justify-end sm:flex-none">
+      <!-- <button type="button"><IHeart class="h-10 p-2" /></button> -->
       <button type="button" @click="openCart">
         <ICart class="h-10 p-2" />
       </button>
@@ -56,7 +66,11 @@ export default {
       <button v-if="imageUrl" type="button" @click="openCart">
         <ICart class="h-10 p-2" />
       </button>
-      <button type="button" class="text-secondary" @click="displayMenu = true">
+      <button
+        type="button"
+        class="text-secondary sm:hidden"
+        @click="displayMenu = true"
+      >
         <IMenu class="h-10 p-2" />
       </button>
     </div>
@@ -70,6 +84,8 @@ export default {
 <style lang="sass" scoped>
 header
   position: fixed
+  @screen sm
+    @apply relative
 .image-container
   @apply relative w-64
   position: relative

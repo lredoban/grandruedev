@@ -26,7 +26,7 @@ export default {
       <TheCartExerpt v-show="displayCart" />
     </SlideXRightTransition>
     <TheHeader />
-    <div class="mt-24">
+    <div class="mt-24 sm:mt-0">
       <Nuxt class="-mt-2" />
     </div>
     <TheFooter />
