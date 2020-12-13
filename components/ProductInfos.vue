@@ -71,16 +71,34 @@ export default {
     <div class="mt-10 flex justify-between items-center">
       <div class="flex items-center space-x-4">
         <button @click="removeFromCart(product)">
-          <IMinusSign class="text-gray-500 h-10" />
+          <IMinusSign class="text-gray-500 h-10 md:h-6" />
         </button>
-        <span class="text-4xl text-gray-600 font-black">
+        <span class="text-4xl text-gray-600 font-black md:text-3xl">
           {{ quantity }}
         </span>
         <button @click="addToCart(product)">
-          <ICartAdd class="h-10 text-primary" />
+          <ICartAdd class="text-primary h-10 md:h-6" />
         </button>
       </div>
-      <IHeart class="h-8 text-red-500" />
+      <div class="flex flex-col items-end">
+        <span
+          v-if="product.quantity > 1 && product.quantity < 1000"
+          class="text-primary text-xs"
+          >{{ product.quantity }} restant</span
+        >
+        <span
+          v-if="product.quantity === 0"
+          class="bg-red-600 py-1 px-2 text-white text-sm font-semibold"
+        >
+          non disponible
+        </span>
+        <span
+          v-else
+          class="bg-primary py-1 px-2 text-white text-sm font-semibold"
+        >
+          {{ product.quantity > 1 ? 'En stock' : 'Pièce unique' }}
+        </span>
+      </div>
     </div>
   </div>
 </template>

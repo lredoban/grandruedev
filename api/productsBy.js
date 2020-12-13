@@ -1,9 +1,12 @@
 const logger = require('consola').withScope('api')
 const base = require('./base')
 
-exports.productsBy = ({ key, param }) => {
+exports.productsBy = ({ key, limit = 100, param }) => {
   return base('Produits')
-    .select({ filterByFormula: `${key}="${param}"` })
+    .select({
+      filterByFormula: `${key}="${param}"`,
+      pageSize: limit
+    })
     .firstPage()
     .then((records) => {
       return records.map((record) => {
@@ -16,7 +19,7 @@ exports.productsBy = ({ key, param }) => {
           storeName: record.fields.storeName[0],
           imgUrl: record.fields.images[0].url,
           subCategories: record.fields.subNames,
-          quantity: record.fields.quantity || 1000
+          quantity: record.fields.quantity ?? 1000
         }
       })
     })

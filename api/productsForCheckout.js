@@ -14,7 +14,7 @@ exports.productsForCheckout = (ids) => {
           id: record.id,
           name: record.fields.name,
           price: record.fields.price,
-          quantity: record.fields.quantity || 1000,
+          quantity: record.fields.quantity ?? 1000,
           imagesUrl: record.fields.images.map((img) => img.url)
         }
       })

@@ -3,14 +3,17 @@ import { twicPreview } from '~/helpers/twicpics'
 
 export default {
   name: 'ProductPage',
-  async asyncData({ $db, params }) {
+  async asyncData({ $db, $storybook, params }) {
     const product = await $db.fetch('productBySlug', { slug: params.slug })
+    const boutique = await $storybook.getStoreBySlug(product.storeSlug[0])
     const related = await $db.fetch('productsBy', {
       key: 'storeName',
-      param: product.storeName[0]
+      param: product.storeName[0],
+      limit: 5
     })
     return {
       product,
+      boutique,
       relatedProducts: related.filter((r) => r.name !== product.name),
       selectedImageIndex: 0
     }
@@ -49,7 +52,7 @@ export default {
 </script>
 
 <template>
-  <main class="pb-20">
+  <main class="pb-20 overflow-x-hidden">
     <section>
       <div class="hidden relative h-32 w-full md:block">
         <img
@@ -85,7 +88,11 @@ export default {
         <ProductInfos :product="product" class="mt-12 px-8 md:ml-8 md:px-0" />
       </div>
     </section>
-    <section class="mt-12 px-8">
+    <section class="hidden mt-20 text-center md:block">
+      <h1 class="text-2xl text-secondary uppercase not-italic">La boutique</h1>
+      <ProductBoutique :boutique="boutique" class="mt-6" />
+    </section>
+    <section class="mt-12 px-8 md:text-center md:mt-20">
       <h1 class="text-2xl text-secondary uppercase not-italic">
         Et avec ceci ?
       </h1>

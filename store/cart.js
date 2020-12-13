@@ -12,11 +12,11 @@ export const mutations = {
       Vue.set(state.items, index, { ...state.items[index], cartQuantity })
   },
   addItem(state, product) {
-    const quantity = product.quantity ? product.quantity : 10000
-    if (quantity === 0) return
+    if (product.quantity === 0) return
     const currentItem = state.items.find((item) => item.id === product.id)
     if (!currentItem) state.items.push({ ...product, cartQuantity: 1 })
-    else if (currentItem.cartQuantity < quantity) currentItem.cartQuantity += 1
+    else if (currentItem.cartQuantity < product.quantity)
+      currentItem.cartQuantity += 1
   },
   removeItem(state, product) {
     const index = state.items.findIndex((item) => item.id === product.id)

@@ -11,7 +11,7 @@ export default {
     }))
     return {
       categories,
-      products: await $db.fetch('recentProducts', { maxRecords: 25 })
+      products: await $db.fetch('recentProducts', { maxRecords: 100 })
     }
   }
 }

@@ -76,20 +76,7 @@ export default {
       <h2 class="-mt-2 text-sm text-gray-500 font-normal">
         {{ content.subtitle }}
       </h2>
-      <ul class="mt-4 text-gray-600 text-italic text-sm">
-        <li class="mt-1 flex items-center">
-          <ILocalize class="w-6 flex-shrink-0 text-secondary" />
-          <span class="ml-2 leading-none">{{ content.address }}</span>
-        </li>
-        <li class="mt-1 flex items-center">
-          <ILocalize class="w-6 flex-shrink-0 text-secondary" />
-          <span class="ml-2 leading-none">{{ content.phone }}</span>
-        </li>
-        <li class="mt-1 flex items-center">
-          <ILocalize class="w-6 flex-shrink-0 text-secondary" />
-          <span class="ml-2 leading-none">{{ content.email }}</span>
-        </li>
-      </ul>
+      <BoutiqueInfos :boutique="content" class="mt-4" />
     </div>
     <section class="bg-kraft rich-text p-8">
       <rich-text-renderer :document="content.description" />

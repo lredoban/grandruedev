@@ -38,6 +38,7 @@ export default {
     '~/plugins/db',
     '~/plugins/composition-api.js',
     '~/plugins/rich-text-renderer.js',
+    '~/plugins/storybook',
     '~/plugins/vuex-persist.client.js'
   ],
 
