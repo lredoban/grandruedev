@@ -1,10 +1,8 @@
 <script>
-import { mapActions } from 'vuex'
-import { CollapseTransition } from 'vue2-transitions'
+import { twicPreview } from '~/helpers/twicpics'
 
 export default {
   name: 'ProductPage',
-  components: { CollapseTransition },
   async asyncData({ $db, params }) {
     const product = await $db.fetch('productBySlug', { slug: params.slug })
     const related = await $db.fetch('productsBy', {
@@ -14,12 +12,24 @@ export default {
     return {
       product,
       relatedProducts: related.filter((r) => r.name !== product.name),
-      displayDescription: false
+      selectedImageIndex: 0
     }
   },
   computed: {
-    quantity() {
-      return this.$store.getters['cart/itemCount'](this.product.id)
+    heroImage() {
+      return {
+        name: 'blurry ' + this.product.images[0].name,
+        url: twicPreview(
+          this.product.images[0].url,
+          'airtable',
+          'https://dl.airtable.com/.attachments/'
+        )
+      }
+    },
+    filteredImages() {
+      const copy = [...this.product.images]
+      copy.splice(this.selectedImageIndex, 1)
+      return copy
     }
   },
   created() {
@@ -29,7 +39,11 @@ export default {
     this.$store.commit('menu/clear')
   },
   methods: {
-    ...mapActions('cart', ['addToCart', 'removeFromCart'])
+    selectImage(id) {
+      this.selectedImageIndex = this.product.images.findIndex(
+        (img) => img.id === id
+      )
+    }
   }
 }
 </script>
@@ -37,68 +51,38 @@ export default {
 <template>
   <main class="pb-20">
     <section>
-      <AppCarousel v-slot="{ img }" :images="product.images">
+      <div class="hidden relative h-32 w-full md:block">
+        <img
+          :src="heroImage.url"
+          :alt="heroImage.name"
+          class="absolute h-full w-full object-cover object-center"
+        />
+      </div>
+      <AppCarousel v-slot="{ img }" :images="product.images" class="md:hidden">
         <AirtableImage :src="img.url" :alt="img.name" />
       </AppCarousel>
-      <div class="mt-12 px-8">
-        <h1 class="not-italic text-3xl text-gray-600 font-bold tracking-wide">
-          {{ product.name }}
-        </h1>
-        <div class="mt-4 flex items-baseline">
-          <h2 class="text-2xl text-gray-600 font-normal">
-            {{ $n(product.price / 100, 'currency', 'fr-FR') }}
-          </h2>
-          <span class="text-gray-400 text-sm lowercase ml-2">
-            /{{ product.unit }}</span
+      <div id="product-wrapper">
+        <div class="hidden mt-4 w-32 flex-col gap-y-4 md:flex">
+          <div
+            v-for="img in filteredImages"
+            :key="img.id"
+            class="relative pb-100p"
           >
-        </div>
-        <div class="mt-4 border-t border-b border-gray-600 text-gray-600">
-          <button
-            class="py-2 w-full uppercase tracking-wide text-left flex justify-between items-center"
-            @click="displayDescription = !displayDescription"
-          >
-            Description du produit
-            <div
-              class="mr-2"
-              :class="displayDescription && 'transform rotate-180'"
+            <button
+              class="absolute h-full w-full object-cover overflow-hidden"
+              @click="selectImage(img.id)"
             >
-              <IArrowDown class="h-4 opacity-50" />
-            </div>
-          </button>
-          <CollapseTransition>
-            <p v-if="displayDescription" class="py-1">
-              {{ product.description }}
-            </p>
-          </CollapseTransition>
-        </div>
-        <div class="mt-2 text-xs text-gray-500">
-          Vendu par:&nbsp;
-          <n-link
-            :to="
-              localePath({
-                name: 'boutiques-slug',
-                params: { slug: product.storeSlug[0] }
-              })
-            "
-          >
-            {{ product.storeName[0] }}
-          </n-link>
-          , {{ product.storeAddress }}
-        </div>
-        <div class="mt-10 flex justify-between items-center">
-          <div class="flex items-center space-x-4">
-            <button @click="removeFromCart(product)">
-              <IMinusSign class="text-gray-500 h-10" />
-            </button>
-            <span class="text-4xl text-gray-600 font-black">
-              {{ quantity }}
-            </span>
-            <button @click="addToCart(product)">
-              <ICartAdd class="h-10 text-primary" />
+              <AirtableImage :src="img.url" :alt="img.name" />
             </button>
           </div>
-          <IHeart class="h-8 text-red-500" />
         </div>
+        <div class="hidden relative ml-4 -mt-16 z-10 md:block">
+          <AirtableImage
+            :src="product.images[selectedImageIndex].url"
+            :alt="product.images[selectedImageIndex].name"
+          />
+        </div>
+        <ProductInfos :product="product" class="mt-12 px-8 md:ml-8 md:px-0" />
       </div>
     </section>
     <section class="mt-12 px-8">
@@ -109,3 +93,13 @@ export default {
     </section>
   </main>
 </template>
+
+<style lang="sass" scoped>
+#product-wrapper
+  @apply block max-w-4xl mx-auto
+  grid-template-columns: auto 1fr 1fr
+  @screen md
+    @apply grid px-4
+  @screen lg
+    @apply px-0
+</style>

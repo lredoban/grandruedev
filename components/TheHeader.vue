@@ -30,8 +30,8 @@ export default {
   <header
     class="divider-bottom z-20 top-0 w-screen p-3 bg-white text-primary flex items-center justify-between"
   >
-    <button v-if="imageUrl" class="p-2 text-gray-400" @click="goBack">
-      <IArrowLeft class="h-5 sm:hidden" />
+    <button v-if="imageUrl" class="p-2" @click="goBack">
+      <IArrowLeft class="h-5 sm:hidden text-gray-400" />
       <n-link :to="localePath('boutiques')" class="hidden sm:block">
         <ICommercantsLocaux class="h-16" />
       </n-link>
