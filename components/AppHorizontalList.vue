@@ -27,6 +27,8 @@ export default {
 
   --gutter: 20px
 
+  @apply mx-auto max-w-5xl
+
   width: 100vw
   display: grid
   grid-gap: calc(var(--gutter))
@@ -37,6 +39,17 @@ export default {
 
   overflow-x: scroll
   scroll-snap-type: x proximity
+
+  @screen sm
+    grid-auto-columns: calc(45% - var(--gutter))
+  @screen md
+    grid-auto-columns: calc(30% - var(--gutter))
+  @screen lg
+    grid-auto-columns: auto
+    grid-template-columns: repeat(5, 1fr)
+    &:before, &:after
+      display: none
+
 
   &:before, &:after
     content: ''

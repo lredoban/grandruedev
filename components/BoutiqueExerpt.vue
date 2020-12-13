@@ -27,7 +27,7 @@ export default {
         </h3>
       </div>
     </div>
-    <div class="image-container mt-2">
+    <div class="relative mt-2 rounded pb-100p">
       <img
         :src="img.filename"
         :alt="img.alt"
@@ -39,9 +39,3 @@ export default {
     </h1>
   </article>
 </template>
-
-<style lang="sass" scoped>
-.image-container
-  @apply relative mt-2 rounded
-  padding-bottom: 100%
-</style>

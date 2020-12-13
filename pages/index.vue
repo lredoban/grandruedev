@@ -34,21 +34,31 @@ export default {
 
     <section class="overflow-hidden">
       <div class="relative w-full h-24 bg-white"></div>
-      <div class="relative bg-kraft pt-32 pb-12 px-8 grid grid-cols-2 gap-y-20">
-        <div>
-          <h1 class="text-xl text-secondary uppercase">
-            Retrouvez vos commerçants préférés sur Grand'Rue !
-          </h1>
-          <IHeart class="mt-2 mx-auto h-6 text-red-600" />
-        </div>
-        <AirtableImage
-          src="https://dl.airtable.com/.attachments/daaeb7ce4efd7540dd041f7ad22ec027/21f20bc1/Tablier.png"
-          class="absolute row-span-3 h-full right-0 bottom-0 transform scale-125 translate-x-8"
-        />
-        <div class="row-start-2 col-span-2 z-10 text-center">
-          <AppButton tag="a" :href="localePath('boutiques')">
-            Vos commerçants
-          </AppButton>
+      <div class="relative bg-kraft w-full">
+        <div
+          class="relative max-w-4xl pt-32 pb-12 px-8 mx-auto grid grid-cols-2 gap-y-20 sm:gap-y-6"
+        >
+          <div
+            class="flex flex-col sm:max-w-xs sm:col-span-2 sm:text-center sm:px-4 sm:mx-auto sm:flex-col-reverse sm:gap-y-6"
+          >
+            <h1 class="text-xl text-secondary uppercase sm:text-primary">
+              Retrouvez vos commerçants préférés sur Grand'Rue !
+            </h1>
+            <IHeart class="mt-2 mx-auto h-6 text-red-600" />
+          </div>
+          <AirtableImage
+            src="https://dl.airtable.com/.attachments/daaeb7ce4efd7540dd041f7ad22ec027/21f20bc1/Tablier.png"
+            class="absolute row-span-3 h-full right-0 bottom-0 transform scale-125 translate-x-8"
+          />
+          <AppImage
+            src="/img/LANDING-PAGE.png"
+            class="hidden absolute row-span-3 h-full left-0 bottom-0 transform scale-125 -translate-x-8 sm:block"
+          />
+          <div class="row-start-2 col-span-2 z-10 text-center">
+            <AppButton tag="a" :href="localePath('boutiques')">
+              Vos commerçants
+            </AppButton>
+          </div>
         </div>
       </div>
     </section>
@@ -65,14 +75,16 @@ export default {
             <ILogoWordFlat class="text-primary pb-2" />
           </div>
         </div>
-        <p class="mt-6 italic text-gray-500">
+        <p class="mx-auto max-w-sm mt-6 italic text-gray-500 sm:text-center">
           <strong>Grand’Rue séléctionne</strong> pour vous les boutiques les
           plus Lorem ipsum dolor sit
           <strong>amet, consetetur</strong> sadipscing elitr, sed diam
           <strong>nonumy</strong> eirmod tempor invidunt ut labo…
         </p>
       </div>
-      <CategoryGrid :categories="categories" />
+      <div class="relative bg-white">
+        <CategoryGrid :categories="categories" class="mx-auto max-w-5xl" />
+      </div>
     </section>
 
     <!-- <section class="bg-white">
@@ -106,28 +118,39 @@ export default {
       </div>
     </section> -->
     <section class="relative bg-white pt-20 pb-24 px-8">
-      <AirtableImage
-        src="https://dl.airtable.com/.attachments/b4d278e3364eee3a0412adcc4f15ba05/f4e94a5d/cashier.jpg"
-        class="rounded-xl"
-      />
-      <h1 class="mt-4 text-secondary text-xl not-italic uppercase">
-        Une solution idéale pour vous, commerçants
-      </h1>
-      <p class="mt-2 text-gray-500">
-        <strong>Grand'Rue</strong>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, id
-        nulla ipsum ad iusto consequuntur labore? Fuga voluptas mollitia quas
-        dolores praesentium, aliquam eum itaque inventore ullam vel est ut...
-      </p>
-      <div class="text-center">
-        <AppButton
-          tag="a"
-          class="mt-12 uppercase"
-          href="https://airtable.com/shr4EwCt38y1pHVmT"
-          target="_blank"
-          rel="noreferrer noopener"
-          >devenez partenaire</AppButton
+      <div
+        class="max-w-4xl mx-auto grid grid-cols-1 gap-y-8 sm:gap-x-12 sm:grid-cols-3 sm:items-center"
+      >
+        <div
+          class="relative pb-60p rounded-xl overflow-hidden sm:pb-120p sm:shadow-lg"
         >
+          <AirtableImage
+            src="https://dl.airtable.com/.attachments/b4d278e3364eee3a0412adcc4f15ba05/f4e94a5d/cashier.jpg"
+            class="absolute w-full h-full object-cover"
+          />
+        </div>
+        <div class="col-span-2">
+          <h1 class="text-secondary text-xl not-italic uppercase md:text-3xl">
+            Une solution idéale pour vous, commerçants
+          </h1>
+          <p class="mt-2 text-gray-500">
+            <strong>Grand'Rue</strong>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, id
+            nulla ipsum ad iusto consequuntur labore? Fuga voluptas mollitia
+            quas dolores praesentium, aliquam eum itaque inventore ullam vel est
+            ut...
+          </p>
+          <div class="text-center sm:text-left">
+            <AppButton
+              tag="a"
+              class="mt-12 uppercase"
+              href="https://airtable.com/shr4EwCt38y1pHVmT"
+              target="_blank"
+              rel="noreferrer noopener"
+              >devenez partenaire</AppButton
+            >
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -138,6 +161,9 @@ export default {
   .buy
     @apply grid mx-auto w-64 gap-y-2
     grid-template-columns: 1fr max-content
+  > div::after
+    @screen sm
+      display: none
 #numbers
   span
     @apply text-3xl font-bold text-secondary

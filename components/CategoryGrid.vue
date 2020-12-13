@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <div class="relative grid grid-cols-2">
+  <div class="relative grid grid-cols-2 sm:grid-cols-5">
     <n-link
       v-for="category in categories"
       :key="category.slug"

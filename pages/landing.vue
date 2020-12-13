@@ -194,7 +194,7 @@ export default {
         <div
           class="relative -mt-20 w-10/12 max-w-sm mx-auto p-4 pb-8 bg-white shadow-xl z-10"
         >
-          <div class="pb-70 relative rounded-xl overflow-hidden">
+          <div class="pb-70p relative rounded-xl overflow-hidden">
             <AppImage
               src="/img/commercantes.jpg"
               alt="Deux commerçante regardant un ordinateur en souriant"
@@ -264,8 +264,6 @@ export default {
 <style lang="sass" scoped>
 input[type="email"]::placeholder
   @apply text-sm text-white text-opacity-50 uppercase italic
-.pb-70
-  padding-bottom: 70%
 .q-mark
   font-size: 42px
 #branche
