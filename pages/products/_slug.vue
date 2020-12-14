@@ -9,12 +9,12 @@ export default {
     const related = await $db.fetch('productsBy', {
       key: 'storeName',
       param: product.storeName[0],
-      limit: 5
+      limit: 6
     })
     return {
       product,
       boutique,
-      relatedProducts: related.filter((r) => r.name !== product.name),
+      relatedProducts: related.filter((r) => r.slug !== product.slug).slice(-5),
       selectedImageIndex: 0
     }
   },
