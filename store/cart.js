@@ -2,10 +2,13 @@ import Vue from 'vue'
 
 export const state = () => ({
   items: [],
-  storeOptions: {}
+  storeInfos: {}
 })
 
 export const mutations = {
+  setStoreInfos(state, payload) {
+    state.storeInfos = payload
+  },
   setItemQuantity(state, { itemId, cartQuantity }) {
     const index = state.items.findIndex((item) => item.id === itemId)
     if (index > -1 && cartQuantity <= state.items[index].quantity)
@@ -51,6 +54,12 @@ export const getters = {
     const item = state.items.find((item) => item.id === id)
     if (item) return item.cartQuantity
     return 0
+  },
+  storeSubtotalPrice: (_, getters) => (id) => {
+    return getters.itemsByStore[id].items.reduce(
+      (price, item) => price + item.cartQuantity * item.price,
+      0
+    )
   },
   itemsSubtotalPrice(state) {
     return state.items.reduce(

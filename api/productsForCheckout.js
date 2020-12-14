@@ -5,7 +5,7 @@ exports.productsForCheckout = (ids) => {
   return base('Produits')
     .select({
       filterByFormula: `SEARCH(RECORD_ID(), "${ids.join(',')}") != ""`,
-      fields: ['name', 'price', 'quantity', 'images']
+      fields: ['name', 'price', 'quantity', 'images', 'store']
     })
     .firstPage()
     .then((records) => {
@@ -14,6 +14,7 @@ exports.productsForCheckout = (ids) => {
           id: record.id,
           name: record.fields.name,
           price: record.fields.price,
+          storeId: record.fields.store[0],
           quantity:
             typeof record.fields.quantity === 'undefined'
               ? 1000

@@ -1,21 +1,79 @@
 <script>
 import { loadStripe } from '@stripe/stripe-js'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'Cart',
+  data: () => ({
+    loading: false,
+    selectedDelivery: {}
+  }),
   computed: {
-    ...mapGetters('cart', ['itemsByStore', 'itemsCount', 'itemsSubtotalPrice'])
+    ...mapState('cart', ['storeInfos']),
+    ...mapGetters('cart', [
+      'itemsByStore',
+      'itemsCount',
+      'itemsSubtotalPrice',
+      'storeSubtotalPrice'
+    ]),
+    freeDelivery() {
+      return (storeId) => {
+        const threshold = this.storeInfos[storeId].deliveryThreshold
+        return (
+          this.selectedDelivery[storeId] === 'clickNCollect' ||
+          (!!threshold && threshold <= this.storeSubtotalPrice(storeId))
+        )
+      }
+    },
+    totalDelivery() {
+      let price = 0
+      Object.keys(this.storeInfos).forEach((key) => {
+        if (
+          this.selectedDelivery[this.storeInfos[key].id] === 'delivery' &&
+          !this.freeDelivery(this.storeInfos[key].id)
+        )
+          price += this.storeInfos[key].deliveryPrice
+      })
+      return price
+    },
+    total() {
+      return this.totalDelivery + this.itemsSubtotalPrice
+    }
+  },
+  watch: {
+    itemsByStore: {
+      handler(items) {
+        this.updateBoutiqueInfos()
+      },
+      immediate: true
+    }
   },
   methods: {
+    async updateBoutiqueInfos() {
+      const boutiqueIds = Object.keys(this.itemsByStore)
+      if (boutiqueIds.length === 0) return
+      const boutiques = await this.$db.fetch('boutiques', boutiqueIds)
+      this.selectedDelivery = boutiques.reduce((acc, { id }) => {
+        acc[id] = this.selectedDelivery[id] || 'clickNCollect'
+        return acc
+      }, {})
+      this.$store.commit(
+        'cart/setStoreInfos',
+        boutiques.reduce((acc, boutique) => {
+          acc[boutique.id] = boutique
+          return acc
+        }, {})
+      )
+    },
     async goToCheckout() {
-      // this.loading = true
+      this.loading = true
       const stripe = await loadStripe(this.$config.stripeApiKey)
       const { id } = await this.$db.fetch('createCheckoutSession', {
         items: this.$store.state.cart.items.reduce((acc, item) => {
           acc[item.id] = item.cartQuantity
           return acc
-        }, {})
+        }, {}),
+        selectedDelivery: this.selectedDelivery
       })
       const result = await stripe.redirectToCheckout({
         sessionId: id
@@ -33,7 +91,12 @@ export default {
 
 <template>
   <main>
-    <form action="checkout" class="bg-white" @submit.prevent="goToCheckout">
+    <form
+      action="checkout"
+      class="bg-white"
+      :disabled="loading"
+      @submit.prevent="goToCheckout"
+    >
       <section class="px-4 py-8 bg-kraft">
         <div class="mx-auto max-w-3xl">
           <h1 class="ml-4 text-xl text-primary not-italic uppercase">
@@ -62,19 +125,33 @@ export default {
                   class="py-4"
                 />
                 <div
+                  v-if="selectedDelivery[key]"
                   class="py-4 text-secondary flex justify-between items-center"
                 >
                   <div class="flex flex-col space-y-1">
                     <label>
-                      <input type="radio" :name="key" value="clickNcollect" />
+                      <input
+                        v-model="selectedDelivery[key]"
+                        type="radio"
+                        :name="key"
+                        value="clickNCollect"
+                      />
                       Click & collect
                     </label>
                     <label>
-                      <input type="radio" :name="key" value="delivery" />
+                      <input
+                        v-model="selectedDelivery[key]"
+                        type="radio"
+                        :name="key"
+                        value="delivery"
+                      />
                       Livraison à domicile
                     </label>
                   </div>
-                  <div class="font-bold">+ {{ $n(550 / 100, 'currency') }}</div>
+                  <div v-if="freeDelivery(key)">Gratuit</div>
+                  <div v-else class="font-bold">
+                    + {{ $n(storeInfos[key].deliveryPrice / 100, 'currency') }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -93,14 +170,18 @@ export default {
           </div>
           <div class="flex justify-between">
             <span>Livraison</span>
-            <span>5 euro</span>
+            <span>{{ $n(totalDelivery / 100, 'currency') }}</span>
           </div>
           <hr class="my-4" />
           <div class="flex justify-between font-semibold">
             <span>Total (TVA incluse)</span>
-            <span>345 $</span>
+            <span>{{ $n(total / 100, 'currency') }}</span>
           </div>
-          <AppButton class="block mx-auto mt-6 w-full max-w-xs" type="submit">
+          <AppButton
+            class="block mx-auto mt-6 w-full max-w-xs"
+            type="submit"
+            :disabled="loading"
+          >
             Commander
           </AppButton>
         </div>
