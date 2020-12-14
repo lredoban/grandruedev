@@ -11,7 +11,10 @@ exports.productBySlug = ({ slug }) => {
         id: record.id,
         store: record.fields.store[0],
         storeLogo: record.fields.storeLogo[0].url,
-        quantity: record.fields.quantity ?? 1000,
+        quantity:
+          typeof record.fields.quantity === 'undefined'
+            ? 1000
+            : record.fields.quantity,
         storeAddress: `${record.fields.storeCity[0]} (${record.fields.storeZipCode[0]})`
       }))[0]
     })

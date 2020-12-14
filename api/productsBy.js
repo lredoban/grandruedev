@@ -19,7 +19,10 @@ exports.productsBy = ({ key, limit = 100, param }) => {
           storeName: record.fields.storeName[0],
           imgUrl: record.fields.images[0].url,
           subCategories: record.fields.subNames,
-          quantity: record.fields.quantity ?? 1000
+          quantity:
+            typeof record.fields.quantity === 'undefined'
+              ? 1000
+              : record.fields.quantity
         }
       })
     })

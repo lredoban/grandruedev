@@ -14,7 +14,10 @@ exports.productsForCheckout = (ids) => {
           id: record.id,
           name: record.fields.name,
           price: record.fields.price,
-          quantity: record.fields.quantity ?? 1000,
+          quantity:
+            typeof record.fields.quantity === 'undefined'
+              ? 1000
+              : record.fields.quantity,
           imagesUrl: record.fields.images.map((img) => img.url)
         }
       })
