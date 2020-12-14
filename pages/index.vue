@@ -67,12 +67,16 @@ export default {
       <div class="px-12 pt-16 pb-10 divider-top divider-bottom bg-white">
         <div class="mt-4">
           <ILikeInsta class="mx-auto h-16 text-secondary" />
-          <div class="buy mt-4">
-            <ILogo class="h-full -ml-2 row-span-2 text-primary" />
-            <h1 class="text-secondary font-light text-2xl not-italic">
-              j'achete local avec<span class="visual-hide">Grand'Rue</span>
-            </h1>
-            <ILogoWordFlat class="text-primary pb-2" />
+          <div class="flex justify-center">
+            <div class="relative mt-4 pl-16">
+              <ILogo class="absolute left-0 top-0 w-16 text-primary" />
+              <h1
+                class="text-secondary font-light text-2xl not-italic leading-none"
+              >
+                j'achete local avec<span class="visual-hide">Grand'Rue</span>
+              </h1>
+              <ILogoWordFlat class="mt-3 w-48 text-primary" />
+            </div>
           </div>
         </div>
         <p class="mx-auto max-w-sm mt-6 italic text-gray-500 sm:text-center">
@@ -155,10 +159,7 @@ export default {
 </template>
 
 <style lang="sass" scoped>
-#categories
-  .buy
-    @apply grid mx-auto w-64 gap-y-2
-    grid-template-columns: 1fr max-content
+#categoriesf
   > div::after
     @screen sm
       display: none

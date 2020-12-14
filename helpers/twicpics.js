@@ -16,3 +16,7 @@ export const twicify = (url, twicPath = 'grand-rue', sourceUrl = '/img/') => {
 export const twicifyAirtable = (url) => {
   return twicify(url, 'airtable', 'https://dl.airtable.com/.attachments/')
 }
+
+export const twicifyStoryblok = (url) => {
+  return twicify(url, 'gr-storyblok', 'https://a.storyblok.com/f/98779/')
+}

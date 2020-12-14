@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <article class="grid gap-x-4 items-center text-gray-500">
+  <article class="grid auto-rows-min gap-x-4 items-center text-gray-500">
     <div class="h-24 w-16 overflow-hidden">
       <AirtableImage
         :src="product.images[0].url"

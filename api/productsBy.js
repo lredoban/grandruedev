@@ -5,7 +5,7 @@ exports.productsBy = ({ key, limit = 100, param }) => {
   return base('Produits')
     .select({
       filterByFormula: `${key}="${param}"`,
-      pageSize: limit
+      pageSize: parseInt(limit)
     })
     .firstPage()
     .then((records) => {

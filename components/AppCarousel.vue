@@ -33,7 +33,7 @@ export default {
 <style lang="sass" scoped>
 // https://markus.oberlehner.net/blog/super-simple-progressively-enhanced-carousel-with-css-scroll-snap/
 .carousel
-  @apply flex overflow-x-scroll
+  @apply flex overflow-x-scroll h-full
   scroll-snap-type: x mandatory
   scroll-behavior: smooth
   &-item

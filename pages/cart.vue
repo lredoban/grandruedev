@@ -40,7 +40,7 @@ export default {
       return this.totalDelivery + this.itemsSubtotalPrice
     },
     preparationTime: () => (store) =>
-      Math.max(store.items.map((i) => i.preparation))
+      Math.max(...store.items.map((i) => i.preparation))
   },
   watch: {
     itemsByStore: {

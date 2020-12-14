@@ -26,10 +26,12 @@ export default {
           alt="Tablier"
           class="mx-auto w-24"
         />
-        <h1 class="font-thin not-italic text-secondary text-4xl">
-          Commerçants
-        </h1>
-        <ILogoWordFlat class="text-primary" />
+        <div class="relative pb-16">
+          <h1 class="font-thin not-italic text-secondary text-4xl">
+            Commerçants
+          </h1>
+          <ILogoWordFlat class="absolute inset-x-0 h-auto text-primary" />
+        </div>
       </div>
     </div>
     <BoutiqueGrid

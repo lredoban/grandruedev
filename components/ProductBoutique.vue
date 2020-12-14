@@ -1,6 +1,8 @@
 <script>
+import StoryblokImage from './StoryblokImage.vue'
 export default {
   name: 'ProductBoutique',
+  components: { StoryblokImage },
   props: {
     boutique: {
       type: Object,
@@ -18,14 +20,14 @@ export default {
 <template>
   <section class="grid grid-cols-2 text-center">
     <div class="relative">
-      <img
+      <StoryblokImage
         :src="firstImage.filename"
         :alt="firstImage.alt"
         class="absolute w-full h-full object-cover"
       />
     </div>
     <div class="bg-kraft px-6 py-12">
-      <img
+      <StoryblokImage
         :src="boutique.headerLogo.filename"
         :alt="boutique.headerLogo.alt"
         class="mx-auto h-10"

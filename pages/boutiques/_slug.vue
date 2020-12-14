@@ -1,6 +1,8 @@
 <script>
+import StoryblokImage from '~/components/StoryblokImage.vue'
 export default {
   name: 'Boutique',
+  components: { StoryblokImage },
   async asyncData({ $db, app, error, params }) {
     const { story } = await app.$storyapi
       .get(`cdn/stories/boutiques/${params.slug}`, {
@@ -70,7 +72,7 @@ export default {
   <main class="pb-20">
     <div class="grid md:grid-cols-2">
       <AppCarousel v-slot="{ img }" :images="content.carousel[0].Images">
-        <img :src="img.filename" :alt="img.alt" />
+        <StoryblokImage :src="img.filename" :alt="img.alt" />
       </AppCarousel>
       <div class="bg-kraft">
         <div class="divider-bottom p-8 bg-white">
@@ -86,7 +88,7 @@ export default {
       </div>
     </div>
     <div class="hidden mt-12 md:block">
-      <img
+      <StoryblokImage
         :src="headerLogo.filename"
         :alt="'logo-' + headerLogo.name"
         class="mx-auto h-20"

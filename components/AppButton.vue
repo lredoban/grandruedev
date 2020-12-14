@@ -28,6 +28,10 @@ export default {
 </template>
 
 <style lang="sass" scoped>
+a[type=button]
+  -webkit-appearance: none
+a
+  @apply inline-block
 button:disabled
   @apply opacity-25 cursor-not-allowed
 </style>

@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <article class="grid gap-x-4 items-center text-white">
+  <article class="grid auto-rows-min gap-x-4 items-center text-white">
     <button @click="$store.commit('cart/deleteItem', product.id)">
       <IClose class="p-2 w-4 h-4 box-content text-red-600" />
     </button>
