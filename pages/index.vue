@@ -76,10 +76,9 @@ export default {
           </div>
         </div>
         <p class="mx-auto max-w-sm mt-6 italic text-gray-500 sm:text-center">
-          <strong>Grand’Rue séléctionne</strong> pour vous les boutiques les
-          plus Lorem ipsum dolor sit
-          <strong>amet, consetetur</strong> sadipscing elitr, sed diam
-          <strong>nonumy</strong> eirmod tempor invidunt ut labo…
+          Ne perdez pas de temps dans des recherches inutiles, seuls les
+          commerçants de votre zone commerciale sont visibles sur
+          <strong>Grand’Rue</strong>, quelle que soit leur activité.
         </p>
       </div>
       <div class="relative bg-white">
@@ -134,11 +133,10 @@ export default {
             Une solution idéale pour vous, commerçants
           </h1>
           <p class="mt-2 text-gray-500">
-            <strong>Grand'Rue</strong>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, id
-            nulla ipsum ad iusto consequuntur labore? Fuga voluptas mollitia
-            quas dolores praesentium, aliquam eum itaque inventore ullam vel est
-            ut...
+            Ouvrir une boutique sur <strong>Grand'Rue</strong> est simple et
+            rapide. C’est le complément idéal de votre boutique, ouverte 24/24
+            avec un maximum de services. Et pour le trafic on s’occupe de
+            tout...
           </p>
           <div class="text-center sm:text-left">
             <AppButton
