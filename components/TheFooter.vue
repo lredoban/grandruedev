@@ -1,32 +1,32 @@
 <template>
   <footer>
     <section
-      class="divider-top divider-bottom divider--green py-8 px-2 bg-primary grid grid-cols-3 gap-x-2 gap-y-4"
+      class="divider-top divider-bottom divider--green py-12 px-2 bg-primary"
     >
-      <IBike class="mx-auto text-white h-8" />
-      <ISecure class="mx-auto text-white h-8" />
-      <IEar class="mx-auto text-white h-8" />
-      <div class="text-white font-bold text-xs text-center">
-        LIVRAISON OFFERTE DÈS 100 € D’ACHATS
+      <div class="max-w-3xl mx-auto grid grid-cols-4 gap-x-2 gap-y-2">
+        <ISecure class="mx-auto text-white h-10" />
+        <IBike class="mx-auto text-white h-12" />
+        <IClickNCollect class="mx-auto text-white h-10" />
+        <IEar class="mx-auto text-white h-10" />
+        <div class="text-white uppercase font-bold text-xs text-center">
+          PAIEMENT<br />SÉCURISÉ
+        </div>
+        <div class="text-white uppercase font-bold text-xs text-center">
+          Livraison<br />à domicile
+        </div>
+        <div class="text-white uppercase font-bold text-xs text-center">
+          Click &<br />collect
+        </div>
+        <div class="text-white uppercase font-bold text-xs text-center">
+          SERVICE<br />CLIENT
+        </div>
       </div>
-      <div class="text-white font-bold text-xs text-center">
-        PAIEMENT SÉCURISÉ
-      </div>
-      <div class="text-white font-bold text-xs text-center">SERVICE CLIENT</div>
     </section>
-    <section class="bg-tertiary py-6 px-12">
-      <ul class="flex justify-between">
-        <li class="p-2 bg-primary text-white rounded-full">
-          <IFacebook class="h-6" />
-        </li>
-        <li class="p-2 bg-primary text-white rounded-full">
-          <IInstagram class="h-6" />
-        </li>
-        <li class="p-2 bg-primary text-white rounded-full">
-          <ILinkedIn class="h-6" />
-        </li>
-      </ul>
-      <nav class="mt-12"></nav>
+    <section class="relative bg-kraft pt-12 pb-4">
+      <SocialLinks class="px-20 max-w-lg mx-auto" />
+      <div class="mt-12 text-xs text-center text-primary font-semibold">
+        &copy; {{ new Date().getFullYear() }} Grand'Rue
+      </div>
     </section>
   </footer>
 </template>

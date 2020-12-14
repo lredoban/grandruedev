@@ -27,16 +27,29 @@ export default {
 
   --gutter: 20px
 
+  @apply mx-auto max-w-5xl
+
   width: 100vw
   display: grid
   grid-gap: calc(var(--gutter))
   grid-template-columns: 10px
   grid-template-rows: minmax(150px, 1fr)
   grid-auto-flow: column
-  grid-auto-columns: calc(70% - var(--gutter))
+  grid-auto-columns: calc(60% - var(--gutter))
 
   overflow-x: scroll
   scroll-snap-type: x proximity
+
+  @screen sm
+    grid-auto-columns: calc(45% - var(--gutter))
+  @screen md
+    grid-auto-columns: calc(30% - var(--gutter))
+  @screen lg
+    grid-auto-columns: auto
+    grid-template-columns: repeat(5, 1fr)
+    &:before, &:after
+      display: none
+
 
   &:before, &:after
     content: ''
