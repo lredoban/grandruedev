@@ -73,7 +73,10 @@ export default {
     <div class="mt-4 text-center text-sm text-gray-500 text-hairline italic">
       {{ products.length }} Articles trouvés
     </div>
-    <ProductGrid :products="filteredProducts" class="mt-8 px-4" />
+    <ProductGrid
+      :products="filteredProducts"
+      class="mx-auto mt-8 px-4 max-w-4xl"
+    />
   </main>
 </template>
 

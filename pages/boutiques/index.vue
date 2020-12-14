@@ -32,6 +32,9 @@ export default {
         <ILogoWordFlat class="text-primary" />
       </div>
     </div>
-    <BoutiqueGrid :boutiques="boutiques" class="my-8 px-6" />
+    <BoutiqueGrid
+      :boutiques="boutiques"
+      class="mx-auto my-8 px-6 max-w-4xl md:my-24"
+    />
   </main>
 </template>

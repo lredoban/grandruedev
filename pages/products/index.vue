@@ -33,6 +33,9 @@ export default {
       </div>
     </div>
     <CategoryGrid :categories="categories" />
-    <ProductGrid :products="products" class="my-8 px-6" />
+    <ProductGrid
+      :products="products"
+      class="mx-auto my-8 px-6 max-w-4xl md:my-24"
+    />
   </main>
 </template>
