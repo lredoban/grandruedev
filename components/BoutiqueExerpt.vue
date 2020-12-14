@@ -34,7 +34,7 @@ export default {
         class="absolute w-full h-full object-cover"
       />
     </div>
-    <h1 class="mt-2 text-primary not-italic text-xl">
+    <h1 class="mt-2 text-primary not-italic text-lg">
       {{ boutique.name }}
     </h1>
   </article>
