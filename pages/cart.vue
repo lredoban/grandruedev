@@ -38,7 +38,9 @@ export default {
     },
     total() {
       return this.totalDelivery + this.itemsSubtotalPrice
-    }
+    },
+    preparationTime: () => (store) =>
+      Math.max(store.items.map((i) => i.preparation))
   },
   watch: {
     itemsByStore: {
@@ -147,6 +149,10 @@ export default {
                       />
                       Livraison à domicile
                     </label>
+                    <span class="mt-2 text-xs">
+                      Comptez {{ preparationTime(store) }} heures de délai de
+                      préparation
+                    </span>
                   </div>
                   <div v-if="freeDelivery(key)">Gratuit</div>
                   <div v-else class="font-bold">
