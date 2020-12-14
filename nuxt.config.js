@@ -17,7 +17,8 @@ export default {
     stripeApiKey: process.env.STRIPE_API_KEY,
     netlify: process.env.NETLIFY,
     deployUrl: process.env.DEPLOY_URL,
-    functionsBaseUrl: process.env.FUNCTIONS_BASE_URL
+    functionsBaseUrl: process.env.FUNCTIONS_BASE_URL,
+    netlifyContext: process.env.CONTEXT
   },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',

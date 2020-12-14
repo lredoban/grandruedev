@@ -3,9 +3,10 @@ const qs = require('qs')
 export default function ({ $http, $config }, inject) {
   let $db
   if (process.client) {
-    const baseUrl = $config.netlify
-      ? `${$config.deployUrl}/.netlify/functions/`
-      : $config.functionsBaseUrl
+    const baseUrl =
+      $config.netlify && $config.netlifyContext !== 'production'
+        ? `${$config.deployUrl}/.netlify/functions/`
+        : $config.functionsBaseUrl
 
     $db = $http.create({
       // See https://github.com/sindresorhus/ky#options
