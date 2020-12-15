@@ -49,9 +49,11 @@ export default {
         </div>
       </button>
       <CollapseTransition>
-        <p v-if="displayDescription" class="py-1">
-          {{ product.description }}
-        </p>
+        <div
+          v-if="displayDescription"
+          class="py-1"
+          v-html="product.description"
+        />
       </CollapseTransition>
     </div>
     <div class="mt-2 text-xs text-gray-500">

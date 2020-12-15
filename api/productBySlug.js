@@ -1,4 +1,5 @@
 const logger = require('consola').withScope('api')
+const md = require('markdown-it')({ breaks: true })
 const base = require('./base')
 
 exports.productBySlug = ({ slug }) => {
@@ -10,6 +11,7 @@ exports.productBySlug = ({ slug }) => {
         ...record.fields,
         id: record.id,
         store: record.fields.store[0],
+        description: md.render(record.fields.description),
         storeLogo: record.fields.storeLogo[0].url,
         quantity:
           typeof record.fields.quantity === 'undefined'
