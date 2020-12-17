@@ -56,7 +56,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     // https://html-validator.nuxtjs.org/
-    '@nuxtjs/html-validator',
+    // '@nuxtjs/html-validator',
     '@nuxtjs/google-fonts',
     '@nuxtjs/pwa'
   ],
@@ -85,6 +85,7 @@ export default {
       config.node = {
         fs: 'empty'
       }
+      config.devtool = 'source-map'
     }
   }
 }
