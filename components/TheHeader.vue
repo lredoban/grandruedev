@@ -1,5 +1,5 @@
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'TheHeader',
@@ -17,7 +17,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['openCart']),
     goBack() {
       if (window.history.length > 2) this.$router.go(-1)
       else this.$router.push(this.localePath('/'))
@@ -60,15 +59,11 @@ export default {
     </div>
     <div v-else class="flex-1 flex justify-end sm:flex-none">
       <!-- <button type="button"><IHeart class="h-10 p-2" /></button> -->
-      <button type="button" @click="openCart">
-        <ICart class="h-10 p-2" />
-      </button>
-      <button type="button"><IAccount class="h-10 p-2" /></button>
+      <HeaderCartButton />
+      <!-- <button type="button"><IAccount class="h-10 p-2" /></button> -->
     </div>
     <div class="flex">
-      <button v-if="imageUrl" type="button" @click="openCart">
-        <ICart class="h-10 p-2" />
-      </button>
+      <HeaderCartButton v-if="imageUrl" />
       <button
         type="button"
         class="text-secondary sm:hidden"
