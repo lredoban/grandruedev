@@ -31,7 +31,7 @@ export default {
           <ul class="font-bold">
             <li>
               <n-link :to="localePath('/')" class="block w-full py-1">
-                Home
+                Accueil
               </n-link>
             </li>
             <li>
