@@ -15,7 +15,11 @@ export default {
       product,
       boutique,
       relatedProducts: related.filter((r) => r.slug !== product.slug).slice(-5),
-      selectedImageIndex: 0
+      selectedImageIndex: 0,
+      selectedVariants: Object.keys(product.variants).reduce((acc, key) => {
+        acc[key] = ''
+        return acc
+      }, {})
     }
   },
   computed: {
@@ -61,9 +65,20 @@ export default {
           class="absolute h-full w-full object-cover object-center"
         />
       </div>
-      <AppCarousel v-slot="{ img }" :images="product.images" class="md:hidden">
-        <AirtableImage :src="img.url" :alt="img.name" />
-      </AppCarousel>
+      <div>
+        <AppCarousel
+          v-slot="{ img }"
+          :images="product.images"
+          class="md:hidden"
+        >
+          <AirtableImage :src="img.url" :alt="img.name" />
+        </AppCarousel>
+        <ProductVariants
+          v-if="Object.keys(product.variants).length > 0"
+          v-model="selectedVariants"
+          :variants="product.variants"
+        />
+      </div>
       <div id="product-wrapper">
         <div class="hidden mt-4 w-32 flex-col gap-y-4 md:flex">
           <div
@@ -85,7 +100,11 @@ export default {
             :alt="product.images[selectedImageIndex].name"
           />
         </div>
-        <ProductInfos :product="product" class="mt-12 px-8 md:ml-8 md:px-0" />
+        <ProductInfos
+          :product="product"
+          :selected-variants="selectedVariants"
+          class="mt-12 px-8 md:ml-8 md:px-0"
+        />
       </div>
     </section>
     <section class="hidden mt-20 text-center md:block">

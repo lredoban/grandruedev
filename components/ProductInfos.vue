@@ -9,18 +9,45 @@ export default {
     product: {
       type: Object,
       required: true
+    },
+    selectedVariants: {
+      type: Object,
+      required: true
     }
   },
   data: () => ({
-    displayDescription: false
+    displayDescription: false,
+    displayVariantWarning: false
   }),
   computed: {
     quantity() {
       return this.$store.getters['cart/itemCount'](this.product.id)
+    },
+    hasVariant() {
+      return Object.keys(this.selectedVariants).length > 0
+    },
+    isVariantsValid() {
+      if (!this.hasVariant) return true
+      return Object.values(this.selectedVariants).every(Boolean)
+    }
+  },
+  watch: {
+    isVariantsValid(isValid) {
+      if (isValid) this.displayVariantWarning = false
     }
   },
   methods: {
-    ...mapActions('cart', ['addToCart', 'removeFromCart'])
+    ...mapActions('cart', ['addToCart', 'removeFromCart']),
+    submitProduct() {
+      if (this.isVariantsValid) {
+        this.addToCart({
+          ...this.product,
+          ...(this.hasVariant && { selectedVariants: this.selectedVariants })
+        })
+      } else {
+        this.displayVariantWarning = true
+      }
+    }
   }
 }
 </script>
@@ -78,11 +105,15 @@ export default {
         <span class="text-4xl text-gray-600 font-black md:text-3xl">
           {{ quantity }}
         </span>
-        <button @click="addToCart(product)">
+        <button @click="submitProduct">
           <ICartAdd class="text-primary h-10 md:h-6" />
         </button>
+        <div v-if="displayVariantWarning" class="pulse text-red-500">
+          Veulliez choisir vos options:
+          {{ Object.keys(selectedVariants).join(', ') }}
+        </div>
       </div>
-      <div class="flex flex-col items-end">
+      <div class="flex flex-col flex-shrink-0 items-end">
         <span
           v-if="product.quantity > 1 && product.quantity < 1000"
           class="text-primary text-xs"

@@ -1,12 +1,15 @@
 <script>
 import { loadStripe } from '@stripe/stripe-js'
 import { mapGetters, mapState } from 'vuex'
+import { addHours, format } from 'date-fns'
+import { getInfos } from '~/components/CartProduct'
 
 export default {
   name: 'Cart',
   data: () => ({
     loading: false,
-    selectedDelivery: {}
+    selectedDelivery: {},
+    selectedDate: {}
   }),
   computed: {
     ...mapState('cart', ['storeInfos']),
@@ -40,7 +43,11 @@ export default {
       return this.totalDelivery + this.itemsSubtotalPrice
     },
     preparationTime: () => (store) =>
-      Math.max(...store.items.map((i) => i.preparation))
+      Math.max(...store.items.map((i) => i.preparation)),
+    minDate() {
+      return (store) =>
+        format(addHours(new Date(), this.preparationTime(store)), 'yyyy-MM-dd')
+    }
   },
   watch: {
     itemsByStore: {
@@ -59,6 +66,10 @@ export default {
         acc[id] = this.selectedDelivery[id] || 'clickNCollect'
         return acc
       }, {})
+      this.selectedDate = boutiques.reduce((acc, { id }) => {
+        acc[id] = this.selectedDate[id] || ''
+        return acc
+      }, {})
       this.$store.commit(
         'cart/setStoreInfos',
         boutiques.reduce((acc, boutique) => {
@@ -72,10 +83,14 @@ export default {
       const stripe = await loadStripe(this.$config.stripeApiKey)
       const { id } = await this.$db.fetch('createCheckoutSession', {
         items: this.$store.state.cart.items.reduce((acc, item) => {
-          acc[item.id] = item.cartQuantity
+          acc[item.id] = {
+            quantity: item.cartQuantity,
+            infos: getInfos(item)
+          }
           return acc
         }, {}),
-        selectedDelivery: this.selectedDelivery
+        selectedDelivery: this.selectedDelivery,
+        selectedDate: this.selectedDate
       })
       const result = await stripe.redirectToCheckout({
         sessionId: id
@@ -130,7 +145,7 @@ export default {
                   v-if="selectedDelivery[key]"
                   class="py-4 text-secondary flex justify-between items-center"
                 >
-                  <div class="flex flex-col space-y-1">
+                  <div class="flex flex-shrink-0 flex-col space-y-1">
                     <label>
                       <input
                         v-model="selectedDelivery[key]"
@@ -149,14 +164,31 @@ export default {
                       />
                       Livraison à domicile
                     </label>
-                    <span class="mt-2 text-xs">
+                    <!-- <span class="mt-2 text-xs">
                       Comptez {{ preparationTime(store) }} heures de délai de
                       préparation
-                    </span>
+                    </span> -->
+                    <div
+                      v-if="selectedDelivery[key] === 'clickNCollect'"
+                      class="mt-2 flex text-sm"
+                    >
+                      <label :for="`collect-time-${store.name}`">
+                        Date de récupération:
+                      </label>
+                      <input
+                        :id="`collect-time-${store.name}`"
+                        v-model="selectedDate[key]"
+                        type="date"
+                        :min="minDate(store)"
+                        class="inline ml-2"
+                        required
+                      />
+                    </div>
                   </div>
                   <div v-if="freeDelivery(key)">Gratuit</div>
                   <div v-else class="font-bold">
-                    + {{ $n(storeInfos[key].deliveryPrice / 100, 'currency') }}
+                    +
+                    {{ $n(storeInfos[key].deliveryPrice / 100, 'currency') }}
                   </div>
                 </div>
               </div>

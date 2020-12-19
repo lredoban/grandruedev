@@ -14,7 +14,12 @@ const storeSubTotals = (lineItems) => {
   }, {})
 }
 
-const createShippingLineItems = (lineItems, stores, selectedDelivery) => {
+const createShippingLineItems = (
+  lineItems,
+  stores,
+  selectedDate,
+  selectedDelivery
+) => {
   const storeSub = storeSubTotals(lineItems)
   const allSippings = Object.keys(storeSub).map((id) => {
     const total = storeSub[id]
@@ -25,11 +30,15 @@ const createShippingLineItems = (lineItems, stores, selectedDelivery) => {
       if (typeof threshold === 'undefined' || threshold > total)
         price += current.deliveryPrice
     }
+    const name =
+      selectedDelivery[id] === 'delivery'
+        ? `Frais de port ${current.name}`
+        : `Click & Collect ${current.name} le ${selectedDate[id]}`
     return {
       price_data: {
         currency: 'eur',
         product_data: {
-          name: `Frais de port ${current.name}`,
+          name,
           metadata: {
             storeId: id
           }
@@ -39,14 +48,16 @@ const createShippingLineItems = (lineItems, stores, selectedDelivery) => {
       quantity: 1
     }
   })
-  return allSippings.filter((s) => s.price_data.unit_amount > 0)
+  return allSippings
 }
 
 const handler = async ({ headers, queryStringParameters }) => {
   try {
     const lang = headers.referer.includes('/fr/') ? 'fr' : 'en'
     const baseUrl = headers.referer.split(lang)[0] + lang
-    const { items, selectedDelivery } = qs.parse(queryStringParameters)
+    const { items, selectedDate, selectedDelivery } = qs.parse(
+      queryStringParameters
+    )
 
     const products = await productsForCheckout(Object.keys(items))
     const boutiques = await getBoutiques(
@@ -61,7 +72,7 @@ const handler = async ({ headers, queryStringParameters }) => {
     // eslint-disable-next-line camelcase
     const line_items = products
       // removing out of stock
-      .filter((p) => p.quantity >= items[p.id])
+      .filter((p) => p.quantity >= items[p.id].quantity)
       .map((p) => ({
         price_data: {
           currency: 'eur',
@@ -70,15 +81,22 @@ const handler = async ({ headers, queryStringParameters }) => {
             images: p.imagesUrl,
             metadata: {
               id: p.id,
-              storeId: p.storeId
+              storeId: p.storeId,
+              infos: items[p.id].infos
             }
           },
           unit_amount: p.price
         },
-        quantity: items[p.id]
+        description: items[p.id].infos || p.name,
+        quantity: items[p.id].quantity
       }))
     line_items.push(
-      ...createShippingLineItems(line_items, boutiques, selectedDelivery)
+      ...createShippingLineItems(
+        line_items,
+        boutiques,
+        selectedDate,
+        selectedDelivery
+      )
     )
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],

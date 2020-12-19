@@ -1,10 +1,17 @@
 <script>
+import { getInfos } from './CartProduct'
+
 export default {
   name: 'CartExerptProduct',
   props: {
     product: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    infos() {
+      return getInfos(this.product)
     }
   }
 }
@@ -31,7 +38,7 @@ export default {
     </div>
     <div class="h-full flex-grow flex flex-col justify-between">
       <span class="text-lg font-bold">{{ product.name }}</span>
-      <span class="opacity-75">{{ product.color }}</span>
+      <span class="opacity-75">{{ infos }}</span>
     </div>
     <span class="text-lg font-bold">{{
       $n(product.price / 100, 'currency')

@@ -1,10 +1,30 @@
 <script>
+const stringyfyVariants = (variants) => {
+  if (!variants) return null
+  return Object.keys(variants)
+    .map((key) => `${key} ${variants[key]}`)
+    .join(' - ')
+}
+
+export const getInfos = (product) => {
+  const infos = []
+  !!product?.selectedVariants &&
+    infos.push(stringyfyVariants(product.selectedVariants))
+  !!product?.color && infos.push(product.color)
+  return infos.join(' - ')
+}
+
 export default {
   name: 'CartExerptProduct',
   props: {
     product: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    infos() {
+      return getInfos(this.product)
     }
   },
   methods: {
@@ -30,7 +50,7 @@ export default {
     <div class="h-full flex-grow flex flex-col justify-between">
       <span class="text-md font-bold leading-none">{{ product.name }}</span>
       <div>
-        <span class="block text-sm opacity-75">{{ product.color }}</span>
+        <span class="block text-sm opacity-75">{{ infos }}</span>
         <div class="flex items-end gap-x-2">
           <input
             type="number"
