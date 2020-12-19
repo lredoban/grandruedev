@@ -65,12 +65,8 @@ export default {
           class="absolute h-full w-full object-cover object-center"
         />
       </div>
-      <div>
-        <AppCarousel
-          v-slot="{ img }"
-          :images="product.images"
-          class="md:hidden"
-        >
+      <div class="md:hidden">
+        <AppCarousel v-slot="{ img }" :images="product.images">
           <AirtableImage :src="img.url" :alt="img.name" />
         </AppCarousel>
         <ProductVariants
@@ -98,6 +94,11 @@ export default {
           <AirtableImage
             :src="product.images[selectedImageIndex].url"
             :alt="product.images[selectedImageIndex].name"
+          />
+          <ProductVariants
+            v-if="Object.keys(product.variants).length > 0"
+            v-model="selectedVariants"
+            :variants="product.variants"
           />
         </div>
         <ProductInfos
