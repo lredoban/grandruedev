@@ -4,7 +4,8 @@ module.exports = {
       colors: {
         primary: '#5F8B7A',
         secondary: '#F9BB8E',
-        tertiary: '#FAF5F2'
+        tertiary: '#FAF5F2',
+        'gr-gray': '#989898'
       },
       fontFamily: {
         sans:

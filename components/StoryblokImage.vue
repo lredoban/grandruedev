@@ -2,7 +2,7 @@
 import { twicifyStoryblok, twicPreview } from '~/helpers/twicpics'
 
 export default {
-  name: 'AppImage',
+  name: 'StoryblokImage',
   props: {
     src: {
       type: String,

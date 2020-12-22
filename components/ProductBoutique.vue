@@ -39,7 +39,7 @@ export default {
         </div>
         <div>
           <h2 class="text-xl text-secondary">{{ boutique.subtitle }}</h2>
-          <div class="truncate-overflow mt-4 text-gray-500 text-sm">
+          <div class="truncate-overflow text-sm rich-text">
             <rich-text-renderer :document="boutique.description" />
           </div>
         </div>
@@ -64,9 +64,9 @@ export default {
 .truncate-overflow
   --max-lines: 5
   position: relative
-  max-height: calc(theme('lineHeight.6') * var(--max-lines) - 16px)
+  max-height: calc(theme('lineHeight.6') * var(--max-lines))
   overflow: hidden
   &::before
     content: "[...]"
-    @apply absolute bottom-0 right-0 pl-2 bg-tertiary
+    @apply absolute bottom-0 right-0 pl-2 bg-tertiary text-gr-gray
 </style>
