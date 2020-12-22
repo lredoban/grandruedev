@@ -68,6 +68,10 @@ export default {
       <div>
         <div v-html="product.description" />
         <div v-if="product.composition" class="my-2">
+          <span class="font-bold tracking-wide">Couleur:</span>
+          <span>{{ product.color }}</span>
+        </div>
+        <div v-if="product.composition" class="my-2">
           <span class="font-bold tracking-wide">Composition:</span>
           <span>{{ product.composition }}</span>
         </div>
