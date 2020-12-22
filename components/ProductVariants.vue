@@ -29,7 +29,7 @@ export default {
         class="text-white bg-transparent font-semibold text-opacity-75 text-lg"
         @change="(e) => updateVariant(e, key)"
       >
-        <option value="" disabled class="uppercase">{{ key }}</option>
+        <option value="" class="uppercase">{{ key }}</option>
         <option v-for="option in values" :key="option" :value="option">
           {{ option }}
         </option>
