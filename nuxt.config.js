@@ -58,7 +58,8 @@ export default {
     // https://html-validator.nuxtjs.org/
     // '@nuxtjs/html-validator',
     '@nuxtjs/google-fonts',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/google-analytics',
   ],
   googleFonts,
   pwa,
@@ -78,6 +79,10 @@ export default {
   sitemap,
   storyblok,
   storybook,
+
+  googleAnalytics: {
+    id: "UA-185972047-1",
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
