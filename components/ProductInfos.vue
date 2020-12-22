@@ -1,10 +1,8 @@
 <script>
 import { mapActions } from 'vuex'
-import { CollapseTransition } from 'vue2-transitions'
 
 export default {
   name: 'ProductInfos',
-  components: { CollapseTransition },
   props: {
     product: {
       type: Object,
@@ -65,24 +63,28 @@ export default {
         /{{ product.unit }}</span
       >
     </div>
-    <div class="mt-4 border-t border-b border-gray-600 text-gray-600">
-      <button
-        class="py-2 w-full uppercase tracking-wide text-left flex justify-between items-center"
-        @click="displayDescription = !displayDescription"
-      >
-        Description du produit
-        <div class="mr-2" :class="displayDescription && 'transform rotate-180'">
-          <IArrowDown class="h-4 opacity-50" />
+    <BaseCollapse class="mt-4">
+      <template v-slot:trigger>Description du produit</template>
+      <div>
+        <div v-html="product.description" />
+        <div v-if="product.composition" class="my-2">
+          <span class="font-bold tracking-wide">Composition:</span>
+          <span>{{ product.composition }}</span>
         </div>
-      </button>
-      <CollapseTransition>
-        <div
-          v-if="displayDescription"
-          class="py-1"
-          v-html="product.description"
-        />
-      </CollapseTransition>
-    </div>
+      </div>
+    </BaseCollapse>
+    <BaseCollapse v-if="product.care || product.advice" class="no-border">
+      <template v-slot:trigger>Conseils d'utlisation</template>
+      <div class="-mt-2">
+        <div v-if="product.advice" class="my-2">
+          <div>{{ product.advice }}</div>
+        </div>
+        <div v-if="product.care" class="my-2">
+          <div class="font-bold tracking-wide">Entretien / Conservation</div>
+          <div>{{ product.care }}</div>
+        </div>
+      </div>
+    </BaseCollapse>
     <div class="mt-2 text-xs text-gray-500">
       Vendu par:&nbsp;
       <n-link
@@ -135,3 +137,8 @@ export default {
     </div>
   </div>
 </template>
+
+<style lang="sass" scoped>
+.no-border
+  @apply border-t-0
+</style>
