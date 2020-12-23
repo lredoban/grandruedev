@@ -1,5 +1,4 @@
 import googleFonts from './config/googleFonts'
-import gtm from './config/gtm'
 import i18n from './config/i18n'
 import meta from './config/meta'
 import pwa from './config/pwa'
@@ -59,7 +58,7 @@ export default {
     // '@nuxtjs/html-validator',
     '@nuxtjs/google-fonts',
     '@nuxtjs/pwa',
-    '@nuxtjs/google-analytics',
+    '@nuxtjs/google-analytics'
   ],
   googleFonts,
   pwa,
@@ -68,20 +67,18 @@ export default {
   modules: [
     // https://http.nuxtjs.org/
     '@nuxt/http',
-    '@nuxtjs/gtm',
     'nuxt-logrocket',
     'nuxt-i18n',
     '@nuxtjs/sitemap',
     'storyblok-nuxt'
   ],
   i18n,
-  gtm,
   sitemap,
   storyblok,
   storybook,
 
   googleAnalytics: {
-    id: "UA-185972047-1",
+    id: 'UA-185972047-1'
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
