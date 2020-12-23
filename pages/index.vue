@@ -80,8 +80,7 @@ export default {
           </div>
         </div>
         <p class="mx-auto max-w-sm mt-6 italic text-gray-500 sm:text-center">
-          Ne perdez pas de temps dans des recherches inutiles, seuls les
-          commerçants de votre zone commerciale sont visibles sur
+          Ne perdez plus de temps, retrouvez les commerçants de votre ville sur
           <strong>Grand’Rue</strong>, quelle que soit leur activité.
         </p>
       </div>
