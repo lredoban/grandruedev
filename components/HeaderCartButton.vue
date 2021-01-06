@@ -28,17 +28,19 @@ export default {
 </script>
 
 <template>
-  <button type="button" class="relative" @click="openCart">
-    <ICart class="h-10 p-2" />
-    <span
-      v-if="cartHint"
-      class="absolute bottom-0 right-0 inline-flex h-5 w-5 rounded-full bg-secondary opacity-75 animate-ping"
-    ></span>
-    <span
-      v-if="itemsCount"
-      class="absolute bottom-0 right-0 inline-flex rounded-full h-5 w-5 bg-secondary justify-center items-center text-white text-opacity-75 text-sm leading-none"
-    >
-      {{ itemsCount }}
-    </span>
-  </button>
+  <client-only>
+    <button type="button" class="relative" @click="openCart">
+      <ICart class="h-10 p-2" />
+      <span
+        v-if="cartHint"
+        class="absolute bottom-0 right-0 inline-flex h-5 w-5 rounded-full bg-secondary opacity-75 animate-ping"
+      ></span>
+      <span
+        v-if="itemsCount"
+        class="absolute bottom-0 right-0 inline-flex rounded-full h-5 w-5 bg-secondary justify-center items-center text-white text-opacity-75 text-sm leading-none"
+      >
+        {{ itemsCount }}
+      </span>
+    </button>
+  </client-only>
 </template>
