@@ -1,9 +1,6 @@
 // https://i18n.nuxtjs.org/
 export default {
-  locales: [
-    { code: 'fr', iso: 'fr-FR' },
-    { code: 'en', iso: 'en-GB' }
-  ],
+  locales: [{ code: 'fr', iso: 'fr-FR' }],
   defaultLocale: 'fr',
   baseUrl: ({ $config }) => $config.baseUrl,
   strategy: 'prefix',
