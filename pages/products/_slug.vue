@@ -3,9 +3,9 @@ import { twicPreview } from '~/helpers/twicpics'
 
 export default {
   name: 'ProductPage',
-  async asyncData({ $db, $storybook, params }) {
+  async asyncData({ $db, $storyblok, params }) {
     const product = await $db.fetch('productBySlug', { slug: params.slug })
-    const boutique = await $storybook.getStoreBySlug(product.storeSlug[0])
+    const boutique = await $storyblok.getStoreBySlug(product.storeSlug[0])
     const related = await $db.fetch('productsBy', {
       key: 'storeName',
       param: product.storeName[0],

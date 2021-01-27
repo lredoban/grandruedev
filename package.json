@@ -11,8 +11,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lint": "yarn lint:js",
-    "storybook": "yarn nuxt storybook"
+    "lint": "yarn lint:js"
   },
   "dependencies": {
     "@marvr/storyblok-rich-text-vue-renderer": "^2.0.1",
@@ -44,7 +43,6 @@
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/google-fonts": "^1.2.0",
     "@nuxtjs/html-validator": "^0.1.2",
-    "@nuxtjs/storybook": "^3.1.0",
     "@nuxtjs/tailwindcss": "^3.1.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.10.0",

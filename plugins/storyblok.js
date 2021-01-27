@@ -1,6 +1,6 @@
 export default function ({ app, error }, inject) {
-  const $storybook = {}
-  $storybook.getStoreBySlug = async (slug) => {
+  const $storyblok = {}
+  $storyblok.getStoreBySlug = async (slug) => {
     const { story } = await app.$storyapi
       .get(`cdn/stories/boutiques/${slug}`, {
         version: 'draft' // published
@@ -25,5 +25,5 @@ export default function ({ app, error }, inject) {
     return { ...story.content, name, id, slug }
   }
 
-  inject('storybook', $storybook)
+  inject('storyblok', $storyblok)
 }

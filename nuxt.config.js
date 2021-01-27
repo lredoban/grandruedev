@@ -4,7 +4,6 @@ import meta from './config/meta'
 import pwa from './config/pwa'
 import sitemap from './config/sitemap'
 import storyblok from './config/storyblok'
-import storybook from './config/storybook'
 
 export default {
   privateRuntimeConfig: {
@@ -38,7 +37,7 @@ export default {
     '~/plugins/db',
     '~/plugins/composition-api.js',
     '~/plugins/rich-text-renderer.js',
-    '~/plugins/storybook',
+    '~/plugins/storyblok',
     '~/plugins/vuex-persist.client.js'
   ],
 
@@ -75,7 +74,6 @@ export default {
   i18n,
   sitemap,
   storyblok,
-  storybook,
 
   googleAnalytics: {
     id: 'UA-185972047-1'
