@@ -1,29 +1,14 @@
 <script>
+import storyblok from '~/mixins/storyblok'
+
 import StoryblokImage from '~/components/StoryblokImage.vue'
+
 export default {
   name: 'Boutique',
   components: { StoryblokImage },
-  async asyncData({ $db, app, error, params }) {
-    const { story } = await app.$storyapi
-      .get(`cdn/stories/boutiques/${params.slug}`, {
-        version: 'draft' // published
-      })
-      .then((res) => {
-        return res.data
-      })
-      .catch((res) => {
-        if (!res.response) {
-          error({
-            statusCode: 404,
-            message: 'Failed to receive content form api'
-          })
-        } else {
-          error({
-            statusCode: res.response.status,
-            message: res.response.data
-          })
-        }
-      })
+  mixins: [storyblok],
+  async asyncData({ $db, $storyblok, error, params }) {
+    const story = await $storyblok.getStoryBySlug(`boutiques/${params.slug}`)
     return {
       story,
       products: await $db.fetch('productsBy', {
@@ -33,33 +18,19 @@ export default {
     }
   },
   computed: {
-    content() {
-      return this.story.content
-    },
     headerLogo() {
-      return this.story.content.headerLogo
+      return this.story.headerLogo
     },
     name() {
       return this.story.name
     }
   },
   created() {
-    this.$store.commit('menu/setImage', this.story.content.headerLogo.filename)
+    this.$store.commit('menu/setImage', this.story.headerLogo.filename)
   },
   mounted() {
-    // Use the input event for instant update of content
-    this.$storybridge.on('input', (event) => {
-      if (event.story.id === this.story.id) {
-        this.story.content = event.story.content
-      }
-    })
-    // Use the bridge to listen the events
-    this.$storybridge.on(['published', 'change'], (event) => {
-      // window.location.reload()
-      this.$nuxt.$router.go({
-        path: this.$nuxt.$router.currentRoute,
-        force: true
-      })
+    this.listenStoryblokChanges(this.story.id, (event) => {
+      this.story = event.story.content
     })
   },
   beforeDestroy() {
@@ -71,19 +42,19 @@ export default {
 <template>
   <main class="pb-20">
     <div class="grid md:grid-cols-2">
-      <AppCarousel v-slot="{ img }" :images="content.carousel[0].Images">
+      <AppCarousel v-slot="{ img }" :images="story.carousel[0].Images">
         <StoryblokImage :src="img.filename" :alt="img.alt" />
       </AppCarousel>
       <div class="bg-kraft">
         <div class="divider-bottom p-8 bg-white">
           <h1 class="text-primary text-xl not-italic font-bold">{{ name }}</h1>
           <h2 class="-mt-2 text-sm text-gray-500 font-normal">
-            {{ content.subtitle }}
+            {{ story.subtitle }}
           </h2>
-          <BoutiqueInfos :boutique="content" class="mt-4" />
+          <BoutiqueInfos :boutique="story" class="mt-4" />
         </div>
         <section class="bg-kraft rich-text px-8 py-4 text-sm">
-          <rich-text-renderer :document="content.description" />
+          <rich-text-renderer :document="story.description" />
         </section>
       </div>
     </div>

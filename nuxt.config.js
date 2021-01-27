@@ -16,7 +16,8 @@ export default {
     netlify: process.env.NETLIFY,
     deployUrl: process.env.DEPLOY_URL,
     functionsBaseUrl: process.env.FUNCTIONS_BASE_URL,
-    netlifyContext: process.env.CONTEXT
+    netlifyContext: process.env.CONTEXT,
+    storyblokVersion: process.env.STORYBLOK_VERSION || 'draft'
   },
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',

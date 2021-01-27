@@ -1,4 +1,6 @@
 <script>
+import storyblok from '~/mixins/storyblok'
+
 import IAutonome from '~/components/svg/Autonome'
 import IDurable from '~/components/svg/Durable'
 import IImpact from '~/components/svg/Impact'
@@ -8,28 +10,10 @@ import IPositif from '~/components/svg/Positif'
 export default {
   name: 'APropos',
   components: { IAutonome, IDurable, IImpact, ILocal, IPositif },
-  async asyncData({ $db, app, error, params }) {
-    const { story } = await app.$storyapi
-      .get(`cdn/stories/a-propos`, {
-        version: 'draft' // published
-      })
-      .then((res) => {
-        return res.data
-      })
-      .catch((res) => {
-        if (!res.response) {
-          error({
-            statusCode: 404,
-            message: 'Failed to receive content form api'
-          })
-        } else {
-          error({
-            statusCode: res.response.status,
-            message: res.response.data
-          })
-        }
-      })
-    return { ...story.content.body[0], storyId: story.id }
+  mixins: [storyblok],
+  async asyncData({ $db, $storyblok, error, params }) {
+    const story = await $storyblok.getStoryBySlug('a-propos')
+    return { ...story.body[0], storyId: story.id }
   },
   computed: {
     cardKeys() {
@@ -46,20 +30,9 @@ export default {
     }
   },
   mounted() {
-    // Use the input event for instant update of content
-    this.$storybridge.on('input', (event) => {
-      if (event.story.id === this.storyId) {
-        Object.keys(event.story.content.body[0]).forEach((key) => {
-          this[key] = event.story.content.body[0][key]
-        })
-      }
-    })
-    // Use the bridge to listen the events
-    this.$storybridge.on(['published', 'change'], (event) => {
-      // window.location.reload()
-      this.$nuxt.$router.go({
-        path: this.$nuxt.$router.currentRoute,
-        force: true
+    this.listenStoryblokChanges(this.storyId, (event) => {
+      Object.keys(event.story.content.body[0]).forEach((key) => {
+        this[key] = event.story.content.body[0][key]
       })
     })
   }

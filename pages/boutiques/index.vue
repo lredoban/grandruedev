@@ -1,15 +1,8 @@
 <script>
 export default {
   name: 'Boutiques',
-  async asyncData({ app }) {
-    const { stories: boutiques } = await app.$storyapi
-      .get('cdn/stories', {
-        starts_with: 'boutiques/',
-        version: 'draft' // published
-      })
-      .then((res) => {
-        return res.data
-      })
+  async asyncData({ $storyblok }) {
+    const boutiques = await $storyblok.getStories({ starts_with: 'boutiques/' })
     return {
       boutiques
     }

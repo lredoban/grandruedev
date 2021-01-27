@@ -1,10 +1,10 @@
-export default function ({ app, error }, inject) {
+export default function ({ app, error, $config }, inject) {
   const $storyblok = {}
-  $storyblok.getStoreBySlug = async (slug) => {
+  const version = $config.storyblokVersion
+
+  $storyblok.getStoryBySlug = async (slug) => {
     const { story } = await app.$storyapi
-      .get(`cdn/stories/boutiques/${slug}`, {
-        version: 'draft' // published
-      })
+      .get(`cdn/stories/${slug}`, { version })
       .then((res) => {
         return res.data
       })
@@ -22,7 +22,19 @@ export default function ({ app, error }, inject) {
         }
       })
     const { name, id } = story
-    return { ...story.content, name, id, slug }
+    return { ...story.content, name, id, slug: story.slug }
+  }
+
+  $storyblok.getStories = async (options) => {
+    const { stories } = await app.$storyapi
+      .get('cdn/stories', {
+        version,
+        ...options
+      })
+      .then((res) => {
+        return res.data
+      })
+    return stories
   }
 
   inject('storyblok', $storyblok)
