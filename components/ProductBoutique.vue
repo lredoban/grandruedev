@@ -1,5 +1,8 @@
 <script>
 import StoryblokImage from './StoryblokImage.vue'
+
+import { getVilleSlug } from '~/plugins/boutique'
+
 export default {
   name: 'ProductBoutique',
   components: { StoryblokImage },
@@ -13,7 +16,8 @@ export default {
     firstImage() {
       return this.boutique.carousel[0].Images[0]
     }
-  }
+  },
+  methods: { getVilleSlug }
 }
 </script>
 
@@ -48,8 +52,8 @@ export default {
         tag="a"
         :href="
           localePath({
-            name: 'boutiques-slug',
-            params: { slug: boutique.slug }
+            name: 'ville-boutique',
+            params: { ville: getVilleSlug(boutique), boutique: boutique.slug }
           })
         "
         class="mt-12"

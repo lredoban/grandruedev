@@ -8,7 +8,9 @@ export default {
   components: { StoryblokImage },
   mixins: [storyblok],
   async asyncData({ $db, $storyblok, error, params }) {
-    const story = await $storyblok.getStoryBySlug(`boutiques/${params.slug}`)
+    const story = await $storyblok.getStoryBySlug(
+      `${params.ville}/${params.boutique}`
+    )
     return {
       story,
       products: await $db.fetch('productsBy', {

@@ -1,4 +1,6 @@
 <script>
+import { getParams } from '~/plugins/product'
+
 export default {
   name: 'ProductGrid',
   props: {
@@ -6,7 +8,8 @@ export default {
       type: Array,
       required: true
     }
-  }
+  },
+  methods: { getParams }
 }
 </script>
 
@@ -16,7 +19,10 @@ export default {
       v-for="product in products"
       :key="product.slug"
       :to="
-        localePath({ name: 'products-slug', params: { slug: product.slug } })
+        localePath({
+          name: 'ville-boutique-subCategory-product',
+          params: getParams(product)
+        })
       "
     >
       <ProductExerpt :product="product" />

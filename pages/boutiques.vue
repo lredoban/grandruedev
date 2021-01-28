@@ -2,7 +2,7 @@
 export default {
   name: 'Boutiques',
   async asyncData({ $storyblok }) {
-    const boutiques = await $storyblok.getStories({ starts_with: 'boutiques/' })
+    const boutiques = await $storyblok.getStories({ with_tag: 'boutique' })
     return {
       boutiques
     }

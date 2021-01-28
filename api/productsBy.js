@@ -1,4 +1,5 @@
 const logger = require('consola').withScope('api')
+const { productAttrFromRecord } = require('../plugins/product')
 const base = require('./base')
 
 exports.productsBy = ({ key, limit = 100, param }) => {
@@ -9,22 +10,7 @@ exports.productsBy = ({ key, limit = 100, param }) => {
     })
     .firstPage()
     .then((records) => {
-      return records.map((record) => {
-        return {
-          slug: record.fields.slug,
-          name: record.fields.name,
-          price: record.fields.price,
-          unit: record.fields.unit,
-          storeAddress: `${record.fields.storeCity[0]} (${record.fields.storeZipCode[0]})`,
-          storeName: record.fields.storeName[0],
-          imgUrl: record.fields.images[0].url,
-          subCategories: record.fields.subNames,
-          quantity:
-            typeof record.fields.quantity === 'undefined'
-              ? 1000
-              : record.fields.quantity
-        }
-      })
+      return records.map(productAttrFromRecord)
     })
     .catch((err) => {
       logger.error(err)

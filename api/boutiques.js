@@ -17,12 +17,13 @@ exports.boutiques = (ids) => {
     .then((records) => {
       return records.map((record) => {
         return {
-          id: record.id,
-          name: record.fields.name,
+          citySlug: record.fields.citySlug,
+          clickNCollect: record.fields.clickNCollect,
           deliveryPrice: record.fields.deliveryPrice,
           deliveryThreshold: record.fields.deliveryThreshold,
-          clickNCollect: record.fields.clickNCollect,
-          homeDelivery: record.fields.homeDelivery
+          homeDelivery: record.fields.homeDelivery,
+          id: record.id,
+          name: record.fields.name
         }
       })
     })

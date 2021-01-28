@@ -1,4 +1,6 @@
 <script>
+import { getParams } from '~/plugins/product'
+
 export default {
   name: 'ProductExerptList',
   props: {
@@ -6,7 +8,8 @@ export default {
       type: Array,
       required: true
     }
-  }
+  },
+  methods: { getParams }
 }
 </script>
 
@@ -14,7 +17,12 @@ export default {
   <AppHorizontalList :items="products">
     <template v-slot="{ item }">
       <n-link
-        :to="localePath({ name: 'products-slug', params: { slug: item.slug } })"
+        :to="
+          localePath({
+            name: 'ville-boutique-subCategory-product',
+            params: getParams(item)
+          })
+        "
       >
         <ProductExerpt :product="item" />
       </n-link>

@@ -3,7 +3,7 @@ export default {
   locales: [{ code: 'fr', iso: 'fr-FR' }],
   defaultLocale: 'fr',
   baseUrl: ({ $config }) => $config.baseUrl,
-  strategy: 'prefix',
+  strategy: 'no_prefix',
   vueI18nLoader: true,
   vueI18n: {
     numberFormats: {

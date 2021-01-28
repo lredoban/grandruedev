@@ -21,8 +21,9 @@ export default function ({ app, error, $config }, inject) {
           })
         }
       })
-    const { name, id } = story
-    return { ...story.content, name, id, slug: story.slug }
+    // eslint-disable-next-line camelcase
+    const { name, id, full_slug } = story
+    return { ...story.content, name, id, slug: story.slug, full_slug }
   }
 
   $storyblok.getStories = async (options) => {

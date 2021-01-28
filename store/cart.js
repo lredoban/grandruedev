@@ -73,8 +73,8 @@ export const getters = {
       const storeId = item.store
       if (!itemsByStore[storeId]) {
         itemsByStore[storeId] = {
-          name: item.storeName[0],
-          zip: item.storeZipCode[0],
+          name: item.storeName,
+          zip: item.storeZipCode,
           items: []
         }
       }

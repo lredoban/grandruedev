@@ -1,4 +1,6 @@
 <script>
+import { getVilleSlug } from '~/plugins/boutique'
+
 export default {
   name: 'BoutiqueGrid',
   props: {
@@ -6,7 +8,8 @@ export default {
       type: Array,
       required: true
     }
-  }
+  },
+  methods: { getVilleSlug }
 }
 </script>
 
@@ -16,7 +19,10 @@ export default {
       v-for="boutique in boutiques"
       :key="boutique.slug"
       :to="
-        localePath({ name: 'boutiques-slug', params: { slug: boutique.slug } })
+        localePath({
+          name: 'ville-boutique',
+          params: { ville: getVilleSlug(boutique), boutique: boutique.slug }
+        })
       "
     >
       <BoutiqueExerpt :boutique="boutique" />

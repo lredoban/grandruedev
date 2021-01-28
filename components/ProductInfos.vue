@@ -94,12 +94,15 @@ export default {
       <n-link
         :to="
           localePath({
-            name: 'boutiques-slug',
-            params: { slug: product.storeSlug[0] }
+            name: 'ville-boutique',
+            params: {
+              ville: product.storeCitySlug,
+              boutique: product.storeSlug
+            }
           })
         "
       >
-        {{ product.storeName[0] }}
+        {{ product.storeName }}
       </n-link>
       , {{ product.storeAddress }}
     </div>
