@@ -11,6 +11,7 @@ const productAttrFromRecord = (record) => ({
     typeof record.fields.quantity === 'undefined'
       ? 1000
       : record.fields.quantity,
+  preparation: record.fields.preparation,
   slug: record.fields.slug,
   store: record.fields.store[0],
   storeAddress: `${record.fields.storeCity[0]} (${record.fields.storeZipCode[0]})`,
