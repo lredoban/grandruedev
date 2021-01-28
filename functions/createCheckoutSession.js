@@ -53,8 +53,7 @@ const createShippingLineItems = (
 
 const handler = async ({ headers, queryStringParameters }) => {
   try {
-    const lang = headers.referer.includes('/fr/') ? 'fr' : 'en'
-    const baseUrl = headers.referer.split(lang)[0] + lang
+    const baseUrl = headers.referer.split('//')[0] + '//' + headers.host
     const { items, selectedDate, selectedDelivery } = qs.parse(
       queryStringParameters
     )
