@@ -75,7 +75,7 @@ export default {
       script: [
         {
           type: 'application/ld+json',
-          innerHTML: JSON.stringify(this.microdata)
+          json: this.microdata
         }
       ]
     }
