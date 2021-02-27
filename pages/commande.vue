@@ -62,7 +62,7 @@ export default {
       </div>
       <div v-else-if="$fetchState.pending">Chargement</div>
       <div v-else>
-        <div v-for="(items, store) in itemsByStore" :key="store">
+        <div v-for="(items, store) in itemsByStore" :key="store" class="pb-4">
           <h2 class="text-xl text-secondary tracking-wide">{{ store }}</h2>
           <ul class="divide-y-2">
             <li v-for="item in items" :key="item.id" class="py-4">
