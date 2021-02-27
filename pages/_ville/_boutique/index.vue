@@ -43,7 +43,14 @@ export default {
   },
   head() {
     return {
-      title: `${this.name} - Grand'Rue - ${this.ville}`
+      title: `${this.name} - Grand'Rue - ${this.ville}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.story.metaDescription
+        }
+      ]
     }
   }
 }

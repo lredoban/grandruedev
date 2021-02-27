@@ -39,6 +39,21 @@ export default {
       const copy = [...this.product.images]
       copy.splice(this.selectedImageIndex, 1)
       return copy
+    },
+    microdata() {
+      return {
+        '@context': 'https://schema.org/',
+        '@type': 'Product',
+        name: this.product.name,
+        image: this.product.images.map((i) => i.url),
+        description: this.product.description,
+        offers: {
+          '@type': 'Offer',
+          price: this.product.price / 100,
+          availability: 'https://schema.org/InStock',
+          priceCurrency: 'EUR'
+        }
+      }
     }
   },
   created() {
@@ -56,7 +71,13 @@ export default {
   },
   head() {
     return {
-      title: `${this.product.name} - Grand'Rue - ${this.product.storeAddress}`
+      title: `${this.product.name} - Grand'Rue - ${this.product.storeAddress}`,
+      script: [
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify(this.microdata)
+        }
+      ]
     }
   }
 }
