@@ -2,7 +2,7 @@
 import { twicifyAirtable, twicPreview } from '~/helpers/twicpics'
 
 export default {
-  name: 'AppImage',
+  name: 'AirtableImage',
   props: {
     src: {
       type: String,

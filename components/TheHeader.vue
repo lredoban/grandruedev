@@ -54,6 +54,7 @@ export default {
     <div v-if="imageUrl" class="image-container sm:hidden">
       <AirtableImage
         :src="imageUrl"
+        alt="Logo commerçant Grand'Rue"
         class="absolute w-full h-full object-contain"
       />
     </div>

@@ -48,10 +48,12 @@ export default {
           </div>
           <AirtableImage
             src="https://dl.airtable.com/.attachments/daaeb7ce4efd7540dd041f7ad22ec027/21f20bc1/Tablier.png"
+            alt="Tablier blanc sur un cintre"
             class="absolute row-span-3 h-full right-0 bottom-0 transform scale-125 translate-x-8"
           />
           <AppImage
             src="/img/LANDING-PAGE.png"
+            alt="une jolie branche"
             class="hidden absolute row-span-3 h-full left-0 bottom-0 transform scale-125 -translate-x-8 sm:block"
           />
           <div class="row-start-2 col-span-2 z-10 text-center">
@@ -128,6 +130,7 @@ export default {
         >
           <AirtableImage
             src="https://dl.airtable.com/.attachments/b4d278e3364eee3a0412adcc4f15ba05/f4e94a5d/cashier.jpg"
+            alt="Caissière en restaurant"
             class="absolute w-full h-full object-cover"
           />
         </div>

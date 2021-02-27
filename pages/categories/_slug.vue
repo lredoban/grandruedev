@@ -48,6 +48,7 @@ export default {
     <section class="category-hero">
       <AirtableImage
         :src="category.imageThumbnail"
+        :alt="category.name"
         class="col-start-1 row-start-1 min-h-full object-cover"
       />
       <h1

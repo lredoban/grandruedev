@@ -9,6 +9,7 @@ export default {
     <div class="relative h-full w-full sm:pt-0">
       <AppImage
         src="/img/Accueil.jpg"
+        alt="Une commerçante pose un panneau de bienvenue"
         class="absolute w-full h-full object-cover"
       />
       <div class="relative z-10 mt-12 pt-12 sm:mt-0 sm:pt-20">

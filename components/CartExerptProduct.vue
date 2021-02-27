@@ -26,6 +26,7 @@ export default {
       <div class="h-16 w-16 overflow-hidden">
         <AirtableImage
           :src="product.images[0].url"
+          :alt="product.name"
           class="object-cover min-h-full"
         />
       </div>
