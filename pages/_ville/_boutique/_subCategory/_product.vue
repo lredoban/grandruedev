@@ -72,6 +72,13 @@ export default {
   head() {
     return {
       title: `${this.product.name} - Grand'Rue - ${this.product.storeAddress}`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.product.description
+        }
+      ],
       script: [
         {
           type: 'application/ld+json',
