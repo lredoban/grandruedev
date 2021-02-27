@@ -13,6 +13,11 @@ export default {
       categories,
       products: await $db.fetch('recentProducts', { maxRecords: 100 })
     }
+  },
+  head() {
+    return {
+      title: 'La boutique'
+    }
   }
 }
 </script>

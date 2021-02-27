@@ -34,6 +34,11 @@ export default {
     updateFilter(name) {
       this.subFilter = name
     }
+  },
+  head() {
+    return {
+      title: this.category.name
+    }
   }
 }
 </script>

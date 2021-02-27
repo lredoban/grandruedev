@@ -102,6 +102,11 @@ export default {
         console.warn('result.error ->', result.error)
       }
     }
+  },
+  head() {
+    return {
+      title: 'Mon panier'
+    }
   }
 }
 </script>

@@ -35,6 +35,11 @@ export default {
         this[key] = event.story.content.body[0][key]
       })
     })
+  },
+  head() {
+    return {
+      title: "Grand'Rue augmente et simplifie le commerce local !"
+    }
   }
 }
 </script>

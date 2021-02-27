@@ -53,6 +53,11 @@ export default {
         (img) => img.id === id
       )
     }
+  },
+  head() {
+    return {
+      title: `${this.product.name} - Grand'Rue - ${this.product.storeAddress}`
+    }
   }
 }
 </script>

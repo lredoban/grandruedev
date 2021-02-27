@@ -6,6 +6,11 @@ export default {
     return {
       boutiques
     }
+  },
+  head() {
+    return {
+      title: "Les Commerçants Grand'Rue"
+    }
   }
 }
 </script>

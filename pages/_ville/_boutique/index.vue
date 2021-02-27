@@ -25,6 +25,9 @@ export default {
     },
     name() {
       return this.story.name
+    },
+    ville() {
+      return this.$route.params.ville.replace('-', ' ')
     }
   },
   created() {
@@ -37,6 +40,11 @@ export default {
   },
   beforeDestroy() {
     this.$store.commit('menu/clear')
+  },
+  head() {
+    return {
+      title: `${this.name} - Grand'Rue - ${this.ville}`
+    }
   }
 }
 </script>
