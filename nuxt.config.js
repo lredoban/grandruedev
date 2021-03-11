@@ -67,7 +67,6 @@ export default {
   modules: [
     // https://http.nuxtjs.org/
     '@nuxt/http',
-    'nuxt-logrocket',
     'nuxt-i18n',
     '@nuxtjs/sitemap',
     'storyblok-nuxt'

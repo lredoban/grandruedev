@@ -1,9 +1,8 @@
-<template functional>
+<template>
   <svg
     version="1.0"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1800 1800"
-    :class="data.staticClass || ''"
     fill="currentColor"
   >
     <circle cx="653.5" cy="1546.6" r="205.2" />

@@ -1,10 +1,9 @@
-<template functional>
+<template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     role="img"
     viewBox="0 0 1000 1000"
     fill="currentColor"
-    :class="data.staticClass || ''"
   >
     <title>Localisation</title>
     <path

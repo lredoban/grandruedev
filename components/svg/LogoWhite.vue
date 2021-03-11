@@ -1,9 +1,5 @@
-<template functional>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 1999 2000"
-    :class="data.staticClass || ''"
-  >
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1999 2000">
     <style>
       .st0 {
         fill: #fff;

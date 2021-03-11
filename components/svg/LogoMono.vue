@@ -1,10 +1,5 @@
-<template functional>
-  <svg
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    :class="data.staticClass || ''"
-  >
+<template>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path
       fill="currentColor"
       d="M12.7 10v.2a3 3 0 011.9 2.8 3 3 0 01-2.1 2.8v-2.6c0-1.5-1.2-2.7-2.7-2.7a2.7 2.7 0 00-2.7 2.8 4 4 0 001 2.6L6 22.3H3.7v1.6H7L9.4 17l1.5.5v3c0 1.9 1.5 3.4 3.4 3.4s3.4-1.5 3.4-3.4v-4.4h-1.6v4.4c0 1-.8 1.8-1.8 1.8s-1.8-.8-1.8-1.8v-3.1a4.6 4.6 0 001.2-8.6l-1 1.2zm-4 3.2c0-.6.5-1.1 1.1-1.1.6 0 1.1.5 1.1 1.1v2.6a2.8 2.8 0 01-2.2-2.6z"

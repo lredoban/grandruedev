@@ -1,8 +1,7 @@
-<template functional>
+<template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 178 24"
-    :class="data.staticClass || ''"
     fill="currentColor"
   >
     <path

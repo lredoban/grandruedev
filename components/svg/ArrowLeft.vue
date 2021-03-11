@@ -1,10 +1,9 @@
-<template functional>
+<template>
   <svg
     version="1.0"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 1800 1199.8"
-    :class="data.staticClass || ''"
   >
     <g>
       <defs><path id="a" d="M190.4 50.1h1461.9v1081.6H190.4z" /></defs>

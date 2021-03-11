@@ -28,12 +28,11 @@
     "scope": "vue",
     "prefix": "svgTemplate",
     "body": [
-      "<template functional>",
+      "<template>",
       "\t<svg",
       "\t\txmlns=\"http://www.w3.org/2000/svg\"",
       "\t\tviewBox=\"0 0 24 24\"",
       "\t\tfill=\"currentColor\"",
-      "\t\t:class=\"data.staticClass || ''\"",
       "\t>",
       "\t\t\t${0}",
       "\t</svg>",

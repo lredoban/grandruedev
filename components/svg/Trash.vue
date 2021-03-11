@@ -1,11 +1,10 @@
-<template functional>
+<template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="15.625"
     height="20.089"
     viewBox="0 0 15.625 20.089"
     fill="currentColor"
-    :class="[data.staticClass, data.class]"
   >
     <g transform="translate(-42.667)">
       <g transform="translate(42.667)">
