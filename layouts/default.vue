@@ -36,6 +36,7 @@ export default {
 <style lang="sass">
 body
   @apply min-h-screen bg-white
+  scroll-behavior: smooth
   &.noscroll
     @apply overflow-hidden
 </style>
