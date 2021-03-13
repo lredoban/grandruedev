@@ -97,7 +97,14 @@ export default {
             :key="question._uid"
             class="border-b"
           >
-            <div :id="question.slug" class="target"></div>
+            <n-link
+              :id="question.slug"
+              :to="{
+                name: 'foire-aux-questions-question',
+                params: { question: question.slug }
+              }"
+              class="target"
+            ></n-link>
             <details :data-slug="question.slug" @toggle="changeUrl">
               <summary>{{ question.title }}</summary>
               <rich-text-renderer :document="question.response" />
