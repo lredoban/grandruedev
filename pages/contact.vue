@@ -5,6 +5,17 @@ import { validationMixin } from 'vuelidate'
 import AppButton from '~/components/AppButton.vue'
 import storyblok from '~/mixins/storyblok'
 
+const defaults = Object.freeze({
+  nom: '',
+  prenom: '',
+  mail: '',
+  codePostal: '',
+  telephone: '',
+  sujet: '',
+  message: '',
+  newsletter: false
+})
+
 export default {
   name: 'ContactPage',
   components: { AppButton },
@@ -30,14 +41,8 @@ export default {
     }
   },
   data: () => ({
-    nom: '',
-    prenom: '',
-    mail: '',
-    codePostal: '',
-    telephone: '',
-    sujet: '',
-    message: '',
-    newsletter: false
+    ...defaults,
+    done: false
   }),
   validations: {
     nom: { required },
@@ -63,11 +68,26 @@ export default {
     submit() {
       this.$v.$touch()
       if (this.$v.$invalid) return
-      const { story, ...formData } = this.$data
+      const { story, done, ...formData } = this.$data
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: this.encode({ 'form-name': 'contact', ...formData })
+      })
+        .then(() => {
+          this.resetData()
+          this.done = true
+        })
+        .catch(() => {
+          alert(
+            'Une erreur est survenue veuillez remplir le formulaire une nouvelle fois'
+          )
+          this.resetData()
+        })
+    },
+    resetData() {
+      Object.keys(defaults).forEach((key) => {
+        this.$data[key] = defaults[key]
       })
     }
   }
@@ -83,12 +103,19 @@ export default {
         class="absolute inset-0 w-full h-full object-cover"
       />
     </div>
-    <div class="py-8 px-4 bg-kraft">
+    <div v-if="done" class="p-12 bg-kraft">
+      <h1
+        class="mx-auto max-w-md text-secondary text-2xl text-center uppercase font-bold"
+      >
+        Merci nous prennons en compte votre demande
+      </h1>
+    </div>
+    <div v-else class="py-8 px-4 bg-kraft">
       <div class="mx-auto max-w-xl">
         <h1 class="text-secondary text-2xl uppercase font-bold">
           {{ story.title }}
         </h1>
-        <form name="contact" @submit.prevent="submit">
+        <form name="contact" method="POST" @submit.prevent="submit">
           <div class="mt-8 grid grid-cols-2 gap-y-6 gap-x-6">
             <label>
               <span>Nom *</span>
@@ -96,7 +123,7 @@ export default {
                 v-model="nom"
                 type="text"
                 placeholder="Nom"
-                name="surname"
+                name="nom"
                 required
               />
             </label>
@@ -106,7 +133,7 @@ export default {
                 v-model="prenom"
                 type="text"
                 placeholder="Prénom"
-                name="name"
+                name="prenom"
                 required
               />
             </label>
@@ -126,7 +153,7 @@ export default {
                 v-model="codePostal"
                 type="text"
                 placeholder="Code Postal"
-                name="zipCode"
+                name="codePostal"
                 required
               />
             </label>
@@ -136,7 +163,7 @@ export default {
                 v-model="telephone"
                 type="tel"
                 placeholder="Téléphone"
-                name="phone"
+                name="telephone"
               />
             </label>
             <label class="col-span-2">
