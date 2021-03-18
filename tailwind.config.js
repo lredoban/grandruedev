@@ -13,6 +13,7 @@ module.exports = {
         caveat: 'Caveat, Georgia, Cambria, "Times New Roman", Times, serif'
       },
       spacing: {
+        '20p': '20%',
         '60p': '60%',
         '70p': '70%',
         '100p': '100%',
