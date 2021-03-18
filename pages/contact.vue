@@ -6,11 +6,11 @@ import AppButton from '~/components/AppButton.vue'
 import storyblok from '~/mixins/storyblok'
 
 const defaults = Object.freeze({
-  nom: '',
-  prenom: '',
+  surname: '',
+  name: '',
   mail: '',
-  codePostal: '',
-  telephone: '',
+  zipCode: '',
+  phone: '',
   sujet: '',
   message: '',
   newsletter: false
@@ -45,10 +45,10 @@ export default {
     done: false
   }),
   validations: {
-    nom: { required },
-    prenom: { required },
+    surname: { required },
+    name: { required },
     mail: { required },
-    codePostal: { required },
+    zipCode: { required },
     sujet: { required },
     message: { required }
   },
@@ -120,20 +120,20 @@ export default {
             <label>
               <span>Nom *</span>
               <input
-                v-model="nom"
+                v-model="surname"
                 type="text"
                 placeholder="Nom"
-                name="nom"
+                name="surname"
                 required
               />
             </label>
             <label>
               <span>Prénom *</span>
               <input
-                v-model="prenom"
+                v-model="name"
                 type="text"
                 placeholder="Prénom"
-                name="prenom"
+                name="name"
                 required
               />
             </label>
@@ -150,20 +150,20 @@ export default {
             <label>
               <span>Code Postal *</span>
               <input
-                v-model="codePostal"
+                v-model="zipCode"
                 type="text"
                 placeholder="Code Postal"
-                name="codePostal"
+                name="zipCode"
                 required
               />
             </label>
             <label>
               <span>Téléphone</span>
               <input
-                v-model="telephone"
+                v-model="phone"
                 type="tel"
                 placeholder="Téléphone"
-                name="telephone"
+                name="phone"
               />
             </label>
             <label class="col-span-2">
