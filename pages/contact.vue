@@ -1,11 +1,14 @@
 <script>
+import { required } from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate'
+
 import AppButton from '~/components/AppButton.vue'
 import storyblok from '~/mixins/storyblok'
 
 export default {
   name: 'ContactPage',
   components: { AppButton },
-  mixins: [storyblok],
+  mixins: [storyblok, validationMixin],
   async asyncData({ $db, $storyblok, error, params }) {
     const {
       id,
@@ -36,14 +39,36 @@ export default {
     message: '',
     newsletter: false
   }),
+  validations: {
+    nom: { required },
+    prenom: { required },
+    mail: { required },
+    codePostal: { required },
+    sujet: { required },
+    message: { required }
+  },
   head() {
     return {
       title: "Contacter Grand'Rue"
     }
   },
   methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+        )
+        .join('&')
+    },
     submit() {
-      alert('coucou')
+      this.$v.$touch()
+      if (this.$v.$invalid) return
+      const { story, ...formData } = this.$data
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: this.encode({ 'form-name': 'contact', ...formData })
+      })
     }
   }
 }
@@ -63,7 +88,7 @@ export default {
         <h1 class="text-secondary text-2xl uppercase font-bold">
           {{ story.title }}
         </h1>
-        <form name="contact" method="POST" data-netlify="true">
+        <form name="contact" @submit.prevent="submit">
           <div class="mt-8 grid grid-cols-2 gap-y-6 gap-x-6">
             <label>
               <span>Nom *</span>
@@ -147,7 +172,7 @@ export default {
                   {{ story.newsletterLabel }}
                 </span>
               </label>
-              <small class="text-gray-500 block">
+              <small class="mx-auto max-w-sm text-gray-500 block">
                 {{ story.newsletterText }}
               </small>
             </div>
