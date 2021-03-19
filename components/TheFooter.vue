@@ -25,12 +25,12 @@
     <section class="relative bg-kraft pt-12 pb-4">
       <SocialLinks class="px-20 max-w-lg mx-auto" />
       <div class="pl-8 max-w-2xl mx-auto mt-10 flex flex-col space-y-2">
-        <!-- <n-link
+        <n-link
           to="foire-aux-questions"
           class="text-secondary text-2xl font-bold tracking-wide"
         >
           Besoin d'aide ?
-        </n-link> -->
+        </n-link>
         <n-link
           to="a-propos"
           class="text-secondary text-2xl font-bold tracking-wide"

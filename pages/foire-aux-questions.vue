@@ -65,37 +65,44 @@ export default {
 
 <template>
   <main>
-    <div class="relative pt-12 pb-20 px-4 text-center">
+    <div class="relative pt-12 pb-20 px-8 text-center">
       <StoryblokImage
         :src="heroPicture.filename"
         :alt="heroPicture.alt"
         class="absolute inset-0 w-full h-full object-cover"
       />
-      <h1 class="relative text-3xl text-secondary">{{ title }}</h1>
-      <div class="mt-8 px-4 py-10 text-white bg-blurry">
-        <h2>Sommaire</h2>
-        <ul class="text-left">
+      <h1 class="relative text-3xl text-secondary uppercase underline">
+        {{ title }}
+      </h1>
+      <div
+        id="sommaire"
+        class="mx-auto max-w-sm mt-8 px-6 py-10 text-white bg-blurry"
+      >
+        <h2 class="text-xl uppercase">Sommaire</h2>
+        <ul
+          class="mt-6 text-left text-lg space-y-2 font-semibold tracking-wide italic"
+        >
           <li v-for="category in categories" :key="category._uid">
             <a :href="'#' + category.slug">{{ category.title }}</a>
           </li>
         </ul>
       </div>
     </div>
-    <div class="pt-10 pb-20 px-4 space-y-6">
+    <div class="mx-auto max-w-xl pt-10 pb-20 px-4 space-y-6">
       <div
         v-for="category in categories"
         :key="category._uid"
         class="p-4 bg-gray-200"
       >
         <div :id="category.slug" class="target"></div>
-        <h3 class="text-secondary">
+        <h3 class="text-secondary uppercase text-lg">
           {{ category.title }}
         </h3>
-        <ul>
+        <ul class="mt-4">
           <li
             v-for="question in category.questions"
             :key="question._uid"
-            class="border-b"
+            class="border-b border-gray-600"
           >
             <n-link
               :id="question.slug"
@@ -105,9 +112,20 @@ export default {
               }"
               class="target"
             ></n-link>
-            <details :data-slug="question.slug" @toggle="changeUrl">
-              <summary>{{ question.title }}</summary>
-              <rich-text-renderer :document="question.response" />
+            <details
+              :data-slug="question.slug"
+              class="text-gray-600 pb-4"
+              @toggle="changeUrl"
+            >
+              <summary
+                class="mt-4 list-none text-gray-700 outline-none cursor-pointer"
+              >
+                {{ question.title }}
+                <IArrowDown class="ml-1 h-4 -mt-1 inline opacity-75" />
+              </summary>
+              <div class="mt-2 text-sm rich-text">
+                <rich-text-renderer :document="question.response" />
+              </div>
             </details>
           </li>
         </ul>
@@ -118,6 +136,9 @@ export default {
 </template>
 
 <style lang="sass" scoped>
+#sommaire
+  ul > li::before
+    content: '> '
 .target
   display: block
   position: relative
