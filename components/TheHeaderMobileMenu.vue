@@ -52,8 +52,7 @@ export default {
             <li>
               <a
                 class="w-full py-1"
-                href="https://airtable.com/shr4EwCt38y1pHVmT"
-                target="_blank"
+                :href="localePath('devenir-partenaire')"
                 rel="noreferrer noopener"
               >
                 Devenir Partenaire

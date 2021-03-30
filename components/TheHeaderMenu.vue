@@ -26,8 +26,7 @@ export default {
     </n-link>
     <a
       class="px-6 py-1 text-xs text-gray-600 italic"
-      href="https://airtable.com/shr4EwCt38y1pHVmT"
-      target="_blank"
+      :href="localePath('devenir-partenaire')"
       rel="noreferrer noopener"
     >
       Devenir partenaire

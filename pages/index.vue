@@ -148,8 +148,7 @@ export default {
             <AppButton
               tag="a"
               class="mt-12 uppercase"
-              href="https://airtable.com/shr4EwCt38y1pHVmT"
-              target="_blank"
+              :href="localePath('devenir-partenaire')"
               rel="noreferrer noopener"
               >devenez partenaire</AppButton
             >
