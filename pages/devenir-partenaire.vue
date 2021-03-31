@@ -94,7 +94,7 @@ export default {
 
 <template>
   <main>
-    <div class="relative pt-12 pb-64 px-8 text-center">
+    <div class="relative pt-12 pb-42p px-8 text-center">
       <StoryblokImage
         :src="heroPicture.filename"
         :alt="heroPicture.alt"

@@ -25,5 +25,10 @@ export default {
 </script>
 
 <template>
-  <img v-bind="$attrs" :data-twic-src="twicSrc" :src="preview" />
+  <img
+    v-bind="$attrs"
+    :data-twic-src="twicSrc"
+    :src="preview"
+    data-twic-src-focus="auto"
+  />
 </template>
