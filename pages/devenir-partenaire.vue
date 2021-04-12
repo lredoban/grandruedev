@@ -174,6 +174,7 @@ export default {
           name="devenir-partenaire"
           @submit.prevent="submit"
         >
+          <input type="hidden" name="form-name" value="devenir-partenaire" />
           <div class="mt-6 grid grid-cols-2 gap-y-6 gap-x-6">
             <label>
               <span>Nom</span>

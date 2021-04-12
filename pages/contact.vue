@@ -116,6 +116,7 @@ export default {
           {{ story.title }}
         </h1>
         <form name="contact" method="POST" @submit.prevent="submit">
+          <input type="hidden" name="form-name" value="contact" />
           <div class="mt-8 grid grid-cols-2 gap-y-6 gap-x-6">
             <label>
               <span>Nom *</span>
