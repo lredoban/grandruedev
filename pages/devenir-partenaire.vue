@@ -172,6 +172,7 @@ export default {
           id="devenir-partenaire"
           method="POST"
           name="devenir-partenaire"
+          netlify
           @submit.prevent="submit"
         >
           <input type="hidden" name="form-name" value="devenir-partenaire" />
