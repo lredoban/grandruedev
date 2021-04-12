@@ -172,7 +172,7 @@ export default {
           id="devenir-partenaire"
           method="POST"
           name="devenir-partenaire"
-          @submit.prevent="submit"
+          data-netlify="true"
         >
           <div class="mt-6 grid grid-cols-2 gap-y-6 gap-x-6">
             <label>
