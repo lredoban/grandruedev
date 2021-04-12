@@ -24,28 +24,33 @@
     </section>
     <section class="relative bg-kraft pt-12 pb-4">
       <SocialLinks class="px-20 max-w-lg mx-auto" />
-      <div class="pl-8 max-w-2xl mx-auto mt-10 flex flex-col space-y-2">
+      <div
+        class="pl-8 max-w-2xl mx-auto mt-10 grid gap-y-2 items-center sm:grid-cols-3"
+      >
+        <ILogoRound
+          class="hidden mx-auto text-primary h-20 row-span-2 sm:block"
+        />
         <n-link
           to="/foire-aux-questions"
-          class="text-secondary text-2xl font-bold tracking-wide"
+          class="text-secondary text-2xl font-bold tracking-wide sm:text-lg"
         >
           Besoin d'aide ?
         </n-link>
         <n-link
           to="/a-propos"
-          class="text-secondary text-2xl font-bold tracking-wide"
+          class="text-secondary text-2xl font-bold tracking-wide sm:text-lg"
         >
           Qui somme nous ?
         </n-link>
         <!-- <n-link
           to="/magazine"
-          class="text-secondary text-2xl font-bold tracking-wide"
+          class="text-secondary text-2xl font-bold tracking-wide sm:text-lg"
         >
           Le magazine Grand'Rue
         </n-link> -->
         <n-link
           to="/contact"
-          class="text-secondary text-2xl font-bold tracking-wide"
+          class="text-secondary text-2xl font-bold tracking-wide sm:text-lg"
         >
           Contactez-nous
         </n-link>

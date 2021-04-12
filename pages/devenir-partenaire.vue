@@ -70,7 +70,7 @@ export default {
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({ 'form-name': 'partner', ...formData })
+        body: this.encode({ 'form-name': 'devenir-partenaire', ...formData })
       })
         .then(() => {
           this.resetData()
@@ -103,7 +103,7 @@ export default {
     </div>
     <a
       class="py-2 block text-center text-sm underline bg-secondary text-gray-200 uppercase font-bold tracking-wide"
-      href="#partner"
+      href="#devenir-partenaire"
       >Contactez-nous</a
     >
     <div class="py-10 bg-kraft flex flex-col flex-col-reverse text-center">
@@ -169,9 +169,9 @@ export default {
       <div v-else class="mx-auto max-w-md">
         <h3 class="text-xl text-secondary">ÇA VOUS INTÉRESSE ?</h3>
         <form
-          id="partner"
+          id="devenir-partenaire"
           method="POST"
-          name="partner"
+          name="devenir-partenaire"
           @submit.prevent="submit"
         >
           <div class="mt-6 grid grid-cols-2 gap-y-6 gap-x-6">
