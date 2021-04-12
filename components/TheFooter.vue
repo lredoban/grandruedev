@@ -26,25 +26,25 @@
       <SocialLinks class="px-20 max-w-lg mx-auto" />
       <div class="pl-8 max-w-2xl mx-auto mt-10 flex flex-col space-y-2">
         <n-link
-          to="foire-aux-questions"
+          to="/foire-aux-questions"
           class="text-secondary text-2xl font-bold tracking-wide"
         >
           Besoin d'aide ?
         </n-link>
         <n-link
-          to="a-propos"
+          to="/a-propos"
           class="text-secondary text-2xl font-bold tracking-wide"
         >
           Qui somme nous ?
         </n-link>
         <!-- <n-link
-          to="magazine"
+          to="/magazine"
           class="text-secondary text-2xl font-bold tracking-wide"
         >
           Le magazine Grand'Rue
         </n-link> -->
         <n-link
-          to="contact"
+          to="/contact"
           class="text-secondary text-2xl font-bold tracking-wide"
         >
           Contactez-nous
