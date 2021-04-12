@@ -103,7 +103,7 @@ export default {
     </div>
     <a
       class="py-2 block text-center text-sm underline bg-secondary text-gray-200 uppercase font-bold tracking-wide"
-      href="#form"
+      href="#partner"
       >Contactez-nous</a
     >
     <div class="py-10 bg-kraft flex flex-col flex-col-reverse text-center">
@@ -168,7 +168,12 @@ export default {
       </h4>
       <div v-else class="mx-auto max-w-md">
         <h3 class="text-xl text-secondary">ÇA VOUS INTÉRESSE ?</h3>
-        <form id="form" method="POST" name="partner" @submit.prevent="submit">
+        <form
+          id="partner"
+          method="POST"
+          name="partner"
+          @submit.prevent="submit"
+        >
           <div class="mt-6 grid grid-cols-2 gap-y-6 gap-x-6">
             <label>
               <span>Nom</span>
